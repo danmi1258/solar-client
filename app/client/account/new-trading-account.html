@@ -1,0 +1,40 @@
+<div class="row form-group" ng-class="{'has-error': editForm.accountType.$invalid && editForm.accountType.$dirty}">
+    <div class="col-sm-3">
+        <label class="control-label" for="accountType">{{"Account Type"|translate}}*</label>
+    </div>
+    <div class="col-sm-4">
+        <select id="accountType" name="accountType" class="form-control" ng-model="entity.tradingAccountType" required
+                ng-options="option.label as option.label for option in view.tradingAccountTypes">
+        </select>
+    </div>
+</div>
+
+<div class="row form-group" ng-class="{'has-error': editForm.ib.$invalid && editForm.ib.$dirty}">
+    <div class="col-sm-3">
+        <label class="control-label" for="ib">{{"IB"|translate}}*</label>
+    </div>
+    <div class="col-sm-4">
+        <select id="ib" name="ib" class="form-control" ng-model="entity.brokerType" required
+                ng-options="option.label as option.label for option in view.brokerTypes">
+        </select>
+    </div>
+</div>
+
+<div class="row form-group" ng-class="{'has-error': editForm.ibName.$invalid && editForm.ibName.$dirty}"
+    ng-if="entity.brokerType=='New Introducing Broker'">
+    <div class="col-sm-3">
+        <label class="control-label" for="ibName">{{"IB Name"|translate}}*</label>
+    </div>
+    <div class="col-sm-4">
+        <input id="ibName" name="ibName" class="form-control" ng-model="entity.brokerName" required>
+    </div>
+</div>
+
+<div class="row form-group" ng-class="{'has-error': editForm.comment.$invalid && editForm.comment.$dirty}">
+    <div class="col-sm-3">
+        <label class="control-label" for="comment">{{"Comment"|translate}}</label>
+    </div>
+    <div class="col-sm-8">
+        <textarea id="comment" name="comment" class="form-control" ng-model="entity.comment" rows="5"></textarea>
+    </div>
+</div>

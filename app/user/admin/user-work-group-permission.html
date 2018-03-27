@@ -1,0 +1,34 @@
+<table class="table table-striped table-hover table-responsive">
+    <thead>
+    <tr>
+        <th>{{'Work Group'|translate}}</th>
+        <th>{{'Action'|translate}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="entity in user.workGroups|orderBy:['name']">
+        <td style="vertical-align: middle">{{entity.name}}</td>
+        <td>
+            <button type="button" class="btn btn-danger" ng-click="remove(entity, user.workGroups)">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+        </td>
+    </tr>
+    </tbody>
+    <tfoot ng-show="!user.workGroups.length">
+    <tr>
+        <td>
+            <select class="form-control"
+                    ng-options="k.name for k in workGroups|orderBy:'name'"
+                    ng-model="selectedWorkGroup">
+            </select>
+        </td>
+        <td>
+            <button type="button" class="btn btn-success" ng-disabled="!selectedWorkGroup"
+                    ng-click="addWorkGroup(selectedWorkGroup);selectedWorkGroup=null">
+                <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+            </button>
+        </td>
+    </tr>
+    </tfoot>
+</table>

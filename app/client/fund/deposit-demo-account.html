@@ -1,0 +1,41 @@
+<div ng-controller="FundDemoAccountController">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center"><strong class="heading">{{'Fund Demo Account'|translate}}</strong></div>
+        <div class="panel-body">
+            <form novalidate role="form" name="editForm" ng-submit="save()">
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label class="control-label">{{"Account"|translate}}</label>
+                    </div>
+                    <div class="col-sm-4">{{entity.login}}</div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label class="control-label">{{"Amount"|translate}}*</label>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="btn-group">
+                            <label class="btn btn-success" ng-model="entity.amount" uib-btn-radio="200">$200</label>
+                            <label class="btn btn-success" ng-model="entity.amount" uib-btn-radio="500">$500</label>
+                            <label class="btn btn-success" ng-model="entity.amount" uib-btn-radio="1000">$1000</label>
+                            <label class="btn btn-success" ng-model="entity.amount" uib-btn-radio="5000">$5000</label>
+                            <label class="btn btn-success" ng-model="entity.amount" uib-btn-radio="10000">$10000</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row spacer-top text-center">
+                    <button type="button" class="btn btn-warning" ng-click="cancel()">
+                        <span class="glyphicon glyphicon-arrow-left"></span> Cancel
+                    </button>
+
+                    <button type="submit" class="btn btn-primary" ng-disabled="!entity.amount">
+                        {{'Submit'|translate}} <span class="glyphicon glyphicon-ok"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,103 @@
+<div ng-controller="CommonProfileController">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center">
+            <strong class="heading">{{"My Profile"|translate}}</strong>
+        </div>
+        <div class="panel-body">
+            <form novalidate role="form" name="editForm" ng-submit="save()">
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label for="email">{{"Email"|translate}}</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="email" name="email" type="email" class="form-control" minlength="6"
+                               ng-model="entity.email" ng-trim="true" required/>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label>{{"Surname"|translate}}</label>
+                    </div>
+                    <div class="col-sm-4">{{entity.contact.lastName}}</div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label>{{"First Name"|translate}}</label>
+                    </div>
+                    <div class="col-sm-4">{{entity.contact.firstName}}</div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label>{{"Middle Name"|translate}}</label>
+                    </div>
+                    <div class="col-sm-4">{{entity.contact.middleName}}</div>
+                </div>
+
+                <div>
+                    <hr/>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label>{{"Address"|translate}}</label>
+                    </div>
+                    <div class="col-sm-4">{{entity.contact.address}}</div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label>{{"City"|translate}}</label>
+                    </div>
+                    <div class="col-sm-4">{{entity.contact.city}}</div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label>{{"State/Province"|translate}}</label>
+                    </div>
+                    <div class="col-sm-4">{{entity.contact.state}}</div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label>{{"Country"|translate}}</label>
+                    </div>
+                    <div class="col-sm-4">{{entity.contact.country}}</div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label>{{"Postcode"|translate}}</label>
+                    </div>
+                    <div class="col-sm-4">{{entity.contact.postcode}}</div>
+                </div>
+
+                <div class="row form-group" ng-class="{'has-error': editForm.phone.$invalid && editForm.phone.$dirty}">
+                    <div class="col-sm-2">
+                        <label class="control-label" for="phone">{{"Phone"|translate}}</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="phone" name="phone" class="form-control" ng-model="entity.contact.contactPh"
+                               ng-trim="true" ng-pattern="'(\\+)?\\d+'"/>
+                    </div>
+                </div>
+
+                <div class="row form-group"
+                     ng-class="{'has-error': editForm.mobile.$invalid && editForm.mobile.$dirty}">
+                    <div class="col-sm-2">
+                        <label class="control-label" for="mobile">{{"Mobile"|translate}}</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="mobile" name="mobile" class="form-control" ng-model="entity.contact.mobilePh"
+                               ng-trim="true" ng-pattern="'(\\+)?\\d+'"/>
+                    </div>
+                </div>
+
+                <div solar-crud-buttons></div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+<div ng-controller="SystemMessageAdminCtrl">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center">
+            <strong class="heading">{{"System Message"|translate}}</strong>
+        </div>
+
+        <div class="panel-body">
+            <form novalidate role="form" name="editForm" ng-submit="save()">
+                <div class="row form-group">
+                    <div class="col-sm-12">
+                        <label class="control-label">{{"Scope"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="btn-group">
+                            <label class="btn btn-primary" ng-model="entity.client" uib-btn-checkbox>{{'Clients'|translate}}</label>
+                            <label class="btn btn-primary" ng-model="entity.agent" uib-btn-checkbox>{{'IB'|translate}}</label>
+                            <label class="btn btn-primary" ng-model="entity.broker" uib-btn-checkbox>{{'Brokers'|translate}}</label>
+                            <label class="btn btn-primary" ng-model="entity.teams" uib-btn-checkbox>{{'Teams'|translate}}</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-group" ng-class="{'has-error': editForm.team.$invalid && editForm.team.$dirty}" ng-if="entity.teams">
+                    <div class="col-sm-12">
+                        <label class="control-label" for="team">{{"Team"|translate}}</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <select name="team" id="team" class="form-control"
+                                ng-options="k.name for k in view.teams"
+                                ng-model="entity.team">
+                            <option value="">{{"All"|translate}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--<div class="row form-group">-->
+                    <!--<div class="col-sm-12">-->
+                        <!--<label class="control-label">{{"Method"|translate}}*</label>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-12">-->
+                        <!--<div class="btn-group">-->
+                            <!--<label class="btn btn-primary" ng-model="entity.email" uib-btn-checkbox>{{'Email'|translate}}</label>-->
+                            <!--<label class="btn btn-primary" ng-model="entity.online" uib-btn-checkbox>{{'Online'|translate}}</label>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <div class="row form-group"
+                     ng-class="{'has-error': editForm.subject.$invalid && editForm.subject.$dirty}">
+                    <div class="col-sm-12">
+                        <label class="control-label" for="message">{{"Subject"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <input id="subject" name="subject" class="form-control" required ng-trim="true"
+                               ng-model="entity.subject">
+                    </div>
+                </div>
+
+                <div class="row form-group"
+                     ng-class="{'has-error': editForm.message.$invalid && editForm.message.$dirty}">
+                    <div class="col-sm-12">
+                        <label class="control-label" for="message">{{"Messages"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-12">
+                        <textarea id="message" name="message" class="form-control" rows="10" required ng-trim="true"
+                                  ng-model="entity.message"></textarea>
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <button type="submit" class="btn btn-primary" ng-disabled="editForm.$invalid">{{"Send"|translate}}
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

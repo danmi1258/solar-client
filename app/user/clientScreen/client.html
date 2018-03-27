@@ -1,0 +1,40 @@
+<div ng-controller="ClientHomeController">
+    <div class="panel"
+         ng-class="{'panel-success': client.clientRole!=='Client','panel-info': client.clientRole=='Client'}">
+        <div class="panel-heading text-center">
+            <strong class="heading">{{client.label}}</strong>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-8 col-xs-offset-2 col-sm-offset-0 col-sm-3" style="margin-bottom: 10px">
+                    <button type="button" style="width: 100%" class="btn btn-warning" onclick="window.history.back()">
+                        <span class="glyphicon glyphicon-arrow-left"></span> {{'Back'|translate}}
+                    </button>
+                </div>
+
+                <div class="col-xs-8 col-xs-offset-2 col-sm-3 col-sm-offset-6" ng-show="integrationPoints['client.actions']">
+                    <div class="btn-group" style="width: 100%" uib-dropdown>
+                        <button type="button" class="btn btn-primary" style="width: 100%" uib-dropdown-toggle>
+                            {{"Actions"|translate}} <span class="caret"></span>
+                        </button>
+                        <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                            <li ng-repeat="integration in integrationPoints['client.actions']|orderBy: 'priority'">
+                                <a ng-href="#!{{getTemplate(integration.properties.route)}}">{{integration.properties.label|translate}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <uib-tabset>
+                <uib-tab ng-repeat="integration in integrationPoints['client.tabs']|orderBy: 'priority'" select="activateTab($index)">
+                    <uib-tab-heading>{{integration.properties.label|translate}}</uib-tab-heading>
+                    <div ng-if="initializedTabs[$index]" class="inner-panel">
+                        <ng-include src="integration.template"></ng-include>
+                    </div>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+    </div>
+</div>

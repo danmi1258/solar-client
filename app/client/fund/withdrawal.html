@@ -1,0 +1,101 @@
+<div ng-controller="ClientWithdrawalController">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center">
+            <strong class="heading">{{"Withdrawal"|translate}}</strong>
+        </div>
+        <div class="panel-body">
+            <form novalidate role="form" name="editForm" ng-submit="save()">
+                <div class="row form-group">
+                    <div class="col-sm-4">
+                        <label class="control-label">{{"Trading Account"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-5">{{entity.login}}</div>
+                </div>
+
+                <div class="row form-group"
+                     ng-class="{'has-error': editForm.bankAccountType.$invalid && editForm.bankAccountType.$dirty}">
+                    <div class="col-sm-4">
+                        <label class="control-label" for="bankAccountType">{{"Bank Type"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="bankAccountType" name="bankAccountType" class="form-control" ng-model="entity.bankAccountView" required
+                                ng-options="option.bankAccountType for option in view.bankAccountViewList">
+                        </select>
+                    </div>
+                </div>
+
+                <div ng-if="entity.bankAccountType">
+                    <div class="row form-group" ng-show="entity.bankAccountView.bankAccounts.length">
+                        <div class="col-sm-4">
+                            <label for="newBankAccount">{{"Use Recent Account"|translate}}</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <div id="newBankAccount" name="newBankAccount" class="btn-group">
+                                <button type="button" class="btn btn-primary" ng-model="newBankAccount"
+                                        uib-btn-radio="false">
+                                    {{"Yes"|translate}}
+                                </button>
+                                <button type="button" class="btn btn-primary" ng-model="newBankAccount"
+                                        uib-btn-radio="true" ng-click="createBankAccount()">
+                                    {{"No"|translate}}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group" ng-if="!newBankAccount"
+                         ng-class="{'has-error': editForm.bankAccount.$invalid && editForm.bankAccount.$dirty}">
+                        <div class="col-sm-4">
+                            <label class="control-label" for="bankAccount">{{"Bank Account"|translate}}*</label>
+                        </div>
+                        <div class="col-sm-5">
+                            <select id="bankAccount" name="bankAccount" class="form-control"
+                                    ng-model="entity.bankAccount"
+                                    ng-options="option.label for option in entity.bankAccountView.bankAccounts">
+                            </select>
+                        </div>
+                    </div>
+
+                    <ng-include src="'app/client/fund/bankAccount/bank-account.html'" ng-if="newBankAccount"></ng-include>
+                </div>
+
+                <div ng-if="entity.bankAccount.id">
+                    <div class="row form-group"
+                         ng-class="{'has-error': editForm.amount.$invalid && editForm.amount.$dirty}">
+                        <div class="col-sm-4">
+                            <label class="control-label" for="amount">{{"Amount"|translate}}*</label>
+                        </div>
+                        <div class="col-sm-5">
+                            <input id="amount" name="amount" type="number" class="form-control" ng-model="entity.amount"
+                                   only-digits required>
+                        </div>
+                    </div>
+
+                    <div class="row form-group"
+                         ng-class="{'has-error': editForm.currency.$invalid && editForm.currency.$dirty}">
+                        <div class="col-sm-4">
+                            <label class="control-label" for="currency">{{"Currency"|translate}}*</label>
+                        </div>
+                        <div class="col-sm-5">
+                            <select id="currency" name="currency" class="form-control" ng-model="entity.currencyType"
+                                    required
+                                    ng-options="option.label as option.label for option in view.currencyTypes">
+                            </select>
+                            <span class="help-block">{{'In which currency you want to receive your fund.'|translate}}</span>
+                        </div>
+                    </div>
+
+                    <div class="row text-center">
+                        <button type="button" class="btn btn-warning" ng-click="cancel()">
+                            <span class="glyphicon glyphicon-arrow-left"></span> Cancel
+                        </button>
+
+                        <button type="submit" class="btn btn-primary" ng-disabled="editForm.$invalid">{{"Submit"|translate}}
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

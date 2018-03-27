@@ -1,0 +1,31 @@
+<div ng-controller="SymbolVolumeMapController">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center">
+            <strong class="heading" ng-if="entity.id">{{entity.symbol}}</strong>
+            <strong class="heading" ng-if="!entity.id">{{"New Symbol Definition"|translate}}</strong>
+        </div>
+        <div class="panel-body">
+            <form novalidate role="form" name="editForm" ng-submit="save()">
+                <div class="row form-group" ng-class="{'has-error': editForm.symbol.$invalid && editForm.symbol.$dirty}">
+                    <div class="col-sm-2">
+                        <label class="control-label" for="symbol">{{"Symbol"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="symbol" name="symbol" class="form-control" ng-model="entity.symbol" required ng-trim="true"/>
+                    </div>
+                </div>
+
+                <div class="row form-group" ng-class="{'has-error': editForm.ratio.$invalid && editForm.ratio.$dirty}">
+                    <div class="col-sm-2">
+                        <label class="control-label" for="ratio">{{"Volume Ratio"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="ratio" name="ratio" class="form-control" ng-model="entity.volumeRatio" float required ng-trim="true"/>
+                    </div>
+                </div>
+
+                <div solar-crud-buttons=""></div>
+            </form>
+        </div>
+    </div>
+</div>

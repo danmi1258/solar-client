@@ -1,0 +1,30 @@
+<div ng-controller="Mt4AccountReportController">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center"><strong class="heading">{{'MT4 Account Report'|translate}}</strong></div>
+
+        <div class="panel-body">
+            <form novalidate role="form" name="editForm" ng-submit="export()">
+                <div class="row form-group">
+                    <div class="col-sm-12">
+                        <label class="control-label" for="agent">{{"IB"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="agent" name="agent" class="form-control" ng-model="searchParams.workGroup"
+                                ng-required="workGroups.length>10"
+                                ng-options="option.name for option in workGroups">
+                            <option value="" ng-if="workGroups.length<=10">{{'All'|translate}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button class="btn btn-primary" type="submit" ng-disabled="editForm.$invalid">
+                        {{'Run'|translate}} <span class="glyphicon glyphicon-ok"></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

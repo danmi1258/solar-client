@@ -1,0 +1,113 @@
+<div ng-controller="WorkGroupsAdminController">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center"><strong class="heading">{{'Work Groups'|translate}}</strong></div>
+
+        <div ng-show="loadingTree" class="pull-right" style="padding: 8px">
+            <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+        </div>
+
+        <div ng-show="!loadingTree">
+            <div class="panel-body">
+                <form name="editForm" novalidate ng-submit="search()">
+                    <div class="row spacer-bottom">
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input class="form-control" ng-model="searchTerm" minlength="2"
+                                       placeholder="{{'Search for login'|translate}}..." tabindex="1" required>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" ng-disabled="editForm.$invalid" type="submit" tabindex="2">
+                                        {{'Search'|translate}}
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="row" ng-show="result!=null">
+                    <div class="col-sm-8">
+                        <table class="table table-bordered table-hover table-responsive">
+                            <thead>
+                            <tr>
+                                <th>{{'Work Group'|translate}}</th>
+                                <th>{{"Category"|translate}}</th>
+                                <th>{{'Parent'|translate}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="entity in result|orderBy:['mt4Account']">
+                                <td style="vertical-align: middle">
+                                    {{entity.name}} <span ng-show="entity.mt4Account">({{entity.mt4Account}})</span>
+                                    <span ng-show="entity.workGroupType!='Broker'"><a class="clickable" ng-click="edit(entity)"><span class="glyphicon glyphicon-pencil"></span></a></span>
+                                </td>
+                                <td style="vertical-align: middle">{{entity.workGroupCategory}}</td>
+                                <td style="vertical-align: middle">
+                                    <span ng-if="entity.parentWorkGroup">
+                                        {{entity.parentWorkGroup.name}} <span ng-show="entity.parentWorkGroup.mt4Account">({{entity.parentWorkGroup.mt4Account}})</span>
+                                        <a class="clickable" ng-click="edit(entity.parentWorkGroup)"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            </tbody>
+                            <tbody ng-if="!result.length">
+                            <tr>
+                                <td colspan="3" class="text-muted">
+                                    {{'Data is not available.'|translate}}
+                                </td>
+                            </tr>
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <td colspan="3">
+                                    <button class="btn btn-primary" type="button" ng-click="searchTerm=null;result=null">
+                                        <span class="glyphicon glyphicon-arrow-up"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tree-group">
+                <div ng-repeat="workGroup in topWorkGroups|orderBy:['workGroupType','hasChildren','mt4Account']"
+                     ng-include="'workGroupTree'" ng-init="entity=workGroup;level=0">
+                </div>
+                <div class="tree-item">
+                    <button type="button" class="btn btn-success"
+                            ng-click="create()">
+                        <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="workGroupTree">
+    <div class="tree-item">
+        <p style="text-indent:{{level*15}}px">
+            <span style="text-indent: 0">
+                <span class="clickable" ng-click="entity.expand=!entity.expand"
+                      ng-if="entity.workGroups && entity.workGroups.length">
+                    <span class="text-success glyphicon glyphicon-plus" ng-if="!entity.expand"></span>
+                    <span class="text-success glyphicon glyphicon-minus" ng-if="entity.expand"></span>
+                </span>
+                <span ng-if="!entity.workGroups || !entity.workGroups.length">
+                    <span class="glyphicon glyphicon-stop"></span>
+                </span>
+                <strong ng-class="{'text-success':entity.workGroupType=='Broker', 'text-danger':entity.endDate}">
+                    {{entity.name}} <span ng-show="entity.mt4Account!=null">({{entity.mt4Account}})</span>
+                    <i ng-if="entity.workGroupType=='Broker'" ng-show="!expand" class="text-primary fa fa-plus-square clickable" aria-hidden="true" ng-click="expandAll(true)"></i>
+                    <i ng-if="entity.workGroupType=='Broker'" ng-show="expand" class="text-primary fa fa-minus-square clickable" aria-hidden="true" ng-click="expandAll(false)"></i>
+                </strong> <span ng-show="entity.workGroupType!='Broker'"><a class="clickable" ng-click="edit(entity)"><span class="glyphicon glyphicon-pencil"></span></a></span>
+            </span>
+        </p>
+    </div>
+
+    <span ng-repeat="workGroup in entity.workGroups|orderBy:['hasChildren','mt4Account']"
+        ng-if="entity.expand"
+        ng-include="'workGroupTree'" ng-init="entity=workGroup;level=level+1">
+    </span>
+</script>

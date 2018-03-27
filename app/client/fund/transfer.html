@@ -1,0 +1,47 @@
+<div ng-controller="ClientFundTransferController">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center">
+            <strong class="heading">{{"Fund Transfer"|translate}}</strong>
+        </div>
+        <div class="panel-body">
+            <form novalidate role="form" name="editForm" ng-submit="save()">
+                <div class="row form-group" ng-class="{'has-error': editForm.accountFrom.$invalid && editForm.accountFrom.$dirty}">
+                    <div class="col-sm-3">
+                        <label class="control-label" for="accountFrom">{{"From Account"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="accountFrom" name="accountFrom" class="form-control" ng-model="entity.accountFrom" required
+                                ng-options="option.account as option.label for option in view.accounts|orderBy: 'account'">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row form-group" ng-class="{'has-error': editForm.accountTo.$invalid && editForm.accountTo.$dirty}">
+                    <div class="col-sm-3">
+                        <label class="control-label" for="accountTo">{{"To Account"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="accountTo" name="accountTo" class="form-control" ng-model="entity.accountTo" required
+                                ng-options="option.account as option.label for option in view.accounts|orderBy: 'account'">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row form-group" ng-class="{'has-error': editForm.amount.$invalid && editForm.amount.$dirty}">
+                    <div class="col-sm-3">
+                        <label class="control-label" for="amount">{{"Amount"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="amount" name="amount" type="number" class="form-control" ng-model="entity.amount" maxlength="9" float>
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <button type="submit" class="btn btn-primary" ng-disabled="editForm.$invalid||entity.accountFrom==entity.accountTo">
+                        {{"Submit"|translate}} <span class="glyphicon glyphicon-ok"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

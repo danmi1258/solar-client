@@ -1,0 +1,101 @@
+<div ng-controller="ClientMt4GroupSwitchController">
+    <form novalidate role="form" name="editForm">
+        <div class="row spacer-bottom">
+            <div class="col-sm-3">
+                <label>{{"MT4 Server"|translate}}</label>
+            </div>
+            <div class="col-sm-6">
+                <span>{{view.mt4GroupSwitchProfile.mt4Server.mt4ServerType}}</span>
+            </div>
+        </div>
+
+        <div class="row form-group" ng-class="{'has-error': editForm.login.$invalid && editForm.login.$dirty}">
+            <div class="col-sm-3">
+                <label class="control-label" for="login">{{"MT4 Login"|translate}}*</label>
+            </div>
+            <div class="col-sm-4">
+                <input id="login" name="login" class="form-control" ng-disabled="view.mt4GroupSwitchProfile.confirmed"
+                       ng-model="view.mt4GroupSwitchProfile.login" only-digits ng-trim="true">
+            </div>
+        </div>
+
+        <div class="row spacer-bottom" ng-show="view.mt4GroupSwitchProfile.currentAgentLogin">
+            <div class="col-sm-3">
+                <label>{{"Current Agent Login"|translate}}</label>
+            </div>
+            <div class="col-sm-4">
+                <span>{{view.mt4GroupSwitchProfile.currentAgentLogin}}</span>
+            </div>
+        </div>
+
+        <div class="row spacer-bottom" ng-show="view.mt4GroupSwitchProfile.currentGroupName">
+            <div class="col-sm-3">
+                <label>{{"Current Group"|translate}}</label>
+            </div>
+            <div class="col-sm-4">
+                <span>{{view.mt4GroupSwitchProfile.currentGroupName}}</span>
+            </div>
+        </div>
+
+        <div class="row form-group" ng-class="{'has-error': editForm.newAgentLogin.$invalid && newAgentLogin.login.$dirty}">
+            <div class="col-sm-3">
+                <label class="control-label" for="newAgentLogin">{{"New Agent Login"|translate}}*</label>
+            </div>
+            <div class="col-sm-4">
+                <input id="newAgentLogin" name="newAgentLogin" class="form-control" required
+                       ng-disabled="view.mt4GroupSwitchProfile.confirmed"
+                       ng-model="view.mt4GroupSwitchProfile.newAgentLogin" only-digits ng-trim="true">
+            </div>
+        </div>
+
+        <div class="row form-group" ng-if="!view.mt4GroupSwitchProfile.confirmed || view.mt4GroupSwitchProfile.newGroupName"
+             ng-class="{'has-error': editForm.newGroupName.$invalid && newAgentLogin.newGroupName.$dirty}">
+            <div class="col-sm-3">
+                <label class="control-label" for="newGroupName">{{"New Group"|translate}}</label>
+            </div>
+            <div class="col-sm-4">
+                <input id="newGroupName" name="newGroupName" class="form-control" ng-disabled="view.mt4GroupSwitchProfile.confirmed"
+                       ng-model="view.mt4GroupSwitchProfile.newGroupName" ng-trim="true">
+            </div>
+        </div>
+
+        <div class="row spacer-bottom" ng-show="view.mt4GroupSwitchProfile.confirmed" >
+            <div class="col-sm-3">
+                <label>{{"Confirmed"|translate}}</label>
+            </div>
+            <div class="col-sm-6">
+                <span>{{view.mt4GroupSwitchProfile.confirmed|formattedTime}}</span>
+            </div>
+        </div>
+
+        <div class="row spacer-bottom" ng-show="view.mt4GroupSwitchProfile.processed" >
+            <div class="col-sm-3">
+                <label>{{"Processed"|translate}}</label>
+            </div>
+            <div class="col-sm-6">
+                <span>{{view.mt4GroupSwitchProfile.processed|formattedTime}}</span>
+            </div>
+        </div>
+
+        <hr/>
+
+        <div class="row" ng-if="!view.mt4GroupSwitchProfile.confirmed">
+            <div class="col-sm-12 text-center">
+                <button class="btn btn-primary" ng-click="doConfirm()" ng-disabled="editForm.$invalid">
+                    {{'Confirm'|translate}} <span class="glyphicon glyphicon-ok"></span>
+                </button>
+            </div>
+            <div class="col-sm-12 text-center">
+                <span class="help-block">{{'Once confirmed, you will not be able to update it later.'|translate}}</span>
+            </div>
+        </div>
+
+        <div class="row" ng-if="view.mt4GroupSwitchProfile.confirmed && !view.mt4GroupSwitchProfile.processed">
+            <div class="col-sm-12 text-center">
+                <button class="btn btn-primary" ng-click="doProcess()">
+                    {{'Process'|translate}} <span class="glyphicon glyphicon-ok"></span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,20 @@
+<div class="spacer-top"></div>
+<div ng-show="!crud_button_delete_state" class="text-center">
+    <button type="button" class="btn btn-warning" ng-click="cancel()" ng-show="cancelable"><span
+            class="glyphicon glyphicon-arrow-left"></span> {{"Back"|translate}}
+    </button>
+    <button type="button" class="btn btn-danger" ng-show="removable"
+            ng-click="crud_button_delete_state=true">{{"Delete"|translate}} <span
+            class="glyphicon glyphicon-remove"></span></button>
+    <button type="submit" class="btn btn-primary" ng-disabled="editForm.$invalid">{{"Save"|translate}} <span
+            class="glyphicon glyphicon-ok"></span></button>
+</div>
+<div ng-show="crud_button_delete_state" class="text-center">
+    {{"Confirm"|translate}}?
+    <button type="button" class="btn btn-warning" ng-click="crud_button_delete_state=false">
+        <span class="glyphicon glyphicon-arrow-left"></span> {{"Cancel"|translate}}
+    </button>
+    <button type="button" class="btn btn-danger" ng-click="delete();crud_button_delete_state=true">
+        {{"Delete"|translate}} <span class="glyphicon glyphicon-remove"></span>
+    </button>
+</div>

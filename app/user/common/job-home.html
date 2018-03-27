@@ -1,0 +1,70 @@
+<div ng-controller="JobHomeController">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center">
+            <div>
+                <strong class="heading">
+                    <span class="text-center" ng-if="view.job.jobLink.team">
+                        <a ng-href="#!/user/team/{{view.job.jobLink.team.id}}/home">{{view.job.jobLink.team.name}}</a>
+                    </span>
+                    <span class="text-center" ng-if="view.job.jobLink.client">
+                        <a ng-href="#!/user/client/{{view.job.jobLink.client.id}}/home">{{view.job.jobLink.client.label}}</a>
+                    </span>
+                    <span class="text-center" ng-if="view.job.id"> - {{view.job.name}}</span>
+                    <span class="text-center" ng-if="!view.job.id"> - {{"New Job"|translate}}</span>
+                </strong>
+            </div>
+            <div>
+                <span class="text-center">
+                    <span class="text-success" ng-show="view.job.completed">{{"Completed at"|translate}} {{view.job.completed|formattedDate}}</span>
+                    <span class="text-danger" ng-show="view.job.cancelled">{{"Cancelled at"|translate}} {{view.job.cancelled|formattedDate}}</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-8 col-xs-offset-2 col-sm-offset-0 col-sm-3" style="margin-bottom: 10px">
+                    <button type="button" style="width: 100%" class="btn btn-warning" onclick="window.history.back()">
+                        <span class="glyphicon glyphicon-arrow-left"></span> {{'Back'|translate}}
+                    </button>
+                </div>
+
+                <div class="col-xs-8 col-xs-offset-2 col-sm-3 col-sm-offset-6" ng-show="view.job.id">
+                    <div class="btn-group" style="width: 100%" uib-dropdown>
+                        <button type="button" class="btn btn-primary" style="width: 100%" uib-dropdown-toggle>
+                            {{"Actions"|translate}} <span class="caret"></span>
+                        </button>
+
+                        <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                            <li ng-if="!view.job.completed && !view.job.cancelled">
+                                <a class="clickable" ng-click="addWorkNote(view.job)">{{"Add Work Note"|translate}}</a>
+                            </li>
+                            <li ng-if="!view.job.completed && !view.job.cancelled">
+                                <a class="clickable" ng-click="completeJob(view.job)">{{"Complete Job"|translate}}</a>
+                            </li>
+                            <li ng-if="!view.job.completed && !view.job.cancelled">
+                                <a class="clickable" ng-click="cancelJob(view.job)">{{"Cancel Job"|translate}}</a>
+                            </li>
+                            <li ng-if="view.job.completed || view.job.cancelled">
+                                <a class="clickable" ng-click="reopenJob(view.job)">{{"Reopen Job"|translate}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <uib-tabset>
+                <uib-tab ng-repeat="integration in integrationPoints['job.tabs']|orderBy: 'priority'"
+                         ng-if="!integration.properties.profile || view[integration.properties.profile]"
+                         disable="!view.job.id"
+                         select="activateTab($index)">
+                    <uib-tab-heading>{{integration.properties.label|translate}}</uib-tab-heading>
+                    <div ng-if="initializedTabs[$index]">
+                        <p class="spacer"></p>
+                        <ng-include src="integration.template"></ng-include>
+                    </div>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+    </div>
+</div>

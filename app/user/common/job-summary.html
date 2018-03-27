@@ -1,0 +1,109 @@
+<div ng-controller="JobSummaryController">
+    <div class="row spacer-bottom" ng-show="view.job.id">
+        <div class="col-sm-2">
+            <label>{{"Job #"|translate}}</label>
+        </div>
+        <div class="col-sm-6">
+            <span>{{view.job.id}}</span>
+        </div>
+    </div>
+
+    <form novalidate role="form" name="editForm" ng-submit="save()">
+        <div class="row form-group" ng-class="{'has-error': editForm.team.$invalid && editForm.team.$dirty}"
+            ng-if="view.teams && view.teams.length">
+            <div class="col-sm-2">
+                <label for="team">{{"Team"|translate}}*</label>
+            </div>
+            <div class="col-sm-4">
+                <select id="team" name="team" class="form-control"
+                        required ng-show="view.teams.length>1"
+                        ng-options="k.name for k in view.teams"
+                        ng-model="view.team">
+                </select>
+                <span ng-if="view.teams.length==1">{{view.team.name}}</span>
+            </div>
+        </div>
+
+        <div ng-if="!view.teams || !view.teams.length">
+            <span class="help-block">{{"Job definition is not available."|translate}}</span>
+        </div>
+
+        <div class="row form-group" ng-class="{'has-error': editForm.jobDefinitionVersion.$invalid && editForm.jobDefinitionVersion.$dirty}"
+             ng-show="view.team" ng-if="!view.job.id">
+            <div class="col-sm-2">
+                <label for="jobDefinitionVersion">{{"Job Definition"|translate}}*</label>
+            </div>
+            <div class="col-sm-4">
+                <select id="jobDefinitionVersion" name="jobDefinitionVersion" class="form-control"
+                        required ng-disabled="view.team.jobs.length==1"
+                        ng-options="k.jobDefinition.name for k in view.team.jobs"
+                        ng-model="view.job.jobDefinitionVersion">
+                </select>
+            </div>
+        </div>
+
+        <div ng-show="view.team && view.job.jobDefinitionVersion">
+            <div class="row spacer-bottom">
+                <div class="col-sm-2">
+                    <label>{{"Assignee"|translate}}</label>
+                </div>
+                <div class="col-sm-6">
+                    <span ng-if="!view.job.id">{{view.job.jobDefinitionVersion.supervisor.label}}</span>
+                    <span ng-if="view.job.id">{{view.job.assignee.label}}</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-2">
+                    <label>{{"Description"|translate}}</label>
+                </div>
+                <div class="col-sm-6">
+                    <pre class="pre-text">{{view.job.jobDefinitionVersion.description}}</pre>
+                </div>
+            </div>
+
+            <div class="row col-sm-12">
+                <hr/>
+            </div>
+
+            <div class="row form-group" ng-class="{'has-error': editForm.name.$invalid && editForm.name.$dirty}">
+                <div class="col-sm-2">
+                    <label for="name">{{"Job Name"|translate}}<span ng-show="!view.job.id">*</span></label>
+                </div>
+                <div class="col-sm-4">
+                    <input id="name" name="name" class="form-control" ng-show="!view.job.id" ng-model="view.job.name" required ng-trim="true">
+                    <span ng-show="view.job.id">{{view.job.name}}</span>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-sm-2">
+                    <label class="control-label" for="dueDate">{{"Due Date"|translate}}</label>
+                </div>
+                <div class="col-sm-4">
+                    <p class="input-group">
+                        <input id="dueDate" name="dueDate" type="text" class="form-control" uib-datepicker-popup
+                               ng-model="view.job.dueDate" is-open="dueDateOpened" datepicker-options="dateOptions"/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="dueDateOpened=true"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-2">
+                    <label for="instructions">{{"Instructions"|translate}}</label>
+                </div>
+                <div class="col-sm-6">
+                    <textarea id="instructions" class="form-control" rows="5"
+                      ng-model="view.job.instructions" ng-trim="true"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div solar-crud-buttons></div>
+        </div>
+    </form>
+</div>

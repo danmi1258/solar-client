@@ -1,0 +1,46 @@
+<div class="panel panel-primary">
+    <div class="panel-heading clickable" ng-click="navigateHome()">
+        <span><span class="glyphicon glyphicon-home"></span> {{'Home'|translate}}</span>
+    </div>
+
+    <div class="list-group">
+        <div class="list-group-item" ng-repeat-start="menu in menus|orderBy:['priority']" ng-if="menu.name">
+            <span class="text-primary">
+                <i ng-class="menu.icon" aria-hidden="true"></i>
+                <i ng-if="!menu.icon && !menu.expanded" class="text-success fa fa-plus clickable" aria-hidden="true" ng-click="menu.expanded=!menu.expanded"></i>
+                <i ng-if="!menu.icon && menu.expanded" class="text-success fa fa-minus clickable" aria-hidden="true" ng-click="menu.expanded=!menu.expanded"></i>
+                <strong><i>{{menu.name|translate}}</i></strong>
+            </span>
+        </div>
+        <a class="list-group-item clickable" ng-repeat="item in menu.menuItems" ng-click="navigate(item.route)"
+           ng-if="menu.icon || menu.expanded"
+           ng-class="{'list-group-item-info': item.selected}" title="{{item.description|translate}}"
+           title="{{item.description|translate}}">
+            <small ng-class="{'navbar-item': menu.name}">
+                <i ng-class="item.icon" aria-hidden="true"></i> {{item.name|translate}}
+            </small>
+            <span name="{{item.id}}" class="badge pull-right" ng-if="item.id">0</span>
+        </a>
+
+        <div ng-repeat-end ng-if="false"></div>
+    </div>
+</div>
+
+<div class="panel panel-primary" ng-if="systemMenu">
+    <div class="panel-heading">
+        <span><i ng-class="systemMenu.icon" aria-hidden="true"></i> {{systemMenu.name|translate}}</span>
+    </div>
+
+    <div class="list-group">
+        <a class="list-group-item clickable" ng-repeat="item in systemMenu.menuItems" ng-click="navigate(item.route)"
+           ng-class="{'list-group-item-info': item.selected}" title="{{item.description|translate}}"
+           title="{{item.description|translate}}">
+            <small><i ng-class="item.icon" aria-hidden="true"></i> {{item.name|translate}}</small>
+            <span name="{{item.id}}" class="badge pull-right" ng-if="item.id">0</span>
+        </a>
+    </div>
+
+    <a href="#" class="list-group-item clickable" ng-click="logout()">
+        <i class="fa fa-sign-out" aria-hidden="true"></i> {{'Logout'|translate}}
+    </a>
+</div>

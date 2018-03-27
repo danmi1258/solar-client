@@ -1,0 +1,32 @@
+<div ng-controller="AgentLoginProducerController">
+    <div ng-show="pageParams.totalItems>pageParams.itemsPerPage">
+        <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
+            items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
+            class="pagination-sm" boundary-links="true" ng-change="pageChanged()"
+            first-text="<<" last-text=">>" next-text=">" previous-text="<">
+        </ul>
+    </div>
+
+    <table class="table table-striped table-hover table-responsive">
+        <thead>
+        <tr>
+            <th><a href="" ng-click="predicate='name'; reverse=!reverse">{{'Name'|translate}}</a></th>
+            <th><a href="" ng-click="predicate='mt4Account'; reverse=!reverse">{{'Login'|translate}}</a></th>
+        </tr>
+        </thead>
+        <tbody ng-init="predicate='mt4Account'">
+        <tr ng-repeat="item in entities">
+            <td>{{item.name}}</td>
+            <td>{{item.mt4Account}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div ng-show="pageParams.totalItems>pageParams.itemsPerPage">
+        <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
+            items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
+            class="pagination-sm" boundary-links="true" ng-change="pageChanged()"
+            first-text="<<" last-text=">>" next-text=">" previous-text="<">
+        </ul>
+    </div>
+</div>

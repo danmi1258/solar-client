@@ -1,0 +1,43 @@
+<div class="row form-group" ng-class="{'has-error': editForm.emailServerHost.$invalid && editForm.emailServerHost.$dirty}">
+    <div class="col-sm-2">
+        <label class="control-label" for="emailServerHost">{{"Server"|translate}}</label>
+    </div>
+    <div class="col-sm-4">
+        <input id="emailServerHost" name="emailServerHost" class="form-control" ng-model="entity.domainConfiguration.emailServerHost" ng-trim="true"/>
+    </div>
+</div>
+
+<div class="row form-group" ng-class="{'has-error': editForm.emailServerPort.$invalid && editForm.emailServerPort.$dirty}">
+    <div class="col-sm-2">
+        <label class="control-label" for="emailServerPort">{{"Server Port"|translate}}</label>
+    </div>
+    <div class="col-sm-4">
+        <input id="emailServerPort" name="emailServerPort" class="form-control" type="number" min="1" ng-model="entity.domainConfiguration.emailServerPort" ng-trim="true"/>
+    </div>
+</div>
+
+<div class="row form-group">
+    <div class="col-sm-2">
+        <label class="control-label">{{"TLS"|translate}}</label>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="btn-group">
+            <label class="btn btn-primary" ng-model="entity.domainConfiguration.emailServerTls" uib-btn-radio="true">{{'Yes'|translate}}</label>
+            <label class="btn btn-primary" ng-model="entity.domainConfiguration.emailServerTls" uib-btn-radio="false">{{'No'|translate}}</label>
+        </div>
+    </div>
+</div>
+
+<div class="row form-group">
+    <div class="col-sm-2">
+        <label class="control-label">{{"SSL"|translate}}</label>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="btn-group">
+            <label class="btn btn-primary" ng-model="entity.domainConfiguration.emailServerSsl" uib-btn-radio="true">{{'Yes'|translate}}</label>
+            <label class="btn btn-primary" ng-model="entity.domainConfiguration.emailServerSsl" uib-btn-radio="false">{{'No'|translate}}</label>
+        </div>
+    </div>
+</div>

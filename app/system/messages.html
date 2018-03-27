@@ -1,0 +1,44 @@
+<div ng-controller="SystemMessagesCtrl">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center">
+            <strong class="heading">{{"Messages"|translate}}</strong>
+        </div>
+        <table class="table table-striped table-hover table-responsive" ng-show="entities && entities.length">
+            <thead>
+            <tr>
+                <th>{{'Date'|translate}}</th>
+                <th>{{'Subject'|translate}}</th>
+                <th>{{'View'|translate}}</th>
+                <th>{{'Remove'|translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat-start="entity in entities | orderBy:'-created'">
+                <td style="vertical-align: middle; width: 150px">{{entity.created|formattedTime}}</td>
+                <td style="vertical-align: middle">
+                    <span ng-show="entity.acknowledged">{{entity.subject}}</span>
+                    <strong ng-show="!entity.acknowledged" class="text-primary">{{entity.subject}}</strong>
+                </td>
+                <td style="width: 60px">
+                    <button type="button" class="btn btn-primary" ng-click="acknowledge(entity)">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </td>
+                <td style="width: 60px">
+                    <button type="button" class="btn btn-danger" ng-click="dismiss(entity)">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </td>
+            </tr>
+            <tr ng-repeat-end ng-if="entity.expand">
+                <td colspan="4">
+                    <pre class="pre-text">{{entity.messageBody}}</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="panel-body text-center" ng-show="!entities.length">
+            {{"You don't have any messages."|translate}}
+        </div>
+    </div>
+</div>

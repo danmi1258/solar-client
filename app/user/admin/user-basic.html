@@ -1,0 +1,51 @@
+<div class="row form-group" ng-class="{'has-error': editForm.email.$invalid && editForm.email.$dirty}">
+    <div class="col-sm-2">
+        <label class="control-label" for="email">{{"Email"|translate}}*</label>
+    </div>
+    <div class="col-sm-4">
+        <input id="email" name="email" class="form-control" type="email" ng-model="user.email" ng-trim="true" required/>
+    </div>
+</div>
+
+<div class="row form-group"
+     country ng-class="{'has-error': editForm.password.$invalid && editForm.password.$dirty}">
+    <div class="col-sm-2">
+        <label class="control-label" for="password">{{"Password"|translate}}<span ng-if="!user.id">*</span></label>
+    </div>
+    <div class="col-sm-4">
+        <input id="password" name="password" class="form-control" type="password" ng-required="!user.id"
+               ng-model="user.newPassword" ng-minlength="8" ng-maxlength="20"/>
+    </div>
+</div>
+
+<div class="row form-group"
+     ng-class="{'has-error': editForm.firstName.$invalid && editForm.firstName.$dirty}">
+    <div class="col-sm-2">
+        <label class="control-label" for="firstName">{{"First Name"|translate}}*</label>
+    </div>
+    <div class="col-sm-4">
+        <input id="firstName" name="firstName" class="form-control" ng-model="user.contact.firstName"
+               required/>
+    </div>
+</div>
+
+<div class="row form-group"
+     ng-class="{'has-error': editForm.middleName.$invalid && editForm.middleName.$dirty}">
+    <div class="col-sm-2">
+        <label class="control-label" for="middleName">{{"Middle Name"|translate}}</label>
+    </div>
+    <div class="col-sm-4">
+        <input id="middleName" name="middleName" class="form-control" ng-model="user.contact.middleName"/>
+    </div>
+</div>
+
+<div class="row form-group"
+     ng-class="{'has-error': editForm.lastName.$invalid && editForm.lastName.$dirty}">
+    <div class="col-sm-2">
+        <label class="control-label" for="lastName">{{"Last Name"|translate}}*</label>
+    </div>
+    <div class="col-sm-4">
+        <input id="lastName" name="lastName" class="form-control" ng-model="user.contact.lastName"
+               required/>
+    </div>
+</div>

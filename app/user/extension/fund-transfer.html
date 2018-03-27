@@ -1,0 +1,67 @@
+<div ng-controller="ClientFundTransferAdminController">
+    <form novalidate role="form" name="editForm" ng-submit="doProcess()">
+        <div class="row spacer-bottom">
+            <div class="col-sm-3">
+                <label>{{"Account From"|translate}}</label>
+            </div>
+            <div class="col-sm-6">
+                <span>{{view.fundTransferProfile.accountFrom}}</span>
+            </div>
+        </div>
+
+        <div class="row spacer-bottom">
+            <div class="col-sm-3">
+                <label>{{"Account To"|translate}}</label>
+            </div>
+            <div class="col-sm-6">
+                <span>{{view.fundTransferProfile.accountTo}}</span>
+            </div>
+        </div>
+
+        <div class="row spacer-bottom">
+            <div class="col-sm-3">
+                <label>{{"Amount"|translate}}</label>
+            </div>
+            <div class="col-sm-6">
+                <span>{{view.fundTransferProfile.amount}}</span>
+            </div>
+        </div>
+
+        <div class="row spacer-bottom">
+            <div class="col-sm-3">
+                <label>{{"Name"|translate}}</label>
+            </div>
+            <div class="col-sm-6">
+                <span>{{client.label}}</span>
+            </div>
+        </div>
+
+        <div class="row spacer-bottom">
+            <div class="col-sm-3">
+                <label>{{"Email"|translate}}</label>
+            </div>
+            <div class="col-sm-6">
+                <span>{{client.email}}</span>
+            </div>
+        </div>
+
+        <div class="row spacer-bottom" ng-show="view.fundTransferProfile.processed" >
+            <div class="col-sm-3">
+                <label>{{"Processed"|translate}}</label>
+            </div>
+            <div class="col-sm-6">
+                <span>{{view.fundTransferProfile.processed|formattedTime}}</span>
+            </div>
+        </div>
+
+        <hr/>
+
+        <div class="row" ng-if="!view.fundTransferProfile.processed">
+            <div class="col-sm-12 text-center">
+                <button type="submit" class="btn btn-primary">
+                    {{'Process'|translate}} <span class="glyphicon glyphicon-ok"></span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

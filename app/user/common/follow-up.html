@@ -1,0 +1,101 @@
+<div ng-controller="FollowUpController">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center">
+            <div>
+                <strong class="heading">{{'Follow Up'|translate}}</strong>
+            </div>
+            <div>
+                <div class="text-center" ng-if="entity.completed || entity.cancelled">
+                    <span class="text-success" ng-show="entity.completed">{{"Completed at"|translate}} {{entity.completed|formattedDate}}</span>
+                    <span class="text-danger" ng-show="entity.cancelled">{{"Cancelled at"|translate}} {{entity.cancelled|formattedDate}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row" ng-show="!entity.completed && !entity.cancelled">
+                <div class="col-xs-8 col-xs-offset-2 col-sm-3 col-sm-offset-9">
+                    <div class="btn-group" style="width: 100%" uib-dropdown>
+                        <button type="button" class="btn btn-primary" style="width: 100%" uib-dropdown-toggle>
+                            {{"Actions"|translate}} <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                            <li role="menuitem">
+                                <a class="clickable" ng-click="completeFollowUp(entity)">{{"Complete"|translate}}</a>
+                            </li>
+                            <li role="menuitem">
+                                <a class="clickable" ng-click="cancelFollowUp(entity)">{{"Cancel"|translate}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="col-sm-3">{{"ID"|translate}}</label>
+                <span class="col-sm-6">#{{entity.id}}</span>
+            </div>
+
+            <div class="row" ng-if="entity.work.workLink.client">
+                <label class="col-sm-3">{{"Client"|translate}}</label>
+                <span class="col-sm-6">
+                    <a ng-href="#!{{'/user/client/' + entity.work.workLink.client.id + '/home'}}">{{entity.work.workLink.client.label}}</a>
+                </span>
+            </div>
+
+            <div class="row" ng-if="entity.work.workLink.team && !entity.work.workLink.client">
+                <label class="col-sm-3">{{"Team"|translate}}</label>
+                <span class="col-sm-6">
+                    <a ng-href="#!{{'/user/team/' + entity.work.workLink.team.id + '/home'}}">{{entity.work.workLink.team.name}}</a>
+                </span>
+            </div>
+
+            <div class="row" ng-if="entity.work.workLink.job">
+                <label class="col-sm-3">{{"Job"|translate}}</label>
+                <span class="col-sm-6">{{entity.work.workLink.job.name}}</span>
+            </div>
+
+            <div class="row">
+                <label class="col-sm-3">{{"Assignee"|translate}}</label>
+                <span class="col-sm-6">{{entity.assignee.label}}</span>
+            </div>
+
+            <div class="row">
+                <label class="col-sm-3">{{"Assigned By"|translate}}</label>
+                <span class="col-sm-6">{{entity.createdBy.label}}</span>
+            </div>
+
+            <div class="row">
+                <label class="col-sm-3">{{"Created Time"|translate}}</label>
+                <span class="col-sm-6">{{entity.created|formattedTime}}</span>
+            </div>
+
+            <div class="row">
+                <label class="col-sm-3">{{"Due Date"|translate}}</label>
+                <span class="col-sm-6">{{entity.dueDate|formattedDate}}</span>
+            </div>
+
+            <div class="row">
+                <label class="col-sm-3">{{"Notes"|translate}}</label>
+                <span class="col-sm-6">
+            <pre class="pre-text">{{entity.work.notes}}</pre>
+        </span>
+            </div>
+
+            <div class="row" ng-if="entity.fileAttached && entity.fileRecords && entity.fileRecords.length">
+                <div class="col-sm-3">
+                    <label>{{"File(s)"|translate}}</label>
+                </div>
+
+                <label class="col-sm-9">
+                    <div ng-repeat="fileRecord in entity.fileRecords">
+                        <a class="clickable" ng-click="download(entity, fileRecord)">{{fileRecord.filename}}</a><br/>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>

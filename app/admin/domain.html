@@ -1,0 +1,48 @@
+<div ng-controller="SystemAdminDomainController">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center">
+            <strong class="heading">
+                <span ng-if="entity.id">{{entity.label}}</span>
+                <span ng-if="!entity.id">{{"New Domain"|translate}}</span>
+            </strong>
+        </div>
+
+        <div class="panel-body">
+            <form novalidate role="form" name="editForm" ng-submit="save()">
+                <uib-tabset>
+                    <uib-tab>
+                        <uib-tab-heading>{{"Details"|translate}}</uib-tab-heading>
+                        <div style="padding-top:10px"></div>
+                        <ng-include src="'app/admin/domainSetup/domain-details.html'"></ng-include>
+                    </uib-tab>
+
+                    <uib-tab>
+                        <uib-tab-heading>{{"Logos"|translate}}</uib-tab-heading>
+                        <div style="padding-top:10px"></div>
+                        <ng-include src="'app/admin/domainSetup/domain-images.html'"></ng-include>
+                    </uib-tab>
+
+                    <uib-tab>
+                        <uib-tab-heading>{{"Email"|translate}}</uib-tab-heading>
+                        <div style="padding-top:10px"></div>
+                        <ng-include src="'app/admin/domainSetup/domain-email.html'"></ng-include>
+                    </uib-tab>
+
+                    <uib-tab ng-if="!entity.id">
+                        <uib-tab-heading>{{"User"|translate}}</uib-tab-heading>
+                        <div style="padding-top:10px"></div>
+                        <ng-include src="'app/admin/domainSetup/domain-user.html'"></ng-include>
+                    </uib-tab>
+
+                    <uib-tab ng-if="entity.mt4Servers && entity.mt4Servers.length">
+                        <uib-tab-heading>{{"MT4 Server"|translate}}</uib-tab-heading>
+                        <div style="padding-top:10px"></div>
+                        <ng-include src="'app/admin/domainSetup/mt4-server.html'"></ng-include>
+                    </uib-tab>
+                </uib-tabset>
+
+                <div solar-crud-buttons ng-init="cancelable=true"></div>
+            </form>
+        </div>
+    </div>
+</div>

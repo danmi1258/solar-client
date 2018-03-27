@@ -1,0 +1,22 @@
+<div ng-controller="WorkTypeController">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center">
+            <strong class="heading" ng-if="entity.id">{{entity.type}}</strong>
+            <strong class="heading" ng-if="!entity.id">{{"New Work Type"|translate}}</strong>
+        </div>
+        <div class="panel-body">
+            <form novalidate role="form" name="editForm" ng-submit="save()">
+                <div class="row form-group" ng-class="{'has-error': editForm.name.$invalid && editForm.name.$dirty}">
+                    <div class="col-sm-2">
+                        <label class="control-label" for="name">{{"Type"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="name" name="name" class="form-control" ng-model="entity.type" required ng-trim="true"/>
+                    </div>
+                </div>
+
+                <div solar-crud-buttons=""></div>
+            </form>
+        </div>
+    </div>
+</div>

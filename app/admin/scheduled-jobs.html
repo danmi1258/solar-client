@@ -1,0 +1,50 @@
+<div ng-controller="SchedulesController">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center"><strong class="heading">{{'Scheduled Jobs'|translate}}</strong></div>
+
+        <table class="table table-striped table-hover table-responsive">
+            <thead>
+            <tr>
+                <th>{{"Name"|translate}}</th>
+                <th>{{"Hour"|translate}}</th>
+                <th>{{"Minute"|translate}}</th>
+                <th>{{"Active"|translate}}</th>
+                <th>{{"Day"|translate}}</th>
+                <th>{{"Edit"|translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="entity in entities|orderBy:['-enabled','hour','minute']">
+                <td style="vertical-align: middle">{{listNameMap[entity.className]}}</td>
+                <td style="vertical-align: middle">{{entity.hour}}</td>
+                <td style="vertical-align: middle">{{entity.minute}}</td>
+                <td style="vertical-align: middle">
+                    <span class="text-success glyphicon glyphicon-ok" ng-if="entity.enabled"></span>
+                    <span class="text-danger glyphicon glyphicon-remove" ng-if="!entity.enabled"></span>
+                </td>
+                <td style="vertical-align: middle">
+                    {{entity.monday? ("Mon"|translate) : ''}} {{entity.tuesday ? ("Tue"|translate) : ''}}
+                    {{entity.wednesday ? ("Wed"|translate) :''}} {{entity.thursday ? ("Thu"|translate) : ''}}
+                    {{entity.friday ? ("Fri"|translate) : ''}} {{entity.saturday ? ("Sat"|translate) :''}}
+                    {{entity.sunday ? ("Sun"|translate) : ''}}
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary" ng-click="edit(entity)">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="6">
+                    <button type="button" class="btn btn-success"
+                            ng-click="create()">
+                        <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

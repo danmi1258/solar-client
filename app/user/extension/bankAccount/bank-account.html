@@ -1,0 +1,13 @@
+<hr/>
+<ng-include src="'app/user/extension/bankAccount/au-banks.html'" ng-if="bankAccount.bankAccountType=='Australian Bank'"></ng-include>
+<ng-include src="'app/user/extension/bankAccount/china-union.html'" ng-if="bankAccount.bankAccountType=='China Union'"></ng-include>
+
+<div class="row spacer-bottom">
+    <div class="col-sm-3">
+        <label>{{"Verified"|translate}}</label>
+    </div>
+    <div class="col-sm-6">
+        <span ng-show="bankAccount.verified" class="text-success glyphicon glyphicon-ok"></span>
+        <span ng-show="!bankAccount.verified" class="text-danger glyphicon glyphicon-remove"></span>
+    </div>
+</div>

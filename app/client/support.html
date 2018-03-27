@@ -1,0 +1,49 @@
+<div ng-controller="ClientSupportController">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center">
+            <strong class="heading">{{"Support"|translate}}</strong>
+        </div>
+
+        <div class="panel-body">
+            <form novalidate role="form" name="editForm" ng-submit="save()">
+                <div class="row form-group" ng-class="{'has-error': editForm.type.$invalid && editForm.type.$dirty}">
+                    <div class="col-sm-2">
+                        <label class="control-label" for="type">{{"Issue Type"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="type" name="type" class="form-control" ng-model="entity.clientCaseType" required
+                                ng-options="option.label as option.label|translate for option in caseTypes">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row form-group"
+                     ng-class="{'has-error': editForm.subject.$invalid && editForm.subject.$dirty}">
+                    <div class="col-sm-2">
+                        <label class="control-label" for="subject">{{"Subject"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input id="subject" name="subject" class="form-control" ng-model="entity.subject" ng-trim="true"
+                               ng-required="true" maxlength="100">
+                    </div>
+                </div>
+
+                <div class="row form-group" ng-class="{'has-error': editForm.notes.$invalid && editForm.notes.$dirty}">
+                    <div class="col-sm-2">
+                        <label class="control-label" for="type">{{"Message"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <textarea id="notes" name="notes" class="form-control" ng-model="entity.message" ng-trim="true"
+                                  ng-required="true" rows="10" maxlength="1000"></textarea>
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <button type="submit" class="btn btn-primary" ng-disabled="editForm.$invalid">{{"Submit"|translate}}
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

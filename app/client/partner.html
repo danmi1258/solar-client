@@ -1,0 +1,29 @@
+<div ng-controller="PartnerApplicationController">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center">
+            <strong class="heading">{{"Become a Partner"|translate}}</strong>
+        </div>
+
+        <div class="panel-body">
+            <form novalidate role="form" name="editForm" ng-submit="save()">
+                <div class="row form-group">
+                    <div class="col-sm-12">
+                        <label class="control-label" for="message">
+                            {{'Please give a brief introduction of your business details, such as the industry you are in, how many clients you have, trading size, etc.'|translate}}*
+                        </label>
+                    </div>
+                    <div class="col-sm-12">
+                         <textarea id="message" class="form-control" rows="10" required
+                                   ng-model="entity.message" ng-trim="true"></textarea>
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <button type="submit" class="btn btn-primary" ng-disabled="editForm.$invalid">{{"Submit"|translate}}
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<div ng-controller="WorkGroupAdminController">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center">
+            <strong class="heading" ng-if="entity.id">{{entity.name}}</strong>
+            <strong class="heading" ng-if="!entity.id">{{"New Work Group"|translate}}</strong>
+        </div>
+        <div class="panel-body">
+            <form novalidate role="form" name="editForm" ng-submit="save()">
+                <div class="row form-group" ng-class="{'has-error': editForm.name.$invalid && editForm.name.$dirty}">
+                    <div class="col-sm-2">
+                        <label class="name" for="name">{{"Name"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="name" name="name" class="form-control" ng-model="entity.name" ng-trim="true" required/>
+                    </div>
+                </div>
+
+                <div class="row form-group" ng-class="{'has-error': editForm.mt4Login.$invalid && editForm.mt4Login.$dirty}">
+                    <div class="col-sm-2">
+                        <label class="mt4Login" for="mt4Login">{{"MT4 Login"|translate}}</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="mt4Login" name="mt4Login" class="form-control" ng-model="entity.mt4Account" ng-trim="true" only-digits/>
+                    </div>
+                </div>
+
+                <div class="row form-group"
+                     ng-class="{'has-error': editForm.category.$invalid && editForm.category.$dirty}">
+                    <div class="col-sm-2">
+                        <label class="control-label" for="category">{{"Category"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <select class="category" id="category" required
+                                ng-options="k.label as k.label for k in workGroupCategories" ng-model="entity.workGroupCategory">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row form-group" ng-class="{'has-error': editForm.notes.$invalid && editForm.notes.$dirty}">
+                    <div class="col-sm-2">
+                        <label class="name" for="name">{{"Conditions"|translate}}</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <textarea id="notes" name="notes" class="form-control" rows="5"
+                                  ng-model="entity.notes" ng-trim="true"></textarea>
+                    </div>
+                </div>
+
+                <div class="row form-group" ng-if="workGroups && workGroups.length"
+                     ng-class="{'has-error': editForm.parentWorkGroup.$invalid && editForm.parentWorkGroup.$dirty}">
+                    <div class="col-sm-2">
+                        <label class="control-label" for="parentWorkGroup">{{"Parent"|translate}}</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <select class="form-control" id="parentWorkGroup"
+                                ng-options="k.name for k in workGroups" ng-model="entity.parentWorkGroup">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div solar-crud-buttons ng-init="cancelable=true"></div>
+            </form>
+        </div>
+    </div>
+</div>

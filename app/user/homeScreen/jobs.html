@@ -1,0 +1,107 @@
+<div ng-controller="HomeScreenJobsController">
+    <div class="panel panel-primary">
+        <div class="panel-heading"><h4 class="panel-title">{{'Client Jobs'|translate}}</h4></div>
+        <div class="panel-body">
+            <table class="table table-striped table-hover table-responsive">
+                <thead>
+                <tr>
+                    <th>{{'Job'|translate}}</th>
+                    <th>{{'Client'|translate}}</th>
+                    <th>{{'Progress'|translate}}</th>
+                    <th>{{'Start Date'|translate}}</th>
+                    <th>{{'Due'|translate}}</th>
+                    <th class="hidden-xs">{{'Assignee'|translate}}</th>
+                    <th class="hidden-xs">{{'Created By'|translate}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="job in clientJobsAssignedToUser | orderBy: ['dueDate', '-created']">
+                    <td><a ng-href="#!{{'/user/job/' + job.id}}">{{job.name}}</a></td>
+                    <td>
+                        <a ng-href="#!{{'/user/client/' + job.jobLink.client.id + '/home'}}">{{job.jobLink.client.label}}</a>
+                    </td>
+                    <td>
+                        <uib-progressbar class="progress-striped active" max="job.tasks.length" value="job.completedTasks" type="success" ng-if="job.tasks && job.tasks.length">
+                            <span class="progress-bar-text">{{job.completedTasks}} / {{job.tasks.length}}</span>
+                        </uib-progressbar>
+                    </td>
+                    <td>{{job.created|formattedDate}}</td>
+                    <td>{{job.dueDate|formattedDate}}</td>
+                    <td class="hidden-xs"><strong>{{job.assignee.label}}</strong></td>
+                    <td class="hidden-xs">{{job.createdBy.label}}</td>
+                </tr>
+                <tr ng-repeat="job in clientJobsAssignedByUser | orderBy: ['dueDate', '-created']">
+                    <td>{{job.name}}</td>
+                    <td>
+                        <a ng-href="#!{{'/user/client/' + job.jobLink.client.id + '/home'}}">{{job.jobLink.client.label}}</a>
+                    </td>
+                    <td>
+                        <uib-progressbar class="progress-striped active" max="job.tasks.length" value="job.completedTasks" type="success" ng-if="job.tasks && job.tasks.length">
+                            <span class="progress-bar-text">{{job.completedTasks}} / {{job.tasks.length}}</span>
+                        </uib-progressbar>
+                    </td>
+                    <td>{{job.created|formattedDate}}</td>
+                    <td>{{job.dueDate|formattedDate}}</td>
+                    <td class="hidden-xs">{{job.assignee.label}}</td>
+                    <td class="hidden-xs"><strong>{{job.createdBy.label}}</strong></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel panel-primary" ng-show="teamJobsAssignedToUser.length || teamJobsAssignedByUser.length">
+        <div class="panel-heading"><h4 class="panel-title">{{'Team Jobs'|translate}}</h4></div>
+        <div class="panel-body">
+            <table class="table table-striped table-hover table-responsive">
+                <thead>
+                <tr>
+                    <th>{{"Job"|translate}}</th>
+                    <th>{{"Team"|translate}}</th>
+                    <th>{{"Progress"|translate}}</th>
+                    <th>{{"Start Date"|translate}}</th>
+                    <th>{{"Due"|translate}}</th>
+                    <th class="hidden-xs">{{"Assignee"|translate}}</th>
+                    <th class="hidden-xs">{{"Created By"|translate}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="job in teamJobsAssignedToUser | orderBy: ['dueDate', '-created']" ng-if="job.jobLink.team">
+                    <td>
+                        <a ng-href="#!{{'/user/job/' + job.id}}">{{job.name}}</a>
+                    </td>
+                    <td>
+                        <a ng-href="#!{{'/user/team/' + job.jobLink.team.id + '/home'}}">{{job.jobLink.team.name}}</a>
+                    </td>
+                    <td>
+                        <uib-progressbar class="progress-striped active" max="job.tasks.length" value="job.completedTasks" type="success" ng-if="job.tasks && job.tasks.length">
+                            <span class="progress-bar-text">{{job.completedTasks}} / {{job.tasks.length}}</span>
+                        </uib-progressbar>
+                    </td>
+                    <td>{{job.created|formattedDate}}</td>
+                    <td>{{job.dueDate|formattedDate}}</td>
+                    <td class="hidden-xs"><strong>{{job.assignee.label}}</strong></td>
+                    <td class="hidden-xs">{{job.createdBy.label}}</td>
+                </tr>
+                <tr ng-repeat="job in teamJobsAssignedByUser | orderBy: ['dueDate', '-created']" ng-if="job.jobLink.team">
+                    <td>
+                        <a ng-href="#!{{'/user/job/' + job.id}}">{{job.name}}</a>
+                    </td>
+                    <td>
+                        <a ng-href="#!{{'/user/team/' + job.jobLink.team.id + '/home'}}">{{job.jobLink.team.name}}</a>
+                    </td>
+                    <td>
+                        <uib-progressbar class="progress-striped active" max="job.tasks.length" value="job.completedTasks" type="success" ng-if="job.tasks && job.tasks.length">
+                            <span class="progress-bar-text">{{job.completedTasks}} / {{job.tasks.length}}</span>
+                        </uib-progressbar>
+                    </td>
+                    <td>{{job.created|formattedDate}}</td>
+                    <td>{{job.dueDate|formattedDate}}</td>
+                    <td class="hidden-xs">{{job.assignee.label}}</td>
+                    <td class="hidden-xs"><strong>{{job.createdBy.label}}</strong></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

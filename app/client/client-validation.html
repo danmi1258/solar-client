@@ -1,0 +1,119 @@
+<div ng-controller="ClientValidationController">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center">
+            <strong class="heading">{{"Client Validation"|translate}}</strong>
+        </div>
+
+        <div class="panel-body">
+            <form name="editForm" novalidate ng-submit="validate()">
+                <div class="row form-group" ng-class="{'has-error': editForm.id.$invalid && editForm.id.$dirty}">
+                    <div class="col-sm-2">
+                        <label class="control-label">{{"ID"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <input ng-model="entity.id" class="form-control" name="id" only-digits
+                               id="id" ng-trim="true" required>
+                    </div>
+                </div>
+
+                <div class="row form-group"  ng-class="{'has-error': editForm.name.$invalid && editForm.name.$dirty}">
+                    <div class="col-sm-2">
+                        <label class="control-label" for="name">{{"Name"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <input ng-model="entity.name" class="form-control" name="name" minlength="1" maxlength="20"
+                               id="name" required>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label class="control-label">{{"Validate"|translate}}</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <button class="btn btn-primary" type="submit" ng-disabled="editForm.$invalid">
+                            {{"Submit"|translate}} <span class="glyphicon glyphicon-ok"></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="row" ng-if="result">
+                <div class="col-sm-12">
+                    <hr/>
+                </div>
+
+                <div class="col-sm-12" ng-if="!result.resp">
+                    <strong class="text-danger">
+                        <span class="glyphicon glyphicon-exclamation-sign"></span> {{"You quota is insufficient."|translate}}
+                    </strong>
+                </div>
+
+                <div class="col-sm-12" ng-if="result.resp">
+                    <table class="table table-bordered table-hover table-responsive">
+                        <tbody>
+                        <tr>
+                            <td style="vertical-align: middle">{{"Match"|translate}}</td>
+                            <td style="vertical-align: middle">
+                                <span ng-show="result.resp.code==0">
+                                    <span class="glyphicon glyphicon-ok text-success"></span>
+                                </span>
+                                <span ng-show="result.resp.code==5">
+                                    <span class="glyphicon glyphicon-remove text-danger"></span>
+                                </span>
+                                <span ng-show="result.resp.code==14">
+                                    <span class="text-danger">{{"ID is not valid."|translate}}</span>
+                                </span>
+                                <span ng-show="result.resp.code==96">
+                                    <span class="text-danger">{{"Failed to process your request."|translate}}</span>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr ng-show="result.resp.code==0">
+                            <td style="vertical-align: middle">{{"Address"|translate}}</td>
+                            <td style="vertical-align: middle">{{result.data.address}}</td>
+                        </tr>
+                        <tr ng-show="result.resp.code==0">
+                            <td style="vertical-align: middle">{{"Birthday"|translate}}</td>
+                            <td style="vertical-align: middle">{{result.data.birthday}}</td>
+                        </tr>
+                        <tr ng-show="result.resp.code==0">
+                            <td style="vertical-align: middle">{{"Gender"|translate}}</td>
+                            <td style="vertical-align: middle">{{result.data.sex}}</td>
+                        </tr>
+                        <tr ng-if="result.resp.code===0">
+                            <td style="vertical-align: middle">{{"Photo"|translate}}</td>
+                            <td style="vertical-align: middle">
+                                <img ng-src="data:image/jpg;base64, {{result.data.photo}}" alt="Photo"/>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row" ng-show="entity.id">
+                <div class="col-sm-12">
+                    <hr/>
+                </div>
+
+                <div class="col-sm-12">
+                    {{"Request"|translate}}:
+                </div>
+
+                <div class="col-sm-12">
+                    <code>{{entity}}</code>
+                </div>
+
+                <div style="margin-top: 10px"
+                     class="col-sm-12" ng-show="result">
+                    {{"Response"|translate}}:
+                </div>
+
+                <div class="col-sm-12" ng-show="result">
+                    <code style="word-wrap: break-word;">{{result}}</code>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

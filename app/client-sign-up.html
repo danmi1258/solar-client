@@ -1,0 +1,150 @@
+<div class="row form-group" ng-class="{'has-error': editForm.clientType.$invalid && editForm.clientType.$dirty}">
+    <div class="col-sm-12">
+        <label class="control-label" for="clientType">{{"Client Type"|translate}}*</label>
+    </div>
+    <div class="col-sm-4">
+        <select id="clientType" name="clientType" class="form-control" ng-model="entity.client.clientType" required
+                ng-options="option.label as option.label|translate for option in view.clientTypes">
+        </select>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="row form-group" ng-class="{'has-error': editForm.lastName.$invalid && editForm.lastName.$dirty}">
+            <div class="col-sm-12">
+                <label class="control-label" for="lastName">{{"Surname"|translate}}*</label>
+            </div>
+            <div class="col-sm-12">
+                <input id="lastName" name="lastName" class="form-control" ng-model="entity.client.contact.lastName"
+                       ng-trim="true"
+                       required/>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="row form-group" ng-class="{'has-error': editForm.firstName.$invalid && editForm.firstName.$dirty}">
+            <div class="col-sm-12">
+                <label class="control-label" for="firstName">{{"First Name"|translate}}*</label>
+            </div>
+            <div class="col-sm-12">
+                <input id="firstName" name="firstName" class="form-control" ng-model="entity.client.contact.firstName"
+                       ng-trim="true"
+                       required/>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="row form-group"
+             ng-class="{'has-error': editForm.middleName.$invalid && editForm.middleName.$dirty}">
+            <div class="col-sm-12">
+                <label class="control-label" for="middleName">{{"Middle Name"|translate}}</label>
+            </div>
+            <div class="col-sm-12">
+                <input id="middleName" name="middleName" class="form-control"
+                       ng-model="entity.client.contact.middleName" ng-trim="true"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row form-group" ng-class="{'has-error': editForm.email.$invalid && editForm.email.$dirty}">
+    <div class="col-sm-12">
+        <label class="control-label" for="email">{{"Email"|translate}}*</label>
+    </div>
+    <div class="col-sm-4">
+        <input id="email" type="email" name="email" class="form-control" ng-model="entity.client.email" ng-trim="true"
+               required/>
+    </div>
+</div>
+
+<div>
+    <hr/>
+</div>
+
+<div class="row form-group" ng-class="{'has-error': editForm.address.$invalid && editForm.address.$dirty}">
+    <div class="col-sm-12">
+        <label class="control-label" for="address">{{"Address"|translate}}</label>
+    </div>
+    <div class="col-sm-4">
+        <input id="address" name="address" class="form-control" ng-model="entity.client.contact.address"
+               ng-trim="true"/>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="row form-group" ng-class="{'has-error': editForm.city.$invalid && editForm.city.$dirty}">
+            <div class="col-sm-12">
+                <label class="control-label" for="city">{{"City"|translate}}</label>
+            </div>
+            <div class="col-sm-12">
+                <input id="city" name="city" class="form-control" ng-model="entity.client.contact.city" ng-trim="true"/>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="row form-group" ng-class="{'has-error': editForm.state.$invalid && editForm.state.$dirty}">
+            <div class="col-sm-12">
+                <label class="control-label" for="state">{{"State/Province"|translate}}</label>
+            </div>
+            <div class="col-sm-12">
+                <input id="state" name="state" class="form-control" ng-model="entity.client.contact.state"
+                       ng-trim="true"/>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="row form-group" ng-class="{'has-error': editForm.country.$invalid && editForm.country.$dirty}">
+            <div class="col-sm-12">
+                <label class="control-label" for="country">{{"Country"|translate}}*</label>
+            </div>
+            <div class="col-sm-12">
+                <select id="country" name="country" class="form-control" ng-model="entity.client.contact.country"
+                        required
+                        ng-options="option|translate for option in view.countries">
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row form-group" ng-class="{'has-error': editForm.postcode.$invalid && editForm.postcode.$dirty}">
+    <div class="col-sm-12">
+        <label class="control-label" for="postcode">{{"Postcode"|translate}}</label>
+    </div>
+    <div class="col-sm-4">
+        <input id="postcode" name="postcode" class="form-control" ng-model="entity.client.contact.postcode"
+               ng-trim="true"
+               only-digits/>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="row form-group" ng-class="{'has-error': editForm.phone.$invalid && editForm.phone.$dirty}">
+            <div class="col-sm-12">
+                <label class="control-label" for="phone">{{"Phone"|translate}}</label>
+            </div>
+            <div class="col-sm-12">
+                <input id="phone" name="phone" class="form-control" ng-model="entity.client.contact.contactPh"
+                       ng-trim="true"
+                       ng-pattern="'(\\+)?\\d+'"/>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="row form-group" ng-class="{'has-error': editForm.mobile.$invalid && editForm.mobile.$dirty}">
+            <div class="col-sm-12">
+                <label class="control-label" for="mobile">{{"Mobile"|translate}}</label>
+            </div>
+            <div class="col-sm-12">
+                <input id="mobile" name="mobile" class="form-control" ng-model="entity.client.contact.mobilePh"
+                       ng-trim="true"
+                       ng-pattern="'(\\+)?\\d+'"/>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<div ng-controller="SystemAdminConfigurationController">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center">
+            <strong class="heading">{{'Configuration'|translate}}</strong>
+        </div>
+        <div class="panel-body">
+            <form novalidate role="form" name="editForm" ng-submit="save()">
+                <div class="row form-group" ng-class="{'has-error': editForm.key.$invalid && editForm.key.$dirty}">
+                    <div class="col-sm-2">
+                        <label class="control-label" for="value">{{"Key"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="key" name="key" class="form-control" ng-model="entity.key" required
+                                ng-options="option.name as option.name for option in entity.$keys">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row form-group" ng-class="{'has-error': editForm.value.$invalid && editForm.value.$dirty}">
+                    <div class="col-sm-2">
+                        <label class="control-label" for="value">{{"Value"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="value" name="value" class="form-control" ng-model="entity.value" ng-trim="true"
+                               required/>
+                    </div>
+                </div>
+
+                <div solar-crud-buttons ng-init="cancelable=true"></div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,136 @@
+<div ng-controller="AgentHomeScreenSummaryController">
+    <div class="panel panel-primary">
+        <div class="panel-heading text-center">
+            <h4 class="panel-title">{{'Monthly Performance'|translate}}</h4>
+        </div>
+
+        <form novalidate role="form" name="editForm" ng-submit="refresh()">
+            <div class="row" ng-if="view.summaryList.length<=1">
+                <div class="col-sm-12">
+                    <table class="table table-striped table-responsive">
+                        <thead>
+                        <tr>
+                            <th colspan="2" class="col-sm-3">
+                                <p class="input-group">
+                                    <input name="startDate" type="text" class="form-control" uib-datepicker-popup
+                                           ng-model="view.startDate" is-open="startDate.opened" datepicker-options="dateOptions" ng-required="true" />
+                                    <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="startDate.opened=true"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                                </p>
+                            </th>
+                            <th colspan="2" class="col-sm-3">
+                                <p class="input-group">
+                                    <input name="endDate" type="text" class="form-control" uib-datepicker-popup
+                                           ng-model="view.endDate" is-open="endDate.opened" datepicker-options="dateOptions" ng-required="true" />
+                                    <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="endDate.opened=true"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                                </p>
+                            </th>
+                            <th colspan="2" class="col-sm-6">
+                                <p class="input-group">
+                                    <button class="btn btn-success" type="submit" ng-disabled="editForm.$invalid">
+                                        <span class="glyphicon glyphicon-repeat"></span>
+                                    </button>
+                                </p>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="summary in view.summaryList">
+                            <th colspan="2">
+                                <div class="input-group">
+                            <span class="input-group-addon summary-label">
+                                <span ng-show="summary.currency">{{summary.currency}}</span>
+                                <span ng-show="!summary.currency">({{'Unknown'|translate}})</span>
+                            </span>
+                                    <input type="text" class="form-control summary-input" value="{{summary.netDeposit|number:2}}" ng-disabled="true">
+                                </div>
+                            </th>
+                            <th colspan="2">
+                                <div class="input-group">
+                                    <input type="text" class="form-control summary-input" value="{{summary.volume|number:2}}" ng-disabled="true">
+                                    <span class="input-group-addon summary-label">{{'lots'|translate}}</span>
+                                </div>
+                            </th>
+                            <th colspan="2">
+                                <div class="input-group">
+                                    <span class="input-group-addon summary-label">
+                                        <span>{{'Rebate'|translate}}</span>
+                                    </span>
+                                    <input type="text" class="form-control summary-input" value="{{view.rebate|number:2}}" ng-disabled="true">
+                                </div>
+                            </th>
+                        </tr>
+                        </tbody>
+                        <tfoot ng-if="!view.summaryList.length">
+                        <td colspan="6" class="text-center text-muted">
+                            {{'Data is not available.'|translate}}
+                        </td>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row" ng-if="view.summaryList.length && view.summaryList.length>1">
+                <div class="col-sm-12">
+                    <table class="table table-striped table-responsive">
+                        <thead>
+                        <tr>
+                            <th class="col-sm-3">
+                                <p class="input-group">
+                                    <input name="startDate" type="text" class="form-control" uib-datepicker-popup
+                                           ng-model="view.startDate" is-open="startDate.opened" datepicker-options="dateOptions" ng-required="true" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="startDate.opened=true"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                            </th>
+                            <th class="col-sm-3">
+                                <p class="input-group">
+                                    <input name="endDate" type="text" class="form-control" uib-datepicker-popup
+                                           ng-model="view.endDate" is-open="endDate.opened" datepicker-options="dateOptions" ng-required="true" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="endDate.opened=true"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                            </th>
+                            <th class="col-sm-6">
+                                <p class="input-group">
+                                    <button class="btn btn-success" type="submit" ng-disabled="editForm.$invalid">
+                                        <span class="glyphicon glyphicon-repeat"></span>
+                                    </button>
+                                </p>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th>{{'Currency'|translate}}</th>
+                            <th>{{'Net Deposit'|translate}}</th>
+                            <th>{{'Lots'|translate}}</th>
+                        </tr>
+                        <tr ng-repeat="summary in view.summaryList">
+                            <td>
+                                <strong class="text-primary">
+                                    <span ng-show="summary.currency">{{summary.currency}}</span>
+                                    <span ng-show="!summary.currency">({{'Unknown'|translate}})</span>
+                                </strong>
+                            </td>
+                            <td><strong class="text-success">{{summary.netDeposit|number:2}}</strong></td>
+                            <td><strong class="text-success">{{summary.volume|number:2}} {{'lots'|translate}}</strong></td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th><span>{{'Rebate'|translate}}</span></th>
+                            <th colspan="2">{{view.rebate|number:2}}</th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

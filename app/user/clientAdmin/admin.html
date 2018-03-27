@@ -1,0 +1,21 @@
+<div ng-controller="ClientHomeController">
+    <div class="panel"
+         ng-class="{'panel-success': client.clientRole!=='Client','panel-info': client.clientRole=='Client'}">
+        <div class="panel-heading text-center">
+            <strong class="heading">
+                <a ng-href="#!{{'/user/client/' + client.id + '/home'}}">{{client.label}}</a>
+            </strong>
+        </div>
+
+        <div class="panel-body">
+            <uib-tabset>
+                <uib-tab ng-repeat="integration in integrationPoints['client-admin.tabs']|orderBy: 'priority'" select="activateTab($index)">
+                    <uib-tab-heading>{{integration.properties.label|translate}}</uib-tab-heading>
+                    <div ng-if="initializedTabs[$index]" class="inner-panel">
+                        <ng-include src="integration.template"></ng-include>
+                    </div>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+    </div>
+</div>

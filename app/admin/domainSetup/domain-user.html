@@ -1,0 +1,44 @@
+<div class="row form-group" ng-class="{'has-error': editForm.email.$invalid && editForm.email.$dirty}">
+    <div class="col-sm-2">
+        <label class="control-label" for="email">{{"Email"|translate}}*</label>
+    </div>
+    <div class="col-sm-4">
+        <input id="email" name="email" type="email" class="form-control" ng-model="user.email" ng-trim="true" required/>
+    </div>
+</div>
+
+<div class="row form-group" ng-class="{'has-error': editForm.password.$invalid && editForm.password.$dirty}">
+    <div class="col-sm-2">
+        <label class="control-label" for="password">{{"Password"|translate}}*</label>
+    </div>
+    <div class="col-sm-4">
+        <input id="password" name="password" type="password" class="form-control" ng-model="user.newPassword" required/>
+    </div>
+</div>
+
+<div class="row form-group" ng-class="{'has-error': (editForm.password.$invalid || user.newPassword!==user.newPassword2) && editForm.password.$dirty}">
+    <div class="col-sm-2">
+        <label class="control-label" for="password2">{{"Confirm"|translate}}*</label>
+    </div>
+    <div class="col-sm-4">
+        <input id="password2" name="password2" type="password" class="form-control" ng-model="user.newPassword2"/>
+    </div>
+</div>
+
+<div class="row form-group" ng-class="{'has-error': editForm.firstName.$invalid && editForm.firstName.$dirty}">
+    <div class="col-sm-2">
+        <label class="control-label" for="firstName">{{"First Name"|translate}}*</label>
+    </div>
+    <div class="col-sm-4">
+        <input id="firstName" name="firstName" class="form-control" ng-model="contact.firstName" ng-trim="true" required/>
+    </div>
+</div>
+
+<div class="row form-group" ng-class="{'has-error': editForm.lastName.$invalid && editForm.lastName.$dirty}">
+    <div class="col-sm-2">
+        <label class="control-label" for="lastName">{{"Last Name"|translate}}*</label>
+    </div>
+    <div class="col-sm-4">
+        <input id="lastName" name="lastName" class="form-control" ng-model="contact.lastName" ng-trim="true" required/>
+    </div>
+</div>

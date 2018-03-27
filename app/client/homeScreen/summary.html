@@ -1,0 +1,92 @@
+<div ng-controller="ClientAccountSummaryController">
+    <div class="panel panel-primary">
+        <div class="panel-heading text-center">
+            <h4 class="panel-title">{{'Trading Accounts'|translate}}</h4>
+        </div>
+        <table class="table table-striped table-hover table-responsive">
+            <thead>
+            <tr>
+                <th>{{'Account'|translate}}</th>
+                <th>{{'Leverage'|translate}}</th>
+                <th>{{'Currency'|translate}}</th>
+                <th>{{'Balance'|translate}}</th>
+                <th>{{'Equity'|translate}}</th>
+                <th>{{'Fund'|translate}}</th>
+                <th>{{'Withdraw'|translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="entity in tradingAccounts|orderBy: 'login'">
+                <td style="vertical-align: middle">{{entity.login}}</td>
+                <td style="vertical-align: middle">
+                    {{entity.leverage|number}}
+                    <span class="clickable" title="{{'Edit'|translate}}" ng-click="updateLeverage(entity, true)">
+                        <i class="text-primary glyphicon glyphicon-pencil" aria-hidden="true"></i>
+                    </span>
+                </td>
+                <td style="vertical-align: middle">{{entity.currency}}</td>
+                <td style="vertical-align: middle">{{entity.balance|number:2}}</td>
+                <td style="vertical-align: middle">{{entity.equity|number:2}}</td>
+                <td style="vertical-align: middle">
+                    <button class="btn btn-primary" ng-click="fundTradingAccount(entity)">
+                        <i class="fa fa-money" aria-hidden="true"></i>
+                    </button>
+                </td>
+                <td style="vertical-align: middle">
+                    <button class="btn btn-primary" ng-click="withdrawTradingAccount(entity)">
+                        <i class="glyphicon glyphicon-usd" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="7">
+                    <button type="button" class="btn btn-success" ng-click="newAccount(true)">
+                        <i class="glyphicon glyphicon-plus" aria-hidden="true"></i> {{'New Account'|translate}}
+                    </button>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="panel panel-primary" style="margin-bottom:5px">
+        <div class="panel-heading text-center">
+            <h4 class="panel-title">{{'Demo Accounts'|translate}}</h4>
+        </div>
+        <table class="table table-striped table-hover table-responsive">
+            <thead>
+            <tr>
+                <th>{{'Account'|translate}}</th>
+                <th>{{'Leverage'|translate}}</th>
+                <th>{{'Currency'|translate}}</th>
+                <th>{{'Balance'|translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="entity in demoAccounts|orderBy: 'login'">
+                <td style="vertical-align: middle">{{entity.login}}</td>
+                <td style="vertical-align: middle">{{entity.leverage|number}}</td>
+                <td style="vertical-align: middle">{{entity.currency}}</td>
+                <td style="vertical-align: middle">{{entity.balance|number:2}}</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="4">
+                    <button type="button" class="btn btn-success" ng-click="newAccount(false)">
+                        <i class="glyphicon glyphicon-plus" aria-hidden="true"></i> {{'New Account'|translate}}
+                    </button>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <small class="help-block">*{{'Data is delayed by up to 10 minutes.'|translate}}</small>
+        </div>
+    </div>
+</div>

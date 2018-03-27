@@ -1,0 +1,29 @@
+<div class="row form-group" ng-class="{'has-error': editForm.label.$invalid && editForm.label.$dirty}">
+    <div class="col-sm-2">
+        <label class="control-label" for="label">{{"Name"|translate}}*</label>
+    </div>
+    <div class="col-sm-4">
+        <input id="label" name="label" class="form-control" ng-model="entity.label" ng-trim="true" required/>
+    </div>
+</div>
+
+<div class="row form-group" ng-class="{'has-error': editForm.domainName.$invalid && editForm.domainName.$dirty}">
+    <div class="col-sm-2">
+        <label class="control-label" for="domainName">{{"Host"|translate}}*</label>
+    </div>
+    <div class="col-sm-4">
+        <input id="domainName" name="domainName" placeholder="portal.domain.com" required
+               class="form-control" ng-model="entity.url" ng-trim="true"/>
+    </div>
+</div>
+
+<div class="row form-group" ng-class="{'has-error': editForm.languageType.$invalid && editForm.languageType.$dirty}">
+    <div class="col-sm-2">
+        <label class="control-label" for="languageType">{{"Language"|translate}}*</label>
+    </div>
+    <div class="col-sm-4">
+        <select id="languageType" name="languageType" class="form-control" ng-model="entity.languageType" required
+                ng-options="option.label as option.label for option in languageTypes">
+        </select>
+    </div>
+</div>

@@ -1,0 +1,193 @@
+<div ng-controller="WorkNotesController">
+    <form novalidate role="form" name="editForm" ng-submit="load()">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="row form-group">
+                    <div class="col-sm-12">
+                        <label class="control-label" for="startDate">{{"Start Date"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <p class="input-group">
+                            <input id="startDate" name="startDate" type="text" class="form-control" uib-datepicker-popup
+                                   ng-model="search.startDate" is-open="startDate.opened" datepicker-options="dateOptions" ng-required="true" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="startDate.opened=true"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row form-group">
+                    <div class="col-sm-12">
+                        <label class="control-label" for="endDate">{{"End Date"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <p class="input-group">
+                            <input id="endDate" name="endDate" type="text" class="form-control" uib-datepicker-popup
+                                   ng-model="search.endDate" is-open="endDate.opened" datepicker-options="dateOptions" ng-required="true" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="endDate.opened=true"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="row form-group">
+                    <div class="col-sm-12">
+                        <label class="control-label" for="workType">{{"Work Type"|translate}}</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="workType"
+                                ng-options="k.type for k in searchResult.workTypes"
+                                ng-model="search.workType">
+                            <option value="">{{"All"|translate}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row form-group">
+                    <div class="col-sm-12">
+                        <label class="control-label" for="user">{{"User"|translate}}</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="user"
+                                ng-options="k.label for k in searchResult.users"
+                                ng-model="search.user">
+                            <option value="">{{"All"|translate}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="row form-group">
+                    <div class="col-sm-12">
+                        <label class="control-label" for="searchTerm">{{"Keywords"|translate}}</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <input id="searchTerm" class="form-control" ng-model="search.term" ng-trim="true">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <button type="submit" class="btn btn-primary" ng-disabled="editForm.$invalid">
+                    {{"Search"|translate}} <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <hr/>
+        </div>
+    </div>
+
+    <div class="row" ng-show="loading">
+        <div class="col-sm-12">
+            <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+        </div>
+    </div>
+
+    <div ng-show="!loading">
+        <div class="row" ng-show="!searchResult.workList || !searchResult.workList.length">
+            <div class="col-sm-12">
+                <span class="help-block">{{"No records found."|translate}}</span>
+            </div>
+        </div>
+
+        <div class="row" ng-show="searchResult.workList && searchResult.workList.length">
+            <div class="col-sm-12" ng-show="pageParams.totalItems>pageParams.itemsPerPage">
+                <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
+                    items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
+                    class="pagination-sm" boundary-links="true" ng-change="search()"
+                    first-text="<<" last-text=">>" next-text=">" previous-text="<">
+                </ul>
+            </div>
+
+            <div class="col-sm-12">
+                <table class="table table-striped table-hover table-responsive table-fixed">
+                    <thead>
+                    <tr>
+                        <th ng-if="searchResult.includeEntityName">{{"Team"|translate}}/{{"Client"|translate}}</th>
+                        <th>{{"Date"|translate}}</th>
+                        <th ng-if="searchResult.includeJobName">{{"Job"|translate}}</th>
+                        <th ng-if="searchResult.includeTaskName">{{"Task"|translate}}</th>
+                        <th>{{"Work Type"|translate}}</th>
+                        <th>{{"User"|translate}}</th>
+                        <th>{{"Minutes"|translate}}</th>
+                        <th>{{"Notes"|translate}}</th>
+                        <th>{{"File"|translate}}</th>
+                        <th ng-if="searchResult.includeEdit">{{"Edit"|translate}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat-start="work in searchResult.workList | orderBy: ['-date', '-id']">
+                        <td style="vertical-align: middle" ng-if="searchResult.includeEntityName">
+                            <span ng-if="work.workLink && work.workLink.client">{{work.workLink.client.label}}</span>
+                            <span ng-if="work.workLink && work.workLink.team">{{work.workLink.team.name}}</span>
+                        </td>
+                        <td style="vertical-align: middle">{{work.date|formattedDate}}</td>
+                        <td style="vertical-align: middle" ng-if="searchResult.includeJobName">
+                            <span ng-if="work.workLink && work.workLink.job">{{work.workLink.job.name}}</span>
+                        </td>
+                        <td style="vertical-align: middle" ng-if="searchResult.includeTaskName">
+                            <span ng-if="work.workLink && work.workLink.task">{{work.workLink.task.name}}</span>
+                        </td>
+                        <td style="vertical-align: middle">{{work.workType.type}}</td>
+                        <td style="vertical-align: middle">{{work.createdBy.label}}</td>
+                        <td style="vertical-align: middle">{{getFormattedMinutes(work.minutes)}}</td>
+                        <td style="vertical-align: middle">
+                            <span class="text-success glyphicon glyphicon-plus clickable"
+                                  ng-if="work.notes && work.notes.length && work.notes.length>10"
+                              ng-show="!work.expand" ng-click="work.expand=!work.expand"></span>
+                            <span ng-if="work.notes && work.notes.length && !work.expand">
+                                {{work.notes.substring(0, 10)}}<span ng-show="work.notes.length>10">...</span>
+                            </span>
+                        </td>
+                        <td style="vertical-align: middle">
+                        <div ng-repeat="fileRecord in work.fileRecords">
+                            <a class="clickable" ng-click="download(work, fileRecord)" title="{{fileRecord.filename}}">
+                                {{fileRecord.filename.substring(0, 10)}}<span ng-show="fileRecord.filename.length>10">...</span>
+                            </a>
+                        </div>
+                        </td>
+                        <td ng-if="searchResult.includeEdit">
+                            <button type="button" class="btn btn-primary" ng-show="work.editable"
+                                    ng-click="edit(work)">
+                                <span class="glyphicon glyphicon-pencil"/>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr ng-repeat-end ng-if="work.expand">
+                        <td colspan="{{searchResult.columns}}">
+                            <span class="text-success glyphicon glyphicon-minus clickable" ng-show="work.expand"
+                                  ng-click="work.expand=!work.expand"></span>
+                            <pre class="pre-text">{{work.notes}}</pre>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-sm-12" ng-show="pageParams.totalItems>pageParams.itemsPerPage">
+                <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
+                    items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
+                    class="pagination-sm" boundary-links="true" ng-change="search()"
+                    first-text="<<" last-text=">>" next-text=">" previous-text="<">
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

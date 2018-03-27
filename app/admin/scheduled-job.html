@@ -1,0 +1,109 @@
+<div ng-controller="ScheduleController">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center">
+            <strong class="heading">
+                <span ng-if="entity.id">{{"Scheduled Job"|translate}}</span>
+                <span ng-if="!entity.id">{{"New Scheduled Job"|translate}}</span>
+            </strong>
+        </div>
+
+        <div class="panel-body">
+            <form novalidate role="form" name="editForm" ng-submit="save()">
+                <div class="row form-group"
+                     ng-class="{'has-error': editForm.className.$invalid && editForm.className.$dirty}">
+                    <div class="col-sm-2">
+                        <label class="control-label" for="task">{{"Name"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <select name="task" id="task" class="form-control" ng-model="entity.className"
+                                ng-disabled="entity.id"
+                                ng-required="true" ng-options="d.className as d.name for d in entity.$nameMappings">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row form-group" ng-class="{'has-error': editForm.hour.$invalid && editForm.hour.$dirty}">
+                    <div class="col-sm-2">
+                        <label class="control-label" for="hour">{{"Hour"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="hour" name="hour" class="form-control" ng-model="entity.hour" required/>
+                    </div>
+                </div>
+
+                <div class="row form-group"
+                     ng-class="{'has-error': editForm.minute.$invalid && editForm.minute.$dirty}">
+                    <div class="col-sm-2">
+                        <label class="control-label" for="minute">{{"Minute"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="minute" name="minute" class="form-control" ng-model="entity.minute" required/>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label for="enabled">{{"Active"|translate}}</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <div name="enabled" id="enabled" class="btn-group">
+                            <button type="button" class="btn btn-primary" ng-model="entity.enabled"
+                                    uib-btn-radio="true">
+                                {{"Yes"|translate}}
+                            </button>
+                            <button type="button" class="btn btn-primary" ng-model="entity.enabled"
+                                    uib-btn-radio="false">
+                                {{"No"|translate}}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label>{{"Day"|translate}}</label>
+                    </div>
+
+                    <div class="col-sm-10">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary" ng-model="entity.monday" uib-btn-checkbox>
+                                {{"Mon"|translate}}
+                            </button>
+                            <button type="button" class="btn btn-primary" ng-model="entity.tuesday" uib-btn-checkbox>
+                                {{"Tue"|translate}}
+                            </button>
+                            <button type="button" class="btn btn-primary" ng-model="entity.wednesday" uib-btn-checkbox>
+                                {{"Wed"|translate}}
+                            </button>
+                            <button type="button" class="btn btn-primary" ng-model="entity.thursday" uib-btn-checkbox>
+                                {{"Thu"|translate}}
+                            </button>
+                            <button type="button" class="btn btn-primary" ng-model="entity.friday" uib-btn-checkbox>
+                                {{"Fri"|translate}}
+                            </button>
+                            <button type="button" class="btn btn-primary" ng-model="entity.saturday" uib-btn-checkbox>
+                                {{"Sat"|translate}}
+                            </button>
+                            <button type="button" class="btn btn-primary" ng-model="entity.sunday" uib-btn-checkbox>
+                                {{"Sun"|translate}}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" ng-show="entity.id">
+                    <label class="col-sm-2">
+                        {{"Run Task"|translate}}
+                    </label>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-success" style="width: 100%" ng-click="runTask()">
+                            {{"Run"|translate}} <span class="glyphicon glyphicon-arrow-right"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <div solar-crud-buttons ng-init="cancelable='true'"></div>
+            </form>
+        </div>
+    </div>
+</div>

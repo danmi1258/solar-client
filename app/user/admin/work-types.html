@@ -1,0 +1,38 @@
+<div ng-controller="WorkTypesController">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center"><strong class="heading">{{'Work Types'|translate}}</strong></div>
+        <table class="table table-striped table-hover table-responsive">
+            <thead>
+            <tr>
+                <th style="width: 10px" ng-if="entities && entities.length>1"></th>
+                <th>{{"Name"|translate}}</th>
+                <th><span ng-show="entities.length>1">{{'Edit'|translate}}</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="entity in entities | orderBy: ['priority']">
+                <td style="vertical-align: middle" class="text-primary" ng-if="entities && entities.length>1">
+                    <span class="glyphicon glyphicon-chevron-up clickable" ng-click="moveUp(entity)" ng-show="!$first"></span>
+                    <span class="glyphicon glyphicon-chevron-down clickable" ng-click="moveDown(entity)" ng-show="!$last"></span>
+                </td>
+                <td style="vertical-align: middle">{{entity.type}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary" ng-show="entity.editable"
+                            ng-click="edit(entity)">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="{{entities && entities.length>1? 3:2}}">
+                    <button type="button" class="btn btn-success" ng-click="create()">
+                        <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

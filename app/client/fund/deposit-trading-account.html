@@ -1,0 +1,55 @@
+<div ng-controller="FundTradingAccountController">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center"><strong class="heading">{{'Fund Trading Account'|translate}}</strong></div>
+        <div class="panel-body">
+            <form novalidate role="form" name="editForm" ng-submit="save()">
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label class="control-label">{{"Account"|translate}}</label>
+                    </div>
+                    <div class="col-sm-4">{{entity.login}}</div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label class="control-label" for="method">{{"Method"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <select id="method" name="method" class="form-control" ng-model="entity.method"
+                                ng-options="item.name for item in methods">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row" ng-show="view.exchangeRates.length">
+                    <div class="col-sm-6">
+                        <table class="table table-bordered table-hover table-responsive">
+                            <thead class="text-success">
+                            <tr class="active">
+                                <th colspan="3" class="text-center">{{"Estimated Exchange Rates"|translate}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="entity in view.exchangeRates | orderBy: ['symbol1']">
+                                <td style="vertical-align: middle">{{entity.symbol1}}</td>
+                                <td style="vertical-align: middle">{{entity.symbol2}}</td>
+                                <td style="vertical-align: middle">{{entity.rate}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row spacer-top text-center">
+                    <button type="button" class="btn btn-warning" ng-click="cancel()">
+                        <span class="glyphicon glyphicon-arrow-left"></span> Cancel
+                    </button>
+
+                    <button type="submit" class="btn btn-primary" ng-disabled="editForm.$invalid">
+                        {{'Next'|translate}} <span class="glyphicon glyphicon-arrow-right"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

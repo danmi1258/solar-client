@@ -1,0 +1,56 @@
+<div ng-controller="ClientFundWithdrawalController">
+    <div class="row spacer-bottom" ng-if="view.withdrawProfile.confirmed">
+        <div class="col-sm-12">
+            <strong class="text-danger">{{'Completed at'|translate}} {{view.withdrawProfile.confirmed|formattedDate}}</strong>
+        </div>
+    </div>
+
+    <div class="row spacer-bottom">
+        <div class="col-sm-3">
+            <label>{{"MT4 Server"|translate}}</label>
+        </div>
+        <div class="col-sm-6">
+            <span>{{view.withdrawProfile.mt4Server.mt4ServerType}}</span>
+        </div>
+    </div>
+
+    <div class="row spacer-bottom">
+        <div class="col-sm-3">
+            <label>{{"Account"|translate}}</label>
+        </div>
+        <div class="col-sm-6">
+            <span>{{view.withdrawProfile.login}}</span>
+        </div>
+    </div>
+
+    <div class="row spacer-bottom">
+        <div class="col-sm-3">
+            <label>{{"Amount"|translate}}</label>
+        </div>
+        <div class="col-sm-6">
+            <span>{{view.withdrawProfile.amount|number:2}}</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <label>{{"Currency Type"|translate}}</label>
+        </div>
+        <div class="col-sm-6">
+            <span>{{view.withdrawProfile.currencyType}}</span>
+        </div>
+    </div>
+
+    <ng-include src="'app/user/extension/bankAccount/bank-account.html'"></ng-include>
+
+    <div class="row" ng-if="!view.withdrawProfile.confirmed">
+        <div class="col-sm-12 text-center">
+            <button class="btn btn-primary" ng-click="save()">
+                {{'Confirm and Process'|translate}} <span class="glyphicon glyphicon-ok"></span>
+            </button>
+        </div>
+        <div class="col-sm-12 text-center">
+            <span class="help-block">{{'Once confirmed, bank account will be marked as verified and the amount of fund will be deducted from MT4 account.'|translate}}</span>
+        </div>
+    </div>
+</div>

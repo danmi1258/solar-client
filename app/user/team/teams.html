@@ -1,0 +1,47 @@
+<div ng-controller="TeamsController">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center"><strong class="heading">{{"Teams"|translate}}</strong></div>
+        <table class="table table-striped table-hover table-responsive">
+            <thead>
+            <tr>
+                <th>{{"Name"|translate}}</th>
+                <th>{{"Head"|translate}}</th>
+                <th>{{"View"|translate}}</th>
+                <th ng-if="view.editable">{{"Edit"|translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="entity in view.teams | orderBy: ['name']">
+                <td style="vertical-align: middle">{{entity.name}}</td>
+                <td style="vertical-align: middle">{{entity.head.label}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary" ng-click="viewSummary(entity)">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </td>
+                <td ng-if="view.editable">
+                    <button type="button" class="btn btn-primary" ng-click="edit(entity)">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+            <tbody ng-if="!view.teams.length">
+            <tr>
+                <td colspan="3" class="text-center text-muted">{{"You don't have any teams."|translate}}</td>
+                <td ng-if="view.editable"></td>
+            </tr>
+            </tbody>
+            <tfoot ng-if="view.editable">
+            <tr>
+                <td colspan="4">
+                    <button type="button" class="btn btn-success"
+                            ng-click="create()">
+                        <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

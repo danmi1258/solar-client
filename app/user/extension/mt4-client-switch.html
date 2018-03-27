@@ -1,0 +1,77 @@
+<div ng-controller="ClientMt4ClientSwitchController">
+    <form novalidate role="form" name="editForm">
+        <div class="row spacer-bottom">
+            <div class="col-sm-2">
+                <label>{{"MT4 Server"|translate}}</label>
+            </div>
+            <div class="col-sm-6">
+                <span>{{view.mt4ClientSwitchProfile.mt4Server.mt4ServerType}}</span>
+            </div>
+        </div>
+
+        <div class="row form-group" ng-class="{'has-error': editForm.login.$invalid && editForm.login.$dirty}">
+            <div class="col-sm-2">
+                <label class="control-label" for="login">{{"MT4 Login"|translate}}*</label>
+            </div>
+            <div class="col-sm-4">
+                <input id="login" name="login" class="form-control" ng-disabled="view.mt4ClientSwitchProfile.confirmed"
+                       ng-model="view.mt4ClientSwitchProfile.login" only-digits ng-trim="true">
+            </div>
+        </div>
+
+        <div class="row form-group" ng-class="{'has-error': editForm.newClient.$invalid && editForm.newClient.$dirty}">
+            <div class="col-sm-2">
+                <label class="control-label" for="newClient">{{"New Client"|translate}}*</label>
+            </div>
+            <div class="col-sm-4">
+                <input id="newClient" name="newClient" type="text" ng-model="view.mt4ClientSwitchProfile.newClient"
+                       ng-disabled="view.mt4ClientSwitchProfile.confirmed"
+                       placeholder="{{'Search'|translate}}"
+                       typeahead-wait-ms="300" autocomplete="off"
+                       uib-typeahead="search as search.label for search in doSearchClient($viewValue)"
+                       typeahead-loading="loadingClientSearch" class="form-control"
+                       typeahead-editable="false">
+                <i ng-show="loadingClientSearch" class="glyphicon glyphicon-refresh"></i>
+            </div>
+        </div>
+
+        <div class="row spacer-bottom" ng-show="view.mt4ClientSwitchProfile.confirmed" >
+            <div class="col-sm-2">
+                <label>{{"Confirmed"|translate}}</label>
+            </div>
+            <div class="col-sm-6">
+                <span>{{view.mt4ClientSwitchProfile.confirmed|formattedTime}}</span>
+            </div>
+        </div>
+
+        <div class="row spacer-bottom" ng-show="view.mt4ClientSwitchProfile.processed" >
+            <div class="col-sm-2">
+                <label>{{"Processed"|translate}}</label>
+            </div>
+            <div class="col-sm-6">
+                <span>{{view.mt4ClientSwitchProfile.processed|formattedTime}}</span>
+            </div>
+        </div>
+
+        <hr/>
+
+        <div class="row" ng-if="!view.mt4ClientSwitchProfile.confirmed">
+            <div class="col-sm-12 text-center">
+                <button class="btn btn-primary" ng-click="doConfirm()" ng-disabled="editForm.$invalid">
+                    {{'Confirm'|translate}} <span class="glyphicon glyphicon-ok"></span>
+                </button>
+            </div>
+            <div class="col-sm-12 text-center">
+                <span class="help-block">{{'Once confirmed, you will not be able to update it later.'|translate}}</span>
+            </div>
+        </div>
+
+        <div class="row" ng-if="view.mt4ClientSwitchProfile.confirmed && !view.mt4ClientSwitchProfile.processed">
+            <div class="col-sm-12 text-center">
+                <button class="btn btn-primary" ng-click="doProcess()">
+                    {{'Process'|translate}} <span class="glyphicon glyphicon-ok"></span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

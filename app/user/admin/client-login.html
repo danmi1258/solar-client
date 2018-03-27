@@ -1,0 +1,29 @@
+<div ng-controller="ClientLoginAdminController">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center">
+            <strong class="heading" ng-if="user.id">{{user.label}}</strong>
+            <strong class="heading" ng-if="!user.id">{{"New Client Login"|translate}}</strong>
+        </div>
+
+        <div class="panel-body">
+            <form novalidate role="form" name="editForm" ng-submit="save()">
+                <uib-tabset>
+                    <uib-tab heading='{{"Basic"|translate}}'>
+                        <p class="spacer"></p>
+                        <ng-include src="'app/user/admin/user-basic.html'"></ng-include>
+                    </uib-tab>
+                    <uib-tab heading='{{"Client Binding"|translate}}'>
+                        <p class="spacer"></p>
+                        <ng-include src="'app/user/admin/client-binding.html'"></ng-include>
+                    </uib-tab>
+                    <uib-tab heading='{{"Login History"|translate}}' ng-show="user.id && userLogs.length">
+                        <p class="spacer"></p>
+                        <ng-include src="'app/user/admin/user-history.html'"></ng-include>
+                    </uib-tab>
+                </uib-tabset>
+
+                <div solar-crud-buttons ng-init="cancelable=true"></div>
+            </form>
+        </div>
+    </div>
+</div>

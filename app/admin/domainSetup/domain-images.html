@@ -1,0 +1,74 @@
+<div class="row form-group">
+    <div class="col-sm-2">
+        <label class="control-label">{{'Logo'|translate}}</label>
+    </div>
+    <div class="col-sm-10">
+        <button class="btn btn-primary btn-file" type="button" ng-show="!logoUploader.isUploading">
+            {{"Select"|translate}} <span class="glyphicon glyphicon-cloud-upload"></span>
+            <input type="file" nv-file-select uploader="logoUploader"/>
+        </button>
+        <span class="text-muted">{{logoUploader.file.name}}</span>
+        <span ng-show="logoUploader.isUploading">
+            <uib-progressbar animate="true" value="logoUploader.progress" type="success"><b>{{logoUploader.progress}}%</b></uib-progressbar>
+        </span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-10">
+        <div ng-if="entity.domainImage.logo.id">
+            <img class="thumbnail img-responsive" ng-src="rest/v1/core/domain/image/{{entity.domainImage.logo.id}}" style="margin-bottom: 10px"/>
+        </div>
+    </div>
+</div>
+
+<div class="row form-group">
+    <div class="col-sm-2">
+        <label class="control-label">{{'Thumbnail'|translate}}</label>
+    </div>
+    <div class="col-sm-10">
+        <button class="btn btn-primary btn-file" type="button" ng-show="!thumbUploader.isUploading" >
+            {{"Select"|translate}} <span class="glyphicon glyphicon-cloud-upload"></span>
+            <input type="file" nv-file-select uploader="thumbUploader"/>
+        </button>
+        <span class="text-muted">{{thumbUploader.file.name}}</span>
+        <span ng-show="thumbUploader.isUploading">
+            <uib-progressbar animate="true" value="thumbUploader.progress" type="success"><b>{{thumbUploader.progress}}%</b></uib-progressbar>
+        </span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-10">
+        <div ng-if="entity.domainImage.thumbnail.id">
+            <img class="thumbnail img-responsive" ng-src="rest/v1/core/domain/image/{{entity.domainImage.thumbnail.id}}" style="margin-bottom: 10px"/>
+        </div>
+    </div>
+</div>
+
+<div class="row form-group">
+    <div class="col-sm-2">
+        <label class="control-label">{{'ICO'|translate}}</label>
+    </div>
+    <div class="col-sm-10">
+        <button class="btn btn-primary btn-file" type="button" ng-show="!icoUploader.isUploading" >
+            {{"Select"|translate}} <span class="glyphicon glyphicon-cloud-upload"></span>
+            <input type="file" nv-file-select uploader="icoUploader"/>
+        </button>
+        <span class="text-muted">{{icoUploader.file.name}}</span>
+        <span ng-show="icoUploader.isUploading">
+            <uib-progressbar animate="true" value="icoUploader.progress" type="success"><b>{{icoUploader.progress}}%</b></uib-progressbar>
+        </span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-10">
+        <div ng-if="entity.domainImage.ico.id">
+            <img class="thumbnail img-responsive" ng-src="rest/v1/core/domain/image/{{entity.domainImage.ico.id}}" style="margin-bottom: 10px"/>
+        </div>
+    </div>
+</div>

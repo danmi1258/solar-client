@@ -1,0 +1,36 @@
+<div class="row form-group" ng-class="{'has-error': editForm.bankName.$invalid && editForm.bankName.$dirty}">
+    <div class="col-sm-4">
+        <label class="control-label" for="bankName">{{"Bank Name"|translate}}*</label>
+    </div>
+    <div class="col-sm-5">
+        <input id="bankName" name="bankName" class="form-control" ng-model="entity.bankAccount.bankName" required>
+    </div>
+</div>
+
+<div class="row form-group" ng-class="{'has-error': editForm.bsb.$invalid && editForm.bsb.$dirty}">
+    <div class="col-sm-4">
+        <label class="control-label" for="bankName">{{"BSB"|translate}}*</label>
+    </div>
+    <div class="col-sm-5">
+        <input id="bsb" name="bsb" class="form-control" ng-model="entity.bankAccount.bsb" required  ng-minlength="6" ng-maxlength="6" only-digits>
+    </div>
+</div>
+
+<div class="row form-group" ng-class="{'has-error': editForm.accountNumber.$invalid && editForm.accountNumber.$dirty}">
+    <div class="col-sm-4">
+        <label class="control-label" for="accountNumber">{{"Account Number"|translate}}*</label>
+    </div>
+    <div class="col-sm-5">
+        <input id="accountNumber" name="accountNumber" class="form-control" ng-model="entity.bankAccount.accountNumber"
+               required only-digits>
+    </div>
+</div>
+
+<div class="row form-group" ng-class="{'has-error': editForm.accountHolder.$invalid && editForm.accountHolder.$dirty}">
+    <div class="col-sm-4">
+        <label class="control-label" for="accountHolder">{{"Account Holder"|translate}}*</label>
+    </div>
+    <div class="col-sm-5">
+        <input id="accountHolder" name="accountHolder" class="form-control" ng-model="entity.bankAccount.accountHolder" required>
+    </div>
+</div>

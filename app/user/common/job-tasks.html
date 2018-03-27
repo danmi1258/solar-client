@@ -1,0 +1,138 @@
+<div ng-controller="JobTasksController">
+    <form novalidate role="form" name="editForm" ng-submit="save()">
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-striped table-hover table-responsive">
+                    <thead>
+                    <tr>
+                        <th style="width: 10px"></th>
+                        <th>{{"Task"|translate}}</th>
+                        <th>{{"Assignee"|translate}}</th>
+                        <th>{{"Due Date"|translate}}</th>
+                        <th>{{"Completed"|translate}}</th>
+                        <th>{{"Cancelled"|translate}}</th>
+                        <th style="width: 15px" ng-show="taskEditView"></th>
+                        <th style="width: 100px">{{"Actions"|translate}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat-start="task in tasks">
+                        <td style="vertical-align: middle">
+                            <span ng-show="!task.$editable">
+                                <span class="text-success glyphicon glyphicon-plus clickable" ng-if="!task.expand" ng-click="task.expand=!task.expand"></span>
+                                <span class="text-success glyphicon glyphicon-minus clickable" ng-if="task.expand" ng-click="task.expand=!task.expand"></span>
+                            </span>
+                        </td>
+                        <td style="vertical-align: middle">
+                            <span ng-show="!task.$editable">{{task.name}}</span>
+                            <span ng-show="task.$editable">
+                                <input class="form-control" ng-model="task.name" required ng-trim="true">
+                            </span>
+                        </td>
+                        <td style="vertical-align: middle">
+                            <span ng-show="!task.$editable">{{task.assignee.label}}</span>
+                            <span ng-show="task.$editable">
+                            <select class="form-control" required
+                                    ng-options="k.label for k in users"
+                                    ng-model="task.assignee">
+                            </select>
+                        </span>
+                        </td>
+                        <td style="vertical-align: middle">
+                            <span ng-show="!task.$editable">{{task.dueDate|formattedDate}}</span>
+                            <span ng-show="task.$editable">
+                                <p class="input-group">
+                                    <input name="dueDate" type="text" class="form-control" uib-datepicker-popup
+                                           ng-model="task.dueDate" is-open="taskDueDateOpened" datepicker-options="dateOptions" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="taskDueDateOpened=true"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                            </span>
+                        </td>
+                        <td style="vertical-align: middle">
+                            <span ng-if="task.completed">{{task.completed|formattedDate}}</span>
+                        </td>
+                        <td style="vertical-align: middle">
+                            <span ng-if="task.cancelled">{{task.cancelled|formattedDate}}</span>
+                        </td>
+                        <td ng-show="taskEditView">
+                            <span class="glyphicon glyphicon-chevron-up clickable"
+                                  ng-click="moveUp(task, tasks)"></span>
+                            <span class="glyphicon glyphicon-chevron-down clickable"
+                                  ng-click="moveDown(task, tasks)"></span>
+                        </td>
+                        <td>
+                            <span ng-show="!taskEditView">
+                                <button type="button" class="btn btn-success" ng-show="!task.$editable"
+                                        ng-if="!task.completed && !task.cancelled"
+                                        ng-click="completeTask(task)">
+                                    <span class="glyphicon glyphicon-ok"/>
+                                </button>
+                                <button type="button" class="btn btn-danger" ng-show="!task.$editable"
+                                        ng-if="!task.completed && !task.cancelled"
+                                        ng-click="cancelTask(task)">
+                                    <span class="glyphicon glyphicon-remove"/>
+                                </button>
+                            </span>
+
+                            <span ng-show="taskEditView">
+                                <button type="button" class="btn btn-primary" ng-show="!task.$editable"
+                                        ng-if="!task.completed && !task.cancelled"
+                                        ng-click="task.$editable=true">
+                                    <span class="glyphicon glyphicon-pencil"/>
+                                </button>
+
+                                <button type="button" class="btn btn-success" ng-show="task.$editable"
+                                        ng-if="!task.completed && !task.cancelled"
+                                        ng-click="task.$editable=false">
+                                    <span class="glyphicon glyphicon-ok"/>
+                                </button>
+
+                                <button type="button" class="btn btn-danger" ng-show="!task.id"
+                                        ng-click="remove(task, tasks)">
+                                    <span class="glyphicon glyphicon-remove"/>
+                                </button>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr ng-if="task.expand || task.$editable">
+                        <td></td>
+                        <td></td>
+                        <td style="vertical-align: middle" colspan="4">
+                            <span ng-show="!task.$editable && task.description">{{task.description}}</span>
+                            <span ng-show="!task.$editable && !task.description" class="text-muted">
+                                {{'No description available.'|translate}}
+                            </span>
+                            <span ng-show="task.$editable">
+                                <input class="form-control" ng-model="task.description" ng-trim="true" placeholder="{{'Description'|translate}}">
+                            </span>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr ng-repeat-end ng-if="false"></tr>
+                    </tbody>
+                    <tfoot>
+                    <td colspan="7" ng-show="!taskEditView">
+                        <button type="button" class="btn btn-primary"
+                                ng-click="taskEditView=true">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                    </td>
+                    <td colspan="8" ng-show="taskEditView">
+                        <button type="button" class="btn btn-success"
+                                ng-click="tasks.push({$editable:true})">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </td>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+        <div ng-if="taskEditView">
+            <div solar-crud-buttons></div>
+        </div>
+    </form>
+</div>

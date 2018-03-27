@@ -1,0 +1,58 @@
+<div ng-controller="ExchangeRateController">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center">
+            <strong class="heading" ng-if="entity.id">{{entity.symbol}}</strong>
+            <strong class="heading" ng-if="!entity.id">{{"New Exchange Rate"|translate}}</strong>
+        </div>
+
+        <div class="panel-body">
+            <form novalidate role="form" name="editForm" ng-submit="save()">
+                <div class="row" ng-class="{'has-error': editForm.date.$invalid && editForm.date.$dirty}">
+                    <div class="col-sm-2">
+                        <label class="control-label" for="date">{{"Date"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <p class="input-group">
+                            <input id="date" name="date" type="text" class="form-control" uib-datepicker-popup
+                                   ng-model="entity.date" is-open="date.opened" datepicker-options="dateOptions" ng-required="true" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="date.opened=true">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row form-group" ng-class="{'has-error': editForm.symbol1.$invalid && editForm.symbol1.$dirty}">
+                    <div class="col-sm-2">
+                        <label class="control-label" for="symbol1">{{"Symbol 1"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="symbol1" name="symbol1" class="form-control" ng-model="entity.symbol1" required ng-trim="true"/>
+                    </div>
+                </div>
+
+                <div class="row form-group" ng-class="{'has-error': editForm.symbol2.$invalid && editForm.symbol2.$dirty}">
+                    <div class="col-sm-2">
+                        <label class="control-label" for="symbol1">{{"Symbol 2"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="symbol2" name="symbol2" class="form-control" ng-model="entity.symbol2" required ng-trim="true"/>
+                    </div>
+                </div>
+
+                <div class="row form-group" ng-class="{'has-error': editForm.rate.$invalid && editForm.rate.$dirty}">
+                    <div class="col-sm-2">
+                        <label class="control-label" for="rate">{{"Rate"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="rate" name="rate" type="number" class="form-control" ng-model="entity.rate" required ng-trim="true"/>
+                    </div>
+                </div>
+
+                <div solar-crud-buttons=""></div>
+            </form>
+        </div>
+    </div>
+</div>

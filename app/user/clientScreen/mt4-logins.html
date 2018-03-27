@@ -1,0 +1,46 @@
+<div ng-controller="ClientMt4LoginController">
+    <table class="table table-striped table-hover table-responsive">
+        <thead>
+        <tr>
+            <th></th>
+            <th>{{'MT4 Login'|translate}}</th>
+            <th>{{'MT4 Server'|translate}}</th>
+            <th>{{'Work Group'|translate}}</th>
+            <th>{{'Agent Login'|translate}}</th>
+            <th>{{'Start Date'|translate}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat-start="entity in entities|orderBy:['clientMt4Map.mt4Server.mt4ServerType','clientMt4Map.mt4Login']">
+            <td>
+                <span ng-if="entity.clientOwnerships.length">
+                    <span class="text-success glyphicon glyphicon-plus clickable" ng-if="!entity.expand" ng-click="entity.expand=!entity.expand"></span>
+                    <span class="text-success glyphicon glyphicon-minus clickable" ng-if="entity.expand" ng-click="entity.expand=!entity.expand"></span>
+                </span>
+            </td>
+            <td>{{entity.clientMt4Map.mt4Login}}</td>
+            <td>{{entity.clientMt4Map.mt4Server.mt4ServerType}}</td>
+            <td>{{entity.clientOwnership.workGroup.name}}</td>
+            <td>{{entity.clientOwnership.workGroup.mt4Account}}</td>
+            <td>{{entity.clientOwnership.workGroup.startDate|formattedTime}}</td>
+        </tr>
+        <tr ng-if="entity.expand && entity.clientOwnerships.length">
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>{{'Work Group'|translate}}</th>
+            <th>{{'Agent Login'|translate}}</th>
+            <th>{{'Start Date'|translate}}</th>
+        </tr>
+        <tr ng-if="entity.expand" ng-repeat="clientOwnership in entity.clientOwnerships">
+            <th></th>
+            <td></td>
+            <th></th>
+            <td>{{clientOwnership.workGroup.name}}</td>
+            <td>{{clientOwnership.workGroup.mt4Account}}</td>
+            <td>{{clientOwnership.startDate|formattedTime}}</td>
+        </tr>
+        <tr ng-repeat-end ng-if="false"></tr>
+        </tbody>
+    </table>
+</div>

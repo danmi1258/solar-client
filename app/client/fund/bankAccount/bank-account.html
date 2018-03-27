@@ -1,0 +1,18 @@
+<ng-include src="'app/client/fund/bankAccount/au-banks.html'" ng-if="entity.bankAccountType=='Australian Bank'"></ng-include>
+<ng-include src="'app/client/fund/bankAccount/china-union.html'" ng-if="entity.bankAccountType=='China Union'"></ng-include>
+
+<div class="row spacer-bottom">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <button type="button" class="btn btn-warning" ng-click="cancel()">
+            <span class="glyphicon glyphicon-arrow-left"></span> Cancel
+        </button>
+
+        <button type="button" class="btn btn-primary" ng-if="!entity.bankAccount.id" ng-disabled="editForm.$invalid"
+            ng-click="saveBankAccount(entity.bankAccountView.bankAccounts)">
+            {{"Save Bank Account"|translate}} <span class="glyphicon glyphicon-ok"></span>
+        </button>
+    </div>
+</div>
+
+

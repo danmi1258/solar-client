@@ -1,0 +1,86 @@
+<div class="row">
+    <div class="col-md-8 col-sm-6">
+        <div class="introduction">
+            <h1>Built for<br/>performance</h1>
+            <p>
+                MetaTrader 4 is a platform for trading Forex, analyzing financial markets and using Expert Advisors.
+                Mobile trading, Trading Signals and the Market are the integral parts of MetaTrader 4 that enhance your
+                Forex trading experience.
+            </p>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-sm-6">
+        <div class=" well well-lg login-form">
+            <div ng-show="!forgotPassword">
+                <h3 class="text-center spacer-bottom">
+                    <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
+                    <div class="text-center spacer-top">{{'Sign in'|translate}}</div>
+                </h3>
+
+                <form name="loginForm" novalidate ng-submit="login()">
+                    <div class="alert alert-danger" role="alert" ng-repeat="error in errors">{{error|translate}}</div>
+                    <div class="form-group"
+                         ng-class="{'has-error': loginForm.loginEmail.$invalid && loginForm.loginEmail.$dirty}">
+                        <label for="loginEmail">{{'Email'|translate}}</label>
+                        <input ng-model="form.username" type="email" class="form-control" name="loginEmail" tabindex="1"
+                               id="loginEmail" ng-trim="true" placeholder="e.g. john@domain.com" required autofocus>
+                    </div>
+
+                    <div class="form-group"
+                         ng-class="{'has-error': loginForm.loginPass.$invalid && loginForm.loginPass.$dirty}">
+                        <label for="loginPass">{{'Password'|translate}}
+                            <a class="text-primary" href="" ng-click="forgotPassword=!forgotPassword">
+                                <small tabindex="4">{{'Forgot Password'|translate}}?</small>
+                            </a>
+                        </label>
+                        <input ng-model="form.password" type="password" class="form-control" name="loginPass"
+                               minlength="8" maxlength="20" tabindex="2"
+                               id="loginPass" required>
+                    </div>
+
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" tabindex="3"
+                            ng-disabled="loginForm.$invalid || loading">
+                        {{'Sign in'|translate}}
+                    </button>
+                </form>
+            </div>
+
+            <div ng-show="forgotPassword">
+                <h3 class="text-center spacer-bottom">
+                    <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
+                    <div class="form-signin-heading text-center spacer-top">{{'Reset Password'|translate}}</div>
+                </h3>
+
+                <form name="forgotPasswordForm" novalidate ng-submit="resetPassword()">
+                    <div class="form-group"
+                         ng-class="{'has-error': forgotPasswordForm.forgotEmail.$invalid && forgotPasswordForm.forgotEmail.$dirty}">
+                        <label class="control-label">{{'Email'|translate}}</label>
+                        <input ng-model="resetPasswordForm.email" type="email" class="form-control" name="forgotEmail" ng-trim="true"
+                               id="forgotEmail" required autofocus>
+                    </div>
+
+                    <div class="form-group"
+                         ng-class="{'has-error': forgotPasswordForm.lastName.$invalid && forgotPasswordForm.lastName.$dirty}">
+                        <label class="control-label">{{'Surname'|translate}}</label>
+                        <input ng-model="resetPasswordForm.lastName" class="form-control" name="lastName" id="lastName"
+                               required autofocus>
+                    </div>
+
+                    <div class="form-group"
+                         ng-class="{'has-error': forgotPasswordForm.firstName.$invalid && forgotPasswordForm.firstName.$dirty}">
+                        <label class="control-label">{{'First Name'|translate}}</label>
+                        <input ng-model="resetPasswordForm.firstName" class="form-control" name="firstName"
+                               id="firstName" required autofocus>
+                    </div>
+
+                    <button class="btn btn-lg btn-primary btn-block" type="submit"
+                            ng-disabled="forgotPasswordForm.$invalid||loading">
+                        {{'Reset Password'|translate}}
+                    </button>
+                    <a href="#" ng-click="forgotPassword = !forgotPassword">{{'Back'|translate}}</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

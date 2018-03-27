@@ -1,0 +1,22 @@
+<div ng-controller="HomeController">
+    <div uib-alert ng-class="'alert-success'" close="closeAlert()" ng-show="message">
+        <i class="fa fa-bell text-primary" aria-hidden="true"></i> <a href="#!/system/message">{{message|translate}}</a>
+    </div>
+
+    <div class="row col-sm-3 spacer-bottom" ng-show="users && users.length && users.length>1">
+        <select class="form-control" ng-options="user.label for user in users"
+                ng-model="homeScreenUser" ng-change="updateUserView()"></select>
+    </div>
+
+    <div class="row col-sm-12"></div>
+    <uib-tabset active="activeTabIndex">
+        <uib-tab ng-repeat="integration in integrationPoints['home.tabs']|orderBy: 'priority'"
+                 select="activateTab($index)">
+            <uib-tab-heading>{{integration.properties.label|translate}}</uib-tab-heading>
+            <div ng-if="initializedTabs[$index]" style="padding-top:10px">
+                <ng-include src="getTemplate(integration.template)"></ng-include>
+            </div>
+        </uib-tab>
+    </uib-tabset>
+</div>
+

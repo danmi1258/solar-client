@@ -1,0 +1,31 @@
+<div>
+    <div class="panel panel-info">
+        <div class="panel-heading text-center">
+            <strong class="heading">{{"Deposit"|translate}}</strong>
+        </div>
+        <div class="panel-body">
+            <form novalidate role="form" name="editForm" ng-submit="save()">
+                <div class="row form-group">
+                    <div class="col-sm-3">
+                        <label class="control-label">{{"Account"|translate}}*</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="btn-group" ng-init="entity.demoAccount=false">
+                            <label class="btn btn-primary" ng-model="entity.demoAccount" uib-btn-radio="false">{{"Trading Account"|translate}}</label>
+                            <label class="btn btn-primary" ng-model="entity.demoAccount" uib-btn-radio="true">{{"Demo Account"|translate}}</label>
+                        </div>
+                    </div>
+                </div>
+
+                <ng-include src="'app/client/payment/deposit-trading-account.html'" ng-if="!entity.demoAccount"></ng-include>
+                <ng-include src="'app/client/payment/deposit-demo-account.html'" ng-if="entity.demoAccount"></ng-include>
+
+                <div class="row text-center">
+                    <button type="submit" class="btn btn-primary" ng-disabled="editForm.$invalid">{{"Submit"|translate}} <span
+                            class="glyphicon glyphicon-ok"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

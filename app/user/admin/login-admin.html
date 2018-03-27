@@ -1,0 +1,18 @@
+<div ng-controller="LoginAdminController">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center">
+            <strong class="heading">{{"Login Admin"|translate}}</strong>
+        </div>
+
+        <div class="panel-body">
+            <uib-tabset>
+                <uib-tab ng-repeat="integration in integrationPoints['client.admin.tabs']|orderBy: 'priority'" select="activateTab($index)">
+                    <uib-tab-heading>{{integration.properties.label|translate}}</uib-tab-heading>
+                    <div ng-if="initializedTabs[$index]" class="inner-panel">
+                        <ng-include src="integration.template"></ng-include>
+                    </div>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+    </div>
+</div>
