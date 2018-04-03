@@ -43,34 +43,54 @@ angular.module("solar.fpmarkets-agent", [])
             popMessage(toaster, 'success', "Link copied", 1000);
         };
 
+        var getSubAccounts = function (ret, account, level) {
+            if (account.accounts) {
+                angular.forEach(account.accounts, function (account) {
+                    account.level = level;
+                    ret.push(account);
+                    getSubAccounts(ret, account, level + 1);
+                });
+            }
+        };
+
         $scope.search = function (reload) {
             if (reload) {
                 $scope.pageParams.currentPage = 1;
             }
 
             $scope.expandAll = false;
-            var view = resource.save($scope.searchParams, function () {
+            var view = resource.save(function () {
+                view.accounts.sort(function (a, b) {
+                    return a['account'].login - b['account'].login;
+                });
+
                 var map = {};
-                $scope.extendedView = view.extendedView;
-                $scope.accounts = [];
                 angular.forEach(view.accounts, function (account) {
                     map[account.workGroup.id] = account;
+                });
 
-                    if (account.topWorkGroup) {
+                angular.forEach(view.accounts, function (account) {
+                    if (account.workGroup.parentWorkGroup && map[account.workGroup.parentWorkGroup.id]) {
+                        account.workGroup.parentWorkGroup = map[account.workGroup.parentWorkGroup.id].workGroup;
+
+                        if (!map[account.workGroup.parentWorkGroup.id].accounts) {
+                            map[account.workGroup.parentWorkGroup.id].accounts = [];
+                        }
+
+                        map[account.workGroup.parentWorkGroup.id].accounts.push(account);
+                    }
+                });
+
+                $scope.accounts = [];
+                angular.forEach(view.accounts, function (account) {
+                    if (!account.workGroup.parentWorkGroup || !map[account.workGroup.parentWorkGroup.id]) {
                         $scope.accounts.push(account);
                     }
                 });
 
-                angular.forEach(view.accounts, function (account) {
-                    if (!account.topWorkGroup && account.workGroup.parentWorkGroup) {
-                        var parent = map[account.workGroup.parentWorkGroup.id];
-                        if (parent) {
-                            if (!parent.accounts) {
-                                parent.accounts = [];
-                            }
-                            parent.accounts.push(account);
-                        }
-                    }
+                angular.forEach($scope.accounts, function (account) {
+                    account.allSubAccounts = [];
+                    getSubAccounts(account.allSubAccounts, account, 1);
                 });
 
                 $scope.pageParams.totalItems = $scope.accounts.length;

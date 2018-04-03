@@ -309,16 +309,15 @@ angular.module("solar.user-admin", [])
             $location.url($location.url() + '/' + user.id);
         };
     }])
-    .controller("AgentAdminController", ['$scope', 'AgentResource', '$location', '$routeParams', function ($scope, resource, $location, $routeParams) {
+    .controller("AgentAdminController", ['$scope', 'AgentResource', '$location', '$routeParams', '$http', function ($scope, resource, $location, $routeParams, $http) {
         var view = resource.get({
             "id": $routeParams.id
         }, function () {
             $scope.userLogs = view.userLogs;
             $scope.user = view.user;
             $scope.workGroups = view.workGroups;
-            if ($scope.user.id) {
-                $scope.workGroup = view.workGroup;
-            }
+            $scope.clients = view.clients;
+            $scope.user.$client = view.client;
 
             $scope.roles = [];
 
@@ -344,6 +343,34 @@ angular.module("solar.user-admin", [])
             }
         });
 
+        $scope.doSearchClient = function (searchTerm) {
+            return $http.get(REST_PREFIX + '/client/search/' + searchTerm, {
+                headers: {
+                    'Async-Request': 'true'
+                }
+            }).then(function (res) {
+                var search = [];
+                angular.forEach(res.data, function (item) {
+                    search.push(item);
+                });
+                return search;
+            });
+        };
+
+        $scope.addWorkGroup = function (workGroup) {
+            var added = false;
+
+            angular.forEach($scope.user.workGroups, function (w) {
+                if (w.id == workGroup.id) {
+                    added = true;
+                }
+            });
+
+            if (!added) {
+                $scope.user.workGroups.push(workGroup);
+            }
+        };
+
         $scope.remove = function (entity, entities) {
             removeFromList(entity, entities);
         };
@@ -356,10 +383,8 @@ angular.module("solar.user-admin", [])
         $scope.save = function () {
             var view = new resource();
             view.user = $scope.user;
-            if ($scope.user.workGroup) {
-                view.workGroup = {
-                    "id": $scope.user.workGroup.id
-                };
+            if ($scope.user.$client) {
+                view.client = $scope.user.$client;
             }
 
             view.user.roles = [];

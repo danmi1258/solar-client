@@ -66,7 +66,7 @@ angular.module("solar.user", [])
                 process: {params: {action: 'process'}, isArray: false, method: 'POST'}
             });
         }])
-    .factory('ClientFundTransferResource', ['$resource',
+    .factory('ClientFundTransferAdminResource', ['$resource',
         function ($resource) {
             return $resource(REST_PREFIX + '/client/fund/admin/fund-transfer/:id', {}, {
                 process: {isArray: false, method: 'POST'}
@@ -111,7 +111,7 @@ angular.module("solar.user", [])
             });
         };
     }])
-    .controller("ClientFundTransferAdminController", ['$scope', 'ClientFundTransferResource', 'toaster', function ($scope, resource, toaster) {
+    .controller("ClientFundTransferAdminController", ['$scope', 'ClientFundTransferAdminResource', 'toaster', function ($scope, resource, toaster) {
         $scope.client = resource.get({
             "id": $scope.$parent.view.fundTransferProfile.id
         });

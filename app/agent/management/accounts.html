@@ -16,12 +16,12 @@
                     </div>
 
                     <div class="col-lg-5 col-md-4 col-sm-4 cpadd-2">
-                        <input id="login" name="login" class="form-control" ng-model="searchParams.login" only-digits ng-trim="true" placeholder="Login" type="text">                        
+                        <input id="login" name="login" class="form-control" ng-model="searchParams.login" only-digits ng-trim="true" placeholder="Login" type="text">
                     </div>
 
                     <div class="col-lg-2 col-md-4 col-sm-4 cpadd-3">
                         <button class="cbtn-search  " type="submit" ng-disabled="editForm.$invalid">
-                                <i class="fa fa-search" aria-hidden="true"></i> {{'Search'|translate}}
+                            <i class="fa fa-search" aria-hidden="true"></i> {{'Search'|translate}}
                         </button>
                     </div>
                 </div>
@@ -39,11 +39,11 @@
                         </div>
                     </div>
                 </div>
-                -->                
+                -->
             </form>
         </div>
 
-        <div class="panel-body caccounts-second row">            
+        <div class="panel-body caccounts-second row">
             <div ng-if="accounts.length && summaryList.length">
                 <div ng-repeat="summary in summaryList">
                     <div class="col-sm-4 date-bx">
@@ -59,7 +59,7 @@
                         <div class="date-input-bx"><div class="dib-txt">{{'Equity'}}</div><div class="cacc-num">{{summary.equity|number:2}}</div></div>
                     </div>
                     <div class="clearfix"></div>
-                </div>                
+                </div>
             </div>
 
             <div ng-show="pageParams.totalItems>pageParams.itemsPerPage">
@@ -72,34 +72,34 @@
 
             <div class="tbl-wrap">
                 <table class="table table-striped table-hover table-responsive">
-                <thead>
-                <tr>
-                    <th><a href="" ng-click="predicate='login'; reverse=!reverse">{{'Login'|translate}}</a></th>
-                    <th class="col-sm-3"><a href="" ng-click="predicate='name'; reverse=!reverse">{{'Name'|translate}}</a></th>
-                    <th><a href="" ng-click="predicate='leverage'; reverse=!reverse">{{'Leverage'|translate}}</a></th>
-                    <th><a href="" ng-click="predicate='equity'; reverse=!reverse">{{'Equity'|translate}}</a></th>
-                    <th><a href="" ng-click="predicate='marginLevel'; reverse=!reverse">{{'Margin Level'|translate}}</a></th>
-                    <th><a href="" ng-click="predicate='workGroup.name'; reverse=!reverse">{{'IB'|translate}}</a></th>
-                </tr>
-                </thead>
-                <tbody ng-init="predicate='login'">
-                <tr ng-repeat="account in entities">
-                    <td>{{account.login}}</td>
-                    <td><a ng-href="#!/user/client/{{account.client.id}}/home">{{account.name}}</a></td>
-                    <td>{{account.leverage|number}}</td>
-                    <td>{{account.equity|number:2}}</td>
-                    <td>{{account.marginLevel|number:2}}<span ng-show="account.marginLevel">%</span></td>
-                    <td>{{account.workGroup.name}}</td>
-                </tr>
-                </tbody>
-                <tfoot ng-if="accounts && !accounts.length">
-                <td colspan="6" class="text-center text-muted">
-                    {{'Data is not available.'|translate}}
-                </td>
-                </tfoot>
-            </table>
+                    <thead>
+                    <tr>
+                        <th><a href="" ng-click="predicate='login'; reverse=!reverse">{{'Login'|translate}}</a></th>
+                        <th class="col-sm-3"><a href="" ng-click="predicate='name'; reverse=!reverse">{{'Name'|translate}}</a></th>
+                        <th><a href="" ng-click="predicate='leverage'; reverse=!reverse">{{'Leverage'|translate}}</a></th>
+                        <th><a href="" ng-click="predicate='equity'; reverse=!reverse">{{'Equity'|translate}}</a></th>
+                        <th><a href="" ng-click="predicate='marginLevel'; reverse=!reverse">{{'Margin Level'|translate}}</a></th>
+                        <th><a href="" ng-click="predicate='workGroup.name'; reverse=!reverse">{{'IB'|translate}}</a></th>
+                    </tr>
+                    </thead>
+                    <tbody ng-init="predicate='login'">
+                    <tr ng-repeat="account in entities">
+                        <td>{{account.login}}</td>
+                        <td><a ng-href="#!/user/client/{{account.client.id}}/home">{{account.name}}</a></td>
+                        <td>{{account.leverage|number}}</td>
+                        <td>{{account.equity|number:2}}</td>
+                        <td>{{account.marginLevel|number:2}}<span ng-show="account.marginLevel">%</span></td>
+                        <td>{{account.workGroup.name}}</td>
+                    </tr>
+                    </tbody>
+                    <tfoot ng-if="accounts && !accounts.length">
+                    <td colspan="6" class="text-center text-muted">
+                        {{'Data is not available.'|translate}}
+                    </td>
+                    </tfoot>
+                </table>
             </div>
-            
+
 
             <div ng-show="pageParams.totalItems>pageParams.itemsPerPage">
                 <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"

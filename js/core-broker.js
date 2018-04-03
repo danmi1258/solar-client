@@ -266,6 +266,30 @@ angular.module("solar.core-broker", [])
             levels: 1
         };
 
+
+        $scope.calculateWeight = function () {
+            $scope.sumWeight = {
+                portalWeight: 0,
+                commissionWeight: 0
+            };
+
+            if (!$scope.entityGroups) {
+                return;
+            }
+
+            angular.forEach($scope.entityGroups, function (commissionLevelDefinitions) {
+                angular.forEach(commissionLevelDefinitions, function (definition) {
+                    if (definition.portalWeight) {
+                        $scope.sumWeight.portalWeight += definition.portalWeight;
+                    }
+
+                    if (definition.commissionWeight) {
+                        $scope.sumWeight.commissionWeight += definition.commissionWeight;
+                    }
+                });
+            });
+        };
+
         $scope.view = resource.get({
             "id": $routeParams.id
         }, function () {
@@ -319,7 +343,9 @@ angular.module("solar.core-broker", [])
                 if (curr.length) {
                     $scope.entityGroups.push(curr);
                 }
-            })
+
+                $scope.calculateWeight();
+            });
         });
 
         $scope.save = function () {
@@ -492,6 +518,10 @@ angular.module("solar.core-broker", [])
     }])
     .controller("WorkGroupImportController", ['$scope', '$location', 'WorkGroupImportResource', 'FileUploader', 'toaster', function ($scope, $location, resource, FileUploader, toaster) {
         $scope.entity = new resource();
+
+        $scope.doExport = function () {
+            location.assign(REST_PREFIX + "/client/admin/work-group-import/export");
+        };
 
         $scope.doImport = function () {
             $scope.result = resource.process({

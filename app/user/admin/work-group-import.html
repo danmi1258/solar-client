@@ -1,10 +1,21 @@
 <div ng-controller="WorkGroupImportController">
     <div class="panel panel-info">
         <div class="panel-heading text-center">
-            <strong class="heading">{{"Work Group Import"|translate}}</strong>
+            <strong class="heading">{{"Work Group Import / Export"|translate}}</strong>
         </div>
 
         <div class="panel-body">
+            <div class="row form-group">
+                <div class="col-sm-2">
+                    <label class="control-label">{{"Export"|translate}}</label>
+                </div>
+                <div class="col-sm-10">
+                    <button class="btn btn-primary" type="button" ng-click="doExport()">
+                        {{"Export"|translate}} <span class="fa fa-download"></span>
+                    </button>
+                </div>
+            </div>
+
             <form novalidate role="form" name="editForm" ng-submit="doImport()">
                 <div class="row form-group">
                     <div class="col-sm-2">

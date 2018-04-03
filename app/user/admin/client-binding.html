@@ -1,9 +1,9 @@
 <div class="row form-group" ng-class="{'has-error': editForm.client.$invalid && editForm.client.$dirty}">
     <div class="col-sm-12">
-        <label class="control-label" for="client">{{"Client"|translate}}*</label>
+        <label class="control-label" for="client">{{"Client"|translate}}</label>
     </div>
     <div class="col-sm-6">
-        <input id="client" name="client" type="text" ng-model="user.$client" required
+        <input id="client" name="client" type="text" ng-model="user.$client"
                placeholder="{{'Search'|translate}}"
                typeahead-wait-ms="300" autocomplete="off"
                uib-typeahead="search as search.label for search in doSearchClient($viewValue)"

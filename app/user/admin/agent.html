@@ -9,22 +9,9 @@
                 <uib-tabset justified="true">
                     <uib-tab heading='{{"Basic"|translate}}'>
                         <p class="spacer"></p>
-                        <div class="row form-group"
-                             ng-class="{'has-error': editForm.workGroup.$invalid && editForm.workGroup.$dirty}">
-                            <div class="col-sm-2">
-                                <label>{{"Work Group"|translate}}*</label>
-                            </div>
-                            <div class="col-sm-4">
-                                <select name="workGroup" class="form-control" required ng-if="!user.id"
-                                        ng-options="k.name for k in workGroups|orderBy:'name'"
-                                        ng-model="user.workGroup">
-                                </select>
-                                <strong ng-if="user.id">{{workGroup.name}}</strong>
-                            </div>
-                        </div>
-
                         <ng-include src="'app/user/admin/user-basic.html'"></ng-include>
                     </uib-tab>
+
                     <uib-tab heading='{{"Roles"|translate}}'>
                         <p class="spacer"></p>
                         <div class="row">
@@ -45,6 +32,16 @@
                                 </table>
                             </div>
                         </div>
+                    </uib-tab>
+
+                    <uib-tab heading='{{"Work Group Permission"|translate}}' ng-if="workGroups && workGroups.length">
+                        <p class="spacer"></p>
+                        <ng-include src="'app/user/admin/user-work-group-permission.html'"></ng-include>
+                    </uib-tab>
+
+                    <uib-tab heading='{{"Client Binding"|translate}}'>
+                        <p class="spacer"></p>
+                        <ng-include src="'app/user/admin/client-binding.html'"></ng-include>
                     </uib-tab>
 
                     <uib-tab heading='{{"Login History"|translate}}' ng-show="user.id && userLogs.length">

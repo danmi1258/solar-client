@@ -77,24 +77,24 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-5" ng-class="{'has-error': editForm.portalWeight.$invalid && editForm.portalWeight.$dirty}">
+                    <div class="col-sm-5">
                         <div class="row">
                             <div class="col-sm-12">
-                                <label class="control-label" for="portalWeight">{{"Total Portal Weight"|translate}}</label>
+                                <label class="control-label">{{"Total Portal Weight"|translate}}</label>
                             </div>
                             <div class="col-sm-6">
-                                <input id="portalWeight" name="portalWeight" type="number" class="form-control" ng-model="entity.portalWeight" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/">
+                                {{sumWeight.portalWeight}}
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-sm-5" ng-class="{'has-error': editForm.commissionWeight.$invalid && editForm.commissionWeight.$dirty}">
+                    <div class="col-sm-5">
                         <div class="row">
                             <div class="col-sm-12">
-                                <label class="control-label" for="commissionWeight">{{"Total Commission Weight"|translate}}</label>
+                                <label class="control-label">{{"Total Commission Weight"|translate}}</label>
                             </div>
                             <div class="col-sm-6">
-                                <input id="commissionWeight" name="commissionWeight" type="number" class="form-control" ng-model="entity.commissionWeight" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/">
+                                {{sumWeight.commissionWeight}}
                             </div>
                         </div>
                     </div>
@@ -125,16 +125,16 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <th style="vertical-align: middle" class="col-sm-2">{{'Portal Weight'|translate}} (%)</th>
+                                <th style="vertical-align: middle" class="col-sm-2">{{'Portal Weight'|translate}}</th>
                                 <td ng-repeat="definition in commissionLevelDefinitions">
-                                    <input class="form-control" type="number" ng-model="definition.portalWeight">
+                                    <input class="form-control" type="number" ng-model="definition.portalWeight" ng-change="calculateWeight()">
                                 </td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <th style="vertical-align: middle" class="col-sm-2">{{'Commission Weight'|translate}} (%)</th>
+                                <th style="vertical-align: middle" class="col-sm-2">{{'Commission Weight'|translate}}</th>
                                 <td ng-repeat="definition in commissionLevelDefinitions">
-                                    <input class="form-control" type="number" ng-model="definition.commissionWeight">
+                                    <input class="form-control" type="number" ng-model="definition.commissionWeight" ng-change="calculateWeight()">
                                 </td>
                                 <td></td>
                             </tr>

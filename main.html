@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="lib/loadingBar/loading-bar.min.css"/>
-    <link rel="stylesheet" href="lib/loadingBar/loading-bar.min.css"/>
     <link rel="stylesheet" href="css/toaster.min.css"/>
     <link rel="stylesheet" href="css/app.css"/>
     <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Condensed:300,400,500,600,700|Open+Sans:400,800" rel="stylesheet">
@@ -20,14 +19,14 @@
 <body class="main outer-container">
 <div ng-show="intialLoading">Loading...</div>
 <div id="wrap" ng-cloak ng-controller="NavController">
-    <toaster-container
-            toaster-options="{'limit':10, 'close-button':true,'newest-on-top':true}"></toaster-container>
+    <toaster-container toaster-options="{'limit':10, 'close-button':true,'newest-on-top':true}"></toaster-container>
     <header>
         <div class="navbar-blue hidden-xs">
             <div class="container">
                 <div class="row">
                     <div class="logo-wrap">
                         <a href="#" ng-click="collapse()">
+                            <!--<img src="rest/v1/public/thumb.png" height="30">-->
                             <img src="images/logo.png" />
                         </a>
                     </div>
@@ -97,9 +96,9 @@
                     <ng-include src="'frame/nav.html'"></ng-include>
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-8 main-part-rgt">
-                    <div class="pull-right" ng-show="loading || loadingCache"><i
+                    <div class="pull-right" ng-show="loading"><i
                             class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></div>
-                    <div ng-view ng-show="!loading && !loadingCache"></div>
+                    <div ng-view ng-show="!loading"></div>
                 </div>
                 <div class="col-sm-12 visible-xs menu-lft-desktp">
                     <ng-include src="'frame/nav.html'"></ng-include>

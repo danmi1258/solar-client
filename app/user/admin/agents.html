@@ -74,9 +74,9 @@
                     <tbody>
                     <tr ng-repeat-start="entity in entities">
                         <td style="vertical-align: middle">
-                            <span class="text-success glyphicon glyphicon-plus clickable" ng-if="!entity.expand && entity.workGroup"
+                            <span class="text-success glyphicon glyphicon-plus clickable" ng-if="!entity.expand && (entity.user.workGroups && entity.user.workGroups.length || entity.clients && entity.clients.length)"
                                   ng-click="entity.expand=!entity.expand"></span>
-                            <span class="text-success glyphicon glyphicon-minus clickable" ng-if="entity.expand && entity.workGroup"
+                            <span class="text-success glyphicon glyphicon-minus clickable" ng-if="entity.expand && (entity.user.workGroups && entity.user.workGroups.length || entity.clients && entity.clients.length)"
                                   ng-click="entity.expand=!entity.expand"></span>
                         </td>
                         <td style="vertical-align: middle">{{entity.user.label}}</td>
@@ -97,14 +97,23 @@
                             </button>
                         </td>
                     </tr>
-                    <tr ng-if="entity.expand && entity.workGroup">
+                    <tr ng-if="entity.expand && entity.user.workGroups.length">
                         <th></th>
                         <th colspan="6">{{"Work Group"|translate}}</th>
                     </tr>
-                    <tr ng-if="entity.expand && entity.workGroup">
+                    <tr ng-if="entity.expand && entity.user.workGroups.length" ng-repeat="workGroup in entity.user.workGroups">
                         <td></td>
-                        <td colspan="6" style="vertical-align: middle">{{entity.workGroup.name}}
-                            <span ng-show="entity.workGroup.mt4Account"> [{{entity.workGroup.mt4Account}}]</span>
+                        <td colspan="6" style="vertical-align: middle">{{workGroup.name}}<span ng-show="workGroup.mt4Account"> - {{workGroup.mt4Account}}</span>
+                        </td>
+                    </tr>
+                    <tr ng-if="entity.expand && entity.clients && entity.clients.length">
+                        <th></th>
+                        <th colspan="6">{{"Client"|translate}}</th>
+                    </tr>
+                    <tr ng-repeat="client in entity.clients" ng-if="entity.expand && entity.clients && entity.clients.length">
+                        <th></th>
+                        <td colspan="6" style="vertical-align: middle">
+                            <a ng-href="#!/user/client/{{client.id}}/home">{{client.label}}</a>
                         </td>
                     </tr>
                     <tr ng-repeat-end ng-if="false"></tr>
