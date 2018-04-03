@@ -1,4 +1,4 @@
-<div class="panel panel-primary">
+<div class="panel panel-primary menu-panel">
     <div class="panel-heading clickable" ng-click="navigateHome()">
         <span><span class="glyphicon glyphicon-home"></span> {{'Home'|translate}}</span>
     </div>
@@ -26,7 +26,7 @@
     </div>
 </div>
 
-<div class="panel panel-primary" ng-if="systemMenu">
+<div class="panel panel-primary menu-panel system-menu" ng-if="systemMenu">
     <div class="panel-heading">
         <span><i ng-class="systemMenu.icon" aria-hidden="true"></i> {{systemMenu.name|translate}}</span>
     </div>

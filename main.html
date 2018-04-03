@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="lib/loadingBar/loading-bar.min.css"/>
     <link rel="stylesheet" href="css/toaster.min.css"/>
     <link rel="stylesheet" href="css/app.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Condensed:300,400,500,600,700|Open+Sans:400,800" rel="stylesheet">
 </head>
 <body class="main outer-container">
 <div ng-show="intialLoading">Loading...</div>
@@ -25,18 +26,18 @@
         <div class="navbar-blue hidden-xs">
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-2">
+                    <div class="logo-wrap">
                         <a href="#" ng-click="collapse()">
-                            <img src="rest/v1/public/thumb.png" height="40">
+                            <img src="images/logo.png" />
                         </a>
                     </div>
-                    <div class="col-xs-10" style="padding-right: 0">
+                    <div class="header-rght" style="padding-right: 0">
                         <div class="pull-right">
                             <ul class="list-inline">
                                 <li class="text-light">
-                                    <i class="fa fa-user" aria-hidden="true"></i> {{'Welcome'|translate}} <strong>{{currentUser.label}}</strong>
+                                    <div class="user-rght"><span class="wlcm-txt">{{'Welcome'|translate}}</span><span class="user-name">{{currentUser.label}}</span></div>
                                 </li>
-                                <li>
+                                <li class="mid-li">
                                 <span uib-dropdown>
                                     <a href="#" class="text-light" uib-dropdown-toggle>
                                         <i class="fa fa-globe" aria-hidden="true"></i> {{'Language'|translate}} <span
@@ -50,10 +51,7 @@
                                 </span>
                                 </li>
                                 <li>
-                                    <a href="#" ng-click="logout()">
-                                        <span class="text-light">{{'Logout'|translate}}</span> <i
-                                            class="fa fa-sign-out text-light"></i>
-                                    </a>
+                                    <a class="logout-lnk" href="#" ng-click="logout()"><span class="icon-logout"></span> {{'Logout'|translate}}</a>
                                 </li>
                             </ul>
                         </div>
@@ -64,11 +62,10 @@
 
         <div class="navbar-blue-xs visible-xs">
             <div class="row" style="margin-left: 0; margin-right: 0">
-                <div class="col-xs-4">
+                <div class="col-xs-3" style="padding:0 0 0 10px">
                      <span uib-dropdown>
                         <a href="#" uib-dropdown-toggle>
-                            <strong class="text-light">{{'Language'|translate}}</strong><span
-                                class="caret text-light"></span>
+                            <strong class="text-light">{{'Language'|translate}}<span class="caret text-light"></span></strong>
                         </a>
                         <ul uib-dropdown-menu>
                             <li ng-repeat="lang in languages" ng-click="setLanguage(lang)">
@@ -77,12 +74,12 @@
                         </ul>
                     </span>
                 </div>
-                <div class="col-xs-4 text-center">
-                    <a href="#" ng-click="collapse()">
-                        <img src="rest/v1/public/thumb.png" height="30">
+                <div class="col-xs-6 text-center">
+                    <a class="mob-logo" href="#" ng-click="collapse()">
+                        <img  src="images/logo.png" />
                     </a>
                 </div>
-                <div class="col-xs-4">
+                <div class="col-xs-3">
                     <div class="pull-right">
                         <a href="#" class="text-light" ng-click="logout()">
                             <strong>{{'Logout'|translate}}</strong>
@@ -95,23 +92,25 @@
     <div id="loading-bar-container"></div>
     <div id="body">
         <div class="container main-container">
-            <div class="row shadow">
-                <div class="col-lg-3 col-md-3 col-sm-4 hidden-xs" style="padding-left: 5px">
+            <div class="row prelative">
+                <div class="col-lg-3 col-md-3 col-sm-4 hidden-xs menu-lft-desktp">
                     <ng-include src="'frame/nav.html'"></ng-include>
                 </div>
-                <div class="col-lg-9 col-md-9 col-sm-8" style="padding-left: 5px; padding-right: 5px">
+                <div class="col-lg-9 col-md-9 col-sm-8 main-part-rgt">
                     <div class="pull-right" ng-show="loading || loadingCache"><i
                             class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></div>
                     <div ng-view ng-show="!loading && !loadingCache"></div>
                 </div>
-                <div class="col-sm-12 visible-xs" style="padding-left: 5px; padding-right: 5px">
+                <div class="col-sm-12 visible-xs menu-lft-desktp">
                     <ng-include src="'frame/nav.html'"></ng-include>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!--
 <ng-include src="'frame/footer.html'"></ng-include>
+-->
 <script src="lib/angular/angular.min.js"></script>
 <script src="lib/angular/angular-sanitize.min.js"></script>
 <script src="lib/angular/angular-touch.min.js"></script>
