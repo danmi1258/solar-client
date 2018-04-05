@@ -1,4 +1,45 @@
-
+@font-face {
+    font-family: 'Open Sans', sans-serif;
+    src: url(fonts/OpenSans-Bold.ttf);
+    font-weight: 800;
+}
+@font-face {
+    font-family: 'Open Sans', sans-serif;
+    src: url(fonts/OpenSans-Regular.ttf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'ESC-Thin';
+    src: url(fonts/EncodeSansCondensed-Thin.ttf);
+}
+@font-face {
+    font-family: 'ESC-Light';
+    src: url(fonts/EncodeSansCondensed-Light.ttf);
+}
+@font-face {
+    font-family: 'ESC-Regular';
+    src: url(fonts/EncodeSansCondensed-Regular.ttf);
+}
+@font-face {
+    font-family: 'ESC-Medium';
+    src: url(fonts/EncodeSansCondensed-Medium.ttf);
+}
+@font-face {
+    font-family: 'ESC-SemiBold';
+    src: url(fonts/EncodeSansCondensed-SemiBold.ttf);
+}
+@font-face {
+    font-family: 'ESC-Bold';
+    src: url(fonts/EncodeSansCondensed-Bold.ttf);
+}
+@font-face {
+    font-family: 'ESC-ExtraBold';
+    src: url(fonts/EncodeSansCondensed-ExtraBold.ttf);
+}
+@font-face {
+    font-family: 'ESC-Black';
+    src: url(fonts/EncodeSansCondensed-Black.ttf);
+}
 .nav, .pagination, .carousel, .panel-title a {
     cursor: pointer;
 }
@@ -279,7 +320,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 /*==========================================================*/
 body {
-    font-family: 'Encode Sans Condensed', sans-serif;
+    font-family: 'ESC-Regular';
 }
 
 a {
@@ -313,7 +354,7 @@ a {
 
 .header-rght ul li a.logout-lnk, .header-rght ul li a.logout-lnk:hover {
     color: #26CC68;
-    font-weight: 500;
+    font-family: 'ESC-Medium';
     text-decoration: none;
 }
 
@@ -372,7 +413,7 @@ a {
 }
 
 .user-name {
-    font-weight: 500;
+    font-family: 'ESC-Medium';
     line-height: 22px;
     display: block;
 }
@@ -418,7 +459,7 @@ a {
 .menu-panel .panel-heading {
     font-size: 18px;
     text-transform: uppercase;
-    font-weight: 500;
+    font-family: 'ESC-Medium';
     background-color: transparent;
     border-color: transparent;
     padding: 0 35px;
@@ -430,7 +471,7 @@ a {
     border-bottom: 1px solid #1BAECD;
     color: #FFFFFF;
     background-color: transparent;
-    font-weight: 500;
+    font-family: 'ESC-Medium';
     font-size: 15px;
     padding: 30px 30px 30px 60px;
     line-height: 1;
@@ -456,7 +497,7 @@ a.list-group-item, a.list-group-item:focus, a.list-group-item:hover, button.list
     border-bottom: 1px solid #1BAECD;
     color: #FFFFFF;
     background-color: transparent;
-    font-weight: 500;
+    font-family: 'ESC-Medium';
     font-size: 15px;
     padding: 0 30px 0 60px;
     line-height: 61px;
@@ -482,7 +523,7 @@ a.list-group-item, a.list-group-item:focus, a.list-group-item:hover, button.list
     text-transform: uppercase;
     padding: 25px 45px;
     border-radius: 2px 2px 0 0;
-    font-weight: 600;
+    font-family: 'ESC-SemiBold';
 }
 
 .nav-tabs > li.active > a, .nav-tabs > li > a:hover, .nav-tabs > li.active > a:hover,
@@ -498,7 +539,7 @@ a.list-group-item, a.list-group-item:focus, a.list-group-item:hover, button.list
 
 .panel.menu-panel > .list-group .list-group-item .text-primary strong i {
     font-style: normal;
-    font-weight: 600;
+    font-family: 'ESC-SemiBold';
 }
 
 /*============================================*/
@@ -513,7 +554,7 @@ a.list-group-item, a.list-group-item:focus, a.list-group-item:hover, button.list
 .summry-wrap.panel-primary > .panel-heading h4, .caccounts > .panel-heading h4 {
     font-size: 25px;
     line-height: 50px;
-    font-weight: 700;
+    font-family: 'ESC-Bold';
     text-align: left;
 }
 
@@ -542,7 +583,7 @@ a.list-group-item, a.list-group-item:focus, a.list-group-item:hover, button.list
     color: #8A96A8;
     font-size: 17px;
     line-height: 29px;
-    font-weight: 300;
+    font-family: 'ESC-Light';
 }
 
 .date-input-bx input[type="text"], .date-input-bx .cacc-num {
@@ -550,7 +591,7 @@ a.list-group-item, a.list-group-item:focus, a.list-group-item:hover, button.list
     color: #152A4A;
     font-size: 20px;
     line-height: 29px;
-    font-weight: 700;
+    font-family: 'ESC-Bold';
     padding: 0;
     background: transparent;
     height: auto;
@@ -598,7 +639,7 @@ a.list-group-item, a.list-group-item:focus, a.list-group-item:hover, button.list
     height: 200px;
     color: #7693BE;
     font-size: 18px;
-    font-weight: 300;
+    font-family: 'ESC-Light';
     line-height: 29px;
     padding-top: 80px;
 }
@@ -633,7 +674,7 @@ a.list-group-item, a.list-group-item:focus, a.list-group-item:hover, button.list
 
 .caccounts select, .caccounts input[type="text"] {
     border-radius: 0;
-    font-weight: 300;
+    font-family: 'ESC-Light';
     color: #636363;
     font-size: 16px;
     line-height: 18px;
@@ -672,7 +713,7 @@ a.list-group-item, a.list-group-item:focus, a.list-group-item:hover, button.list
     line-height: 18px;
     padding: 16px 15px;
     text-transform: uppercase;
-    font-weight: 500;
+    font-family: 'ESC-Medium';
     width: 100%;
 }
 
@@ -723,7 +764,7 @@ a.list-group-item, a.list-group-item:focus, a.list-group-item:hover, button.list
 
 .caccounts-second .table-striped > tbody > tr > td:last-child {
     color: #152A4A;
-    font-weight: 600;
+    font-family: 'ESC-SemiBold';
 }
 .caccounts-second .table-striped > tbody > tr > td:nth-child(3){text-align: center}
 .caccounts-second .table-striped > tbody > tr > td:nth-child(4),
