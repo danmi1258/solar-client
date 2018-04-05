@@ -8,7 +8,8 @@ angular.module("solar.user-admin", [])
     .factory('AgentResource', ['$resource',
         function ($resource) {
             return $resource(REST_PREFIX + '/core/agent/:id', {}, {
-                search: {params: {id: 'search'}, method: 'POST'}
+                search: {params: {id: 'search'}, method: 'POST'},
+                validate: {params: {id: 'validate'}, method: 'GET', headers: {'Async-Request': 'true'}}
             });
         }])
     .factory('WorkTypeResource', ['$resource',
@@ -343,6 +344,19 @@ angular.module("solar.user-admin", [])
             }
         });
 
+        $scope.validateEmail = function (email) {
+            $scope.user.$override = false;
+            if (!email) {
+                $scope.emailView = null;
+                return;
+            }
+
+            $scope.emailView = resource.validate({
+                "email": email,
+                "user-id": $scope.user? $scope.user.id:null
+            });
+        };
+
         $scope.doSearchClient = function (searchTerm) {
             return $http.get(REST_PREFIX + '/client/search/' + searchTerm, {
                 headers: {
@@ -383,6 +397,7 @@ angular.module("solar.user-admin", [])
         $scope.save = function () {
             var view = new resource();
             view.user = $scope.user;
+            view.override = $scope.user.$override;
             if ($scope.user.$client) {
                 view.client = $scope.user.$client;
             }

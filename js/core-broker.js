@@ -390,7 +390,7 @@ angular.module("solar.core-broker", [])
     }])
     .controller('ClientLoginProducerController', ['$scope', 'ClientLoginProducerResource', function ($scope, resource) {
         $scope.process = function () {
-            $scope.loginView = resource.get(function () {
+            $scope.loginView = resource.save(function () {
                 if ($scope.loginView && $scope.loginView.fileRecord) {
                     location.assign(REST_PREFIX + "/client/admin/login-producer/client/download/" + $scope.loginView.fileRecord.id);
                 }

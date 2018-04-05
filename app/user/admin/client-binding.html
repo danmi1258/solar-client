@@ -6,7 +6,7 @@
         <input id="client" name="client" type="text" ng-model="user.$client"
                placeholder="{{'Search'|translate}}"
                typeahead-wait-ms="300" autocomplete="off"
-               uib-typeahead="search as search.label for search in doSearchClient($viewValue)"
+               uib-typeahead="search as '#' + search.id + ' - ' + search.label for search in doSearchClient($viewValue)"
                typeahead-loading="loadingClientSearch" class="form-control"
                typeahead-editable="false">
         <i ng-show="loadingClientSearch" class="glyphicon glyphicon-refresh"></i>
