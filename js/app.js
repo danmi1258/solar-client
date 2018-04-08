@@ -28,7 +28,7 @@ angular.module('solar', [
     }])
     .config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeSpinner = false;
-        cfpLoadingBarProvider.latencyThreshold = 500;
+        cfpLoadingBarProvider.latencyThreshold = 1000;
         cfpLoadingBarProvider.parentSelector = '#loading-bar-container';
     }])
     .factory('SystemResource', ['$resource',

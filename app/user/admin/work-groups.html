@@ -38,7 +38,7 @@
                             <tr ng-repeat="entity in result|orderBy:['mt4Account']">
                                 <td style="vertical-align: middle">
                                     {{entity.name}} <span ng-show="entity.mt4Account">({{entity.mt4Account}})</span>
-                                    <span ng-show="entity.workGroupType!='Broker'"><a class="clickable" ng-click="edit(entity)"><span class="glyphicon glyphicon-pencil"></span></a></span>
+                                    <a class="clickable" ng-click="edit(entity)"><span class="glyphicon glyphicon-pencil"></span></a>
                                 </td>
                                 <td style="vertical-align: middle">{{entity.workGroupCategory}}</td>
                                 <td style="vertical-align: middle">
@@ -68,10 +68,21 @@
                         </table>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-success" ng-click="expandAll(expand=!expand)">
+                            <span ng-show="!expand">{{'Expand All'|translate}}</span>
+                            <span ng-show="expand">{{'Collapse All'|translate}}</span>
+                            <span ng-show="!expand" class="glyphicon glyphicon-plus"></span>
+                            <span ng-show="expand" class="glyphicon glyphicon-minus"></span>
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <div class="tree-group">
-                <div ng-repeat="workGroup in topWorkGroups|orderBy:['workGroupType','hasChildren','mt4Account']"
+                <div ng-repeat="workGroup in topWorkGroups|orderBy:['hasChildren','mt4Account']"
                      ng-include="'workGroupTree'" ng-init="entity=workGroup;level=0">
                 </div>
                 <div class="tree-item">
@@ -97,11 +108,9 @@
                 <span ng-if="!entity.workGroups || !entity.workGroups.length">
                     <span class="glyphicon glyphicon-stop"></span>
                 </span>
-                <strong ng-class="{'text-success':entity.workGroupType=='Broker', 'text-danger':entity.endDate}">
+                <strong ng-class="{'text-danger':entity.endDate}">
                     {{entity.name}} <span ng-show="entity.mt4Account!=null">({{entity.mt4Account}})</span>
-                    <i ng-if="entity.workGroupType=='Broker'" ng-show="!expand" class="text-primary fa fa-plus-square clickable" aria-hidden="true" ng-click="expandAll(true)"></i>
-                    <i ng-if="entity.workGroupType=='Broker'" ng-show="expand" class="text-primary fa fa-minus-square clickable" aria-hidden="true" ng-click="expandAll(false)"></i>
-                </strong> <span ng-show="entity.workGroupType!='Broker'"><a class="clickable" ng-click="edit(entity)"><span class="glyphicon glyphicon-pencil"></span></a></span>
+                </strong> <a class="clickable" ng-click="edit(entity)"><span class="glyphicon glyphicon-pencil"></span></a>
             </span>
         </p>
     </div>

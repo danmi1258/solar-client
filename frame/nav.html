@@ -9,7 +9,10 @@
                 <i ng-class="menu.icon" aria-hidden="true"></i>
                 <i ng-if="!menu.icon && !menu.expanded" class="text-success fa fa-plus clickable" aria-hidden="true" ng-click="menu.expanded=!menu.expanded"></i>
                 <i ng-if="!menu.icon && menu.expanded" class="text-success fa fa-minus clickable" aria-hidden="true" ng-click="menu.expanded=!menu.expanded"></i>
-                <strong><i>{{menu.name|translate}}</i></strong>
+                <strong>
+                    <i ng-if="!menu.icon" ng-click="menu.expanded=!menu.expanded" class="clickable">{{menu.name|translate}}</i>
+                    <i ng-if="menu.icon">{{menu.name|translate}}</i>
+                </strong>
             </span>
         </div>
         <a class="list-group-item clickable" ng-repeat="item in menu.menuItems" ng-click="navigate(item.route)"

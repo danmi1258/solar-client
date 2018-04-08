@@ -102,6 +102,8 @@ angular.module("solar.fpmarkets-agent", [])
 
         $scope.pageChanged = function () {
             $scope.entities = getPagedEntities($scope.accounts, $scope.pageParams.itemsPerPage, $scope.pageParams.currentPage);
+
+            $scope.expandAll = true;
         };
 
         $scope.$watch('expandAll', function (expand) {

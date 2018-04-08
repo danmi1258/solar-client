@@ -19,12 +19,14 @@
 <div ng-show="intialLoading">Loading...</div>
 <div id="wrap" ng-cloak ng-controller="NavController">
     <toaster-container toaster-options="{'limit':10, 'close-button':true,'newest-on-top':true}"></toaster-container>
+    <div id="loading-bar-container"></div>
     <header>
         <div class="navbar-blue hidden-xs">
             <div class="container">
                 <div class="row">
                     <div class="logo-wrap">
                         <a href="#" ng-click="collapse()">
+                            <!--<img src="rest/v1/public/thumb.png" height="30">-->
                             <img src="images/logo.png" />
                         </a>
                     </div>
@@ -86,7 +88,6 @@
             </div>
         </div>
     </header>
-    <div id="loading-bar-container"></div>
     <div id="body">
         <div class="container main-container">
             <div class="row prelative">

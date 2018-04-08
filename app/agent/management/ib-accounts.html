@@ -67,7 +67,7 @@
                     </tr>
                     <tr ng-repeat-start="ac in account.allSubAccounts" ng-if="account.expand && account.allSubAccounts && account.allSubAccounts.length">
                         <td></td>
-                        <td>[{{ac.level}}] {{ac.account.login}}</td>
+                        <td>{{ac.account.login}} [{{'Level'|translate}}: {{ac.level}}]</td>
                         <td>{{ac.name}}</td>
                         <td>{{ac.phone}}</td>
                         <td colspan="2">{{ac.email}}</td>
