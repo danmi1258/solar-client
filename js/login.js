@@ -1,5 +1,6 @@
 'use strict';
 
+var tag = new Date().getTime();
 angular.module('login', [
     'ngRoute',
     'ngResource',
@@ -68,6 +69,41 @@ angular.module('login', [
             }
         };
     }])
+    .factory("noCacheInterceptor", [function () {
+        var noCacheFolders = ["app", "frame"];
+
+        var shouldApplyNoCache = function (config) {
+            // The logic in here can be anything you like, filtering on
+            // the HTTP method, the URL, even the request body etc.
+            for (var i = 0; i < noCacheFolders.length; i++) {
+                var folder = noCacheFolders[i];
+                if (config.url.indexOf(folder + "/") === 0) {
+                    return true;
+                }
+            }
+            return false;
+        };
+
+        var applyNoCache = function (config) {
+            if (config.url.indexOf("?") !== -1) {
+                config.url += "&";
+            } else {
+                config.url += "?";
+            }
+            config.url += "nocache=" + tag;
+        };
+
+        var interceptor = {
+            request: function (config) {
+                if (shouldApplyNoCache(config)) {
+                    applyNoCache(config);
+                }
+                return config;
+            }
+        };
+
+        return interceptor;
+    }])
     .config(['$httpProvider', function ($httpProvider) {
         //initialize get if not there
         if (!$httpProvider.defaults.headers.get) {
@@ -76,6 +112,7 @@ angular.module('login', [
         //disable IE ajax request caching
         $httpProvider.defaults.headers.get['If-Modified-Since'] = '0';
         $httpProvider.interceptors.push('loadingScreenHttpInterceptor');
+        $httpProvider.interceptors.push("noCacheInterceptor");
     }])
     .factory('SignUpResource', ['$resource',
         function ($resource) {

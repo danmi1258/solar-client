@@ -1,8 +1,44 @@
 'use strict';
 
-/* Services */
+var tag = new Date().getTime();
+
 angular.module('solar.services', ['ngResource'])
     .value('version', '0.1')
+    .factory("noCacheInterceptor", [function () {
+        var noCacheFolders = ["app", "frame"];
+
+        var shouldApplyNoCache = function (config) {
+            // The logic in here can be anything you like, filtering on
+            // the HTTP method, the URL, even the request body etc.
+            for (var i = 0; i < noCacheFolders.length; i++) {
+                var folder = noCacheFolders[i];
+                if (config.url.indexOf(folder + "/") === 0) {
+                    return true;
+                }
+            }
+            return false;
+        };
+
+        var applyNoCache = function (config) {
+            if (config.url.indexOf("?") !== -1) {
+                config.url += "&";
+            } else {
+                config.url += "?";
+            }
+            config.url += "nocache=" + tag;
+        };
+
+        var interceptor = {
+            request: function (config) {
+                if (shouldApplyNoCache(config)) {
+                    applyNoCache(config);
+                }
+                return config;
+            }
+        };
+
+        return interceptor;
+    }])
     .factory("HttpStatusManager", ['$rootScope', function ($rootScope) {
         var HttpStatusManager = {
             activeCount: 0,
@@ -182,4 +218,5 @@ angular.module('solar.services', ['ngResource'])
         $httpProvider.defaults.headers.get['Pragma'] = 'no-cache';
 
         $httpProvider.interceptors.push('loadingScreenHttpInterceptor');
+        $httpProvider.interceptors.push("noCacheInterceptor");
     }]);
