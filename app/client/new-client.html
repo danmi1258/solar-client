@@ -1,31 +1,25 @@
 <div ng-controller="NewClientController">
     <div class="panel panel-info">
-        <div class="panel-heading text-center">
-            <strong class="heading">{{"New Client"|translate}}</strong>
+        <div class="panel-heading">
+            <h4 class="heading">{{"New Client"|translate}}</h4>
         </div>
 
         <div class="panel-body">
             <form novalidate role="form" name="editForm" ng-submit="save()">
                 <ng-include src="'app/client-sign-up.html'"></ng-include>
 
-                <div class="row form-group"
-                     ng-class="{'has-error': editForm.source.$invalid && editForm.source.$dirty}">
-                    <div class="col-sm-12">
-                        <label class="control-label" for="source">{{"Lead Source"|translate}}</label>
+                <div class="spc-frm-bg">
+                    <div class="row form-group">
+                        <div class="col-sm-12" ng-class="{'has-error': editForm.source.$invalid && editForm.source.$dirty}">
+                            <label class="control-label" for="source">{{"Lead Source"|translate}}</label>
+                            <input id="source" name="source" class="form-control" ng-model="entity.client.source" ng-trim="true"/>
+                        </div>
                     </div>
-                    <div class="col-sm-8">
-                        <input id="source" name="source" class="form-control" ng-model="entity.client.source"
-                               ng-trim="true"/>
-                    </div>
-                </div>
-
-                <div class="row form-group" ng-class="{'has-error': editForm.notes.$invalid && editForm.notes.$dirty}">
-                    <div class="col-sm-12">
-                        <label class="control-label" for="notes">{{"Notes"|translate}}</label>
-                    </div>
-                    <div class="col-sm-8">
-                <textarea id="notes" name="notes" class="form-control" rows="5"
-                          ng-model="entity.notes" ng-trim="true"></textarea>
+                    <div class="row form-group">
+                        <div class="col-sm-12" ng-class="{'has-error': editForm.notes.$invalid && editForm.notes.$dirty}">
+                            <label class="control-label" for="notes">{{"Notes"|translate}}</label>
+                            <textarea id="notes" name="notes" class="form-control" rows="5" ng-model="entity.notes" ng-trim="true"></textarea>
+                        </div>
                     </div>
                 </div>
 
