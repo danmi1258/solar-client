@@ -14,28 +14,30 @@
                     <div class="date-icon-bx" ng-click="endDate.opened=true"><img src="../../../images/icon-calender.png" /></div>
                     <div class="date-input-bx"><div class="dib-txt">{{'End Date'|translate}}</div><input name="endDate" type="text"  uib-datepicker-popup ng-model="view.endDate" is-open="endDate.opened" datepicker-options="dateOptions" ng-required="true" /></div>
                 </div>
-                <div class="col-sm-4 date-bx">
-                    <div class="date-icon-bx"><img src="../../../images/icon-rebate.png" /></div>
-                    <div class="date-input-bx"><div class="dib-txt">{{'Rebate'|translate}}</div><input type="text" class="summary-input" value="{{view.rebate|number:2}}" ng-disabled="true"></div>
+                <div class="col-sm-4 usd-bx-wrap">
+                    <button class="btn-blank" type="submit" ng-disabled="editForm.$invalid">
+                        <img src="../../../images/icon-refresh.png" />
+                    </button>
                 </div>
                 <div class="clearfix"></div>
                 <div ng-repeat="summary in view.summaryList">
-                    <div class="col-sm-5 usd-bx-wrap">
+                    <div class="col-sm-4 usd-bx-wrap">
                         <div class="usd-bx">
                             <div class="usd-sign"><div class="big-sign"><img src="../../../images/icon-usd.png" /></div>{{summary.currency}}</div>
                             <div class="usd-balance"><div class="big-numbers"><input type="text" class="summary-input" value="{{summary.netDeposit|number:2}}" ng-disabled="true"></div>{{'Net Deposit'|translate}}</div>
                         </div>
                     </div>
-                    <div class="col-sm-5 usd-bx-wrap">
+                    <div class="col-sm-4 usd-bx-wrap">
                         <div class="usd-bx equity-bx">
                             <div class="usd-sign"><div class="big-sign"><img src="../../../images/icon-usd.png" /></div>{{'Volume'|translate}}</div>
                             <div class="usd-balance"><div class="big-numbers"><input type="text" class="summary-input" value="{{summary.volume|number:2}}" ng-disabled="true"></div>{{'Lots'|translate}}</div>
                         </div>
                     </div>
-                    <div class="col-sm-2 usd-bx-wrap">
-                        <button class="btn-blank" type="submit" ng-disabled="editForm.$invalid">
-                            <img src="../../../images/icon-refresh.png" />
-                        </button>
+                    <div class="col-sm-4 usd-bx-wrap">
+                        <div class="usd-bx">
+                            <div class="usd-sign"><div class="big-sign"><img src="../../../images/icon-usd.png" /></div>{{summary.currency}}</div>
+                            <div class="usd-balance"><div class="big-numbers"><input type="text" class="summary-input" value="{{view.rebate|number:2}}" ng-disabled="true"></div>{{'Rebate'|translate}}</div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-12 data-blnk" ng-if="!view.summaryList.length">{{'Data is not available.'|translate}}</div>
