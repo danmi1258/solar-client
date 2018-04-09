@@ -490,8 +490,11 @@ a {
     padding: 7px 10px;
     font-size: 15px;
     margin-top: -5px;
+    background-color: #26cc68;
 }
-
+.panel.menu-panel > .list-group .list-group-item:hover .badge {
+    background-color: #149fbc;
+}
 a.list-group-item, a.list-group-item:focus, a.list-group-item:hover, button.list-group-item:focus, button.list-group-item:hover {
     border: none;
     border-bottom: 1px solid #1BAECD;
@@ -516,7 +519,7 @@ a.list-group-item, a.list-group-item:focus, a.list-group-item:hover, button.list
 
 .nav-tabs > li > a {
     color: #152A4A;
-    cursor: default;
+    cursor: pointer;
     background-color: #F3F3F3;
     border: none;
     font-size: 18px;
@@ -543,15 +546,26 @@ a.list-group-item, a.list-group-item:focus, a.list-group-item:hover, button.list
 }
 
 /*============================================*/
-.summry-wrap.panel-primary > .panel-heading, .caccounts > .panel-heading {
+.main-part-rgt .panel{
+    border:none;
+    box-shadow: none;
+}
+.main-part-rgt .panel-primary > .panel-heading{
     color: #152A4A;
     background-color: transparent;
-    padding: 0 0 10px;
-    border-bottom: 1px solid #E5E5E5;
+    border-bottom: none;
+    margin: 0;
+    padding: 0;
+}
+.main-part-rgt .panel-info .panel-heading{
+    color: #152A4A;
+    background-color: transparent;
+    border-bottom: 1px solid #EEEEEE;
     margin-bottom: 30px;
+    padding: 0;
 }
 
-.summry-wrap.panel-primary > .panel-heading h4, .caccounts > .panel-heading h4 {
+.main-part-rgt .panel-primary > .panel-heading h4, .main-part-rgt .panel-info .panel-heading h4 {
     font-size: 25px;
     line-height: 50px;
     font-family: 'ESC-Bold';
@@ -563,7 +577,7 @@ a.list-group-item, a.list-group-item:focus, a.list-group-item:hover, button.list
     box-shadow: none;
 }
 
-.caccounts .panel-body {
+.main-part-rgt .panel-body {
     padding: 0;
 }
 
@@ -672,27 +686,6 @@ a.list-group-item, a.list-group-item:focus, a.list-group-item:hover, button.list
     line-height: 20px;
 }
 
-.caccounts select, .caccounts input[type="text"] {
-    border-radius: 0;
-    font-family: 'ESC-Light';
-    color: #636363;
-    font-size: 16px;
-    line-height: 18px;
-    padding: 13px 15px;
-    height: auto;
-}
-
-.caccounts select {
-    -moz-appearance: none; /* Firefox */
-    -webkit-appearance: none; /* Safari and Chrome */
-    appearance: none;
-    background: url("../images/icon-select.png") no-repeat 95% center;
-}
-
-.caccounts input[type="text"] {
-    padding: 15px 15px 16px;
-}
-
 .cpadd-1 {
     padding: 0 5px 0 15px;
 }
@@ -715,6 +708,7 @@ a.list-group-item, a.list-group-item:focus, a.list-group-item:hover, button.list
     text-transform: uppercase;
     font-family: 'ESC-Medium';
     width: 100%;
+    max-width: 180px;
 }
 
 .caccounts .date-icon-bx {
@@ -725,11 +719,11 @@ a.list-group-item, a.list-group-item:focus, a.list-group-item:hover, button.list
     margin: 50px auto;
 }
 
-.caccounts-second .table {
+.table {
     text-transform: uppercase;
 }
 
-.caccounts-second .table > tbody > tr > td, .caccounts-second .table > tbody > tr > th, .caccounts-second .table > tfoot > tr > td, .caccounts-second .table > tfoot > tr > th, .caccounts-second .table > thead > tr > td, .caccounts-second .table > thead > tr > th {
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
     padding: 14.5px;
     line-height: 1.42857143;
     vertical-align: top;
@@ -738,19 +732,20 @@ a.list-group-item, a.list-group-item:focus, a.list-group-item:hover, button.list
     color: #636363;
 }
 
-.caccounts-second .table > thead > tr > th {
+.table > thead > tr > th {
     background-color: #152A4A;
-}
-
-.caccounts-second .table > thead > tr > th a {
     color: #FFFFFF;
 }
 
-.caccounts-second .table-striped > tbody > tr:nth-of-type(2n+1) {
+.table > thead > tr > th a {
+    color: #FFFFFF;
+}
+
+.table-striped > tbody > tr:nth-of-type(2n+1) {
     background-color: #FFFFFF;
 }
 
-.caccounts-second .table-striped > tbody > tr:nth-of-type(2n) {
+.table-striped > tbody > tr:nth-of-type(2n) {
     background-color: #F3F3F3;
 }
 
@@ -778,7 +773,155 @@ a.list-group-item, a.list-group-item:focus, a.list-group-item:hover, button.list
 .pagination > li > a:focus, .pagination > li > a:hover, .pagination > li > span:focus, .pagination > li > span:hover {
     color: #152A4A;
 }
+form .control-label{
+    font-size: 16px;
+    line-height: 18px;
+    color: #303030;
+    font-family: 'ESC-SemiBold';
+    font-weight: normal;
+}
+form input[type="text"],form input[type="number"], form select.form-control{
+    border: 1px solid #e0dfdf;
+    font-size: 16px;
+    line-height: 50px;
+    color: #636363;
+    border-radius: 0;
+    height: 50px;
+    padding: 0 20px;
+    box-shadow: none;
+    font-family: 'ESC-Light';
+}
+form .input-group-btn button{
+    padding: 13px 12px;
+    border-radius: 0;
+    opacity: 0.55;
+}
 
+form select.form-control {
+    -moz-appearance: none; /* Firefox */
+    -webkit-appearance: none; /* Safari and Chrome */
+    appearance: none;
+    background: url("../images/icon-select.png") no-repeat 95% center;
+}
+input[type="number"] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.number-input {
+    display: inline-flex;
+    width: 100%;
+}
+
+.number-input,
+.number-input * {
+    box-sizing: border-box;
+}
+
+.number-input .ni {
+    outline:none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 25px;
+    cursor: pointer;
+    margin: 0;
+    position: relative;
+}
+
+.number-input .ni.plus{
+    display: inline-block;
+    position: absolute;
+    background: url("../images/icon-num-up.png");
+    width: 50px;
+    height: 25px;
+    right: 15px;
+    top: 0;
+}
+.number-input .ni.minus {
+    display: inline-block;
+    position: absolute;
+    background: url("../images/icon-num-dwn.png");
+    width: 50px;
+    height: 25px;
+    right: 15px;
+    bottom: 0;
+}
+.pagination-sm .pagination-first {
+    position: absolute;
+    left: 15px;
+    top: 20px;
+}
+.pagination-sm .pagination-prev {
+    position: absolute;
+    left: 62px;
+    top: 20px;
+}
+.pagination-sm .pagination-last {
+    position: absolute;
+    right: 15px;
+    top: 20px;
+}
+.pagination-sm .pagination-next {
+    position: absolute;
+    right: 62px;
+    top: 20px;
+}
+.pagination-sm > li > a, .pagination-sm > li > span{
+    padding: 0 10px;
+    font-size: 15px;
+    line-height: 30px;
+    color: #abaaaa;
+    border: 1px solid #E0DFDF;;
+}
+
+.pagination > li > a:focus, .pagination > li > a:hover,
+.pagination > li > span:focus, .pagination > li > span:hover,
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover{
+    background-color: #149fbc;
+    color: #FFFFFF;
+    border: 1px solid #149FBC;
+}
+.pagination > .disabled > a, .pagination > .disabled > a:focus, .pagination > .disabled > a:hover, .pagination > .disabled > span, .pagination > .disabled > span:focus, .pagination > .disabled > span:hover {
+    color: #abaaaa;
+    cursor: not-allowed;
+    background-color: #fff;
+    border-color: #e0dfdf;
+    opacity: 0.7;
+}
+.pagination > li.pagination-page a, .pagination > li.pagination-page a:hover, .pagination > li.pagination-page a:focus{
+    border: none;
+}
+.pagi-wrap {
+    text-align: center;
+    position: relative;
+}
+.text-success {
+    color: #26cc68;
+}
+.trade-activi .table-striped > tbody > tr > td:nth-child(5){
+    font-family: 'ESC-SemiBold';
+}
+.trade-activi .table-striped > tbody > tr > td:nth-child(6),
+.trade-activi .table-striped > tbody > tr > td:last-child{
+    color: #26CC68;
+}
+.trade-activi td[neg]::after {
+    content: attr(neg);
+}
+.trade-activi td[neg^="-"]:after {
+    color: #fc1e1e;
+}
+/*=====================================================*/
 @media only screen and (max-width: 1199px) {
     .main-part-rgt {padding: 40px 60px;}
     .caccounts-second {margin: 30px auto;}
