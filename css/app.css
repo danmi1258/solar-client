@@ -786,7 +786,7 @@ form .control-label{
     font-family: 'ESC-SemiBold';
     font-weight: normal;
 }
-form input[type="text"],form input[type="number"], form select.form-control, form input, form textarea, #category{
+form input[type="text"],form input[type="number"], form select.form-control, form input, form textarea, #category,#search{
     border: 1px solid #e0dfdf !important;
     font-size: 16px !important;
     line-height: 50px !important;
@@ -938,7 +938,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .btn-primary{
     display: inline-block;
-    padding: 15px 35px;
+    padding: 10px 30px;
     margin-bottom: 0;
     font-family: 'ESC-Bold';
     font-size: 16px;
@@ -965,8 +965,8 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: #26CC68;
     border-color: #26CC68;
 }
-.btn-warning, .btn-success{
-    padding: 15px 35px;
+.btn-warning, .btn-success, .btn-danger{
+    padding: 10px 25px;
     font-family: 'ESC-Bold';
     font-size: 16px;
     font-weight: 400;
@@ -982,6 +982,13 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .tree-group .tg-inn:nth-child(2n+1) .tree-item {
     background-color: #F5F5F5;
+}
+.sml-tab .nav-tabs > li > a{
+    padding: 25px;
+    font-size: 16px;
+}
+.table > tbody > tr.success > td, .table > tbody > tr.success > th, .table > tbody > tr > td.success, .table > tbody > tr > th.success, .table > tfoot > tr.success > td, .table > tfoot > tr.success > th, .table > tfoot > tr > td.success, .table > tfoot > tr > th.success, .table > thead > tr.success > td, .table > thead > tr.success > th, .table > thead > tr > td.success, .table > thead > tr > th.success {
+    background-color: #26CC68;
 }
 /*=====================================================*/
 @media only screen and (max-width: 1199px) {
