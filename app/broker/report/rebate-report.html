@@ -1,6 +1,6 @@
 <div ng-controller="RebateReportController">
     <div class="panel panel-info">
-        <div class="panel-heading text-center"><strong class="heading">{{'Rebate Report'|translate}}</strong></div>
+        <div class="panel-heading"><h4 class="heading">{{'Rebate Report'|translate}}</h4></div>
 
         <div class="panel-body">
             <form novalidate role="form" name="editForm" ng-submit="export()">
@@ -17,8 +17,7 @@
                                            ng-model="searchParams.startDate" is-open="startDate.opened" required
                                            datepicker-options="dateOptions"/>
                                     <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default"
-                                                ng-click="startDate.opened=true"><i class="glyphicon glyphicon-calendar"></i>
+                                        <button type="button" class="btn btn-default" ng-click="startDate.opened=true"><img src="../../../images/icon-calender-sml.png" />
                                         </button>
                                     </span>
                                 </p>
@@ -37,7 +36,7 @@
                                            ng-model="searchParams.endDate" is-open="endDate.opened" required
                                            datepicker-options="dateOptions"/>
                                     <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default" ng-click="endDate.opened=true"><i class="glyphicon glyphicon-calendar"></i></button>
+                                        <button type="button" class="btn btn-default" ng-click="endDate.opened=true"><img src="../../../images/icon-calender-sml.png" /></button>
                                     </span>
                                 </p>
                             </div>
@@ -65,8 +64,11 @@
                                 <label class="control-label" for="login">{{"Login"|translate}}</label>
                             </div>
                             <div class="col-sm-12">
-                                <input id="login" name="login" class="form-control"
-                                       ng-model="searchParams.login" type="number" only-digits ng-trim="true">
+                                <div class="number-input"><input id="login" name="login" class="form-control"
+                                                                 ng-model="searchParams.login" type="number" only-digits ng-trim="true" min="0">
+                                    <div onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="ni plus"></div>
+                                    <div onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="ni minus" ></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -79,8 +81,10 @@
                                 <label class="control-label" for="ticket">{{"Deal"|translate}}</label>
                             </div>
                             <div class="col-sm-12">
-                                <input id="ticket" name="ticket" class="form-control"
-                                       ng-model="searchParams.ticket" type="number" only-digits ng-trim="true">
+                                <div class="number-input"><input id="ticket" name="ticket" class="form-control" ng-model="searchParams.ticket" type="number" only-digits ng-trim="true" min="0">
+                                    <div onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="ni plus"></div>
+                                    <div onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="ni minus" ></div>
+                                </div>
                             </div>
                         </div>
                     </div>
