@@ -60,8 +60,36 @@
                     <label class="control-label" for="login">{{"Login"|translate}}</label>
                 </div>
                 <div class="col-sm-12">
-                    <input id="login" name="login" class="form-control"
-                           ng-model="searchParams.login" type="number" only-digits ng-trim="true">
+                    <div class="number-input"><input id="login" name="login" class="form-control"
+                                                     ng-model="searchParams.login" type="number" only-digits ng-trim="true" min="0">
+                        <div onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="ni plus"></div>
+                        <div onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="ni minus" ></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row form-group" ng-class="{'has-error': editForm.ticket.$invalid && editForm.ticket.$dirty}">
+                <div class="col-sm-12">
+                    <label class="control-label" for="ticket">{{"Deal"|translate}}</label>
+                </div>
+                <div class="col-sm-12">
+                    <input id="ticket" name="ticket" class="form-control"
+                           ng-model="searchParams.ticket" type="number" only-digits ng-trim="true">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="row form-group" ng-class="{'has-error': editForm.symbol.$invalid && editForm.symbol.$dirty}">
+                <div class="col-sm-12">
+                    <label class="control-label" for="symbol">{{"Symbol"|translate}}</label>
+                </div>
+                <div class="col-sm-12">
+                    <input id="symbol" name="symbol" class="form-control" ng-model="searchParams.symbol" ng-trim="true">
                 </div>
             </div>
         </div>
