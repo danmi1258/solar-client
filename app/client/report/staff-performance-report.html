@@ -1,6 +1,6 @@
 <div ng-controller="StaffPerformanceReportController">
     <div class="panel panel-info">
-        <div class="panel-heading text-center"><strong class="heading">{{'Staff Performance Report'|translate}}</strong></div>
+        <div class="panel-heading"><h4 class="heading">{{'Staff Performance Report'|translate}}</h4></div>
 
         <div class="panel-body">
             <form novalidate role="form" name="editForm" ng-submit="export()">
@@ -17,9 +17,7 @@
                                            ng-model="searchParams.startDate" is-open="startDate.opened" required
                                            datepicker-options="dateOptions"/>
                                     <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default"
-                                                ng-click="startDate.opened=true"><i class="glyphicon glyphicon-calendar"></i>
-                                        </button>
+                                        <button type="button" class="btn btn-default" ng-click="startDate.opened=true"><img src="../../../images/icon-calender-sml.png" /></button>
                                     </span>
                                 </p>
                             </div>
@@ -37,8 +35,8 @@
                                            ng-model="searchParams.endDate" is-open="endDate.opened" required
                                            datepicker-options="dateOptions"/>
                                     <span class="input-group-btn">
-                            <button type="button" class="btn btn-default" ng-click="endDate.opened=true"><i class="glyphicon glyphicon-calendar"></i></button>
-                        </span>
+                                        <button type="button" class="btn btn-default" ng-click="endDate.opened=true"><img src="../../../images/icon-calender-sml.png" /></button>
+                                    </span>
                                 </p>
                             </div>
                         </div>
