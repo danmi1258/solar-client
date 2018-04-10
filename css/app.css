@@ -929,7 +929,7 @@ input[type=number]::-webkit-outer-spin-button {
     padding: 20px;
     margin-bottom: 20px;
 }
-.btn {
+.btn-primary{
     display: inline-block;
     padding: 15px 35px;
     margin-bottom: 0;
@@ -948,18 +948,21 @@ input[type=number]::-webkit-outer-spin-button {
     -ms-user-select: none;
     user-select: none;
     background-image: none;
-    border: 1px solid transparent;
+    border: 1px solid #149FBC;
     border-radius: 2px;
     text-transform: uppercase;
-}
-.btn-primary{
     color: #FFFFFF;
     background-color: #149fbc;
-    border-color: #149FBC;
 }
 .btn-primary:hover, .btn-primary:focus{
     background-color: #26CC68;
     border-color: #26CC68;
+}
+.space30{
+    margin-bottom: 30px;
+    display: inline-block;
+    width: 100%;
+    clear: both;
 }
 /*=====================================================*/
 @media only screen and (max-width: 1199px) {
