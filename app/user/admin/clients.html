@@ -1,6 +1,6 @@
 <div ng-controller="ClientLoginsAdminController">
     <div class="panel panel-info">
-        <div class="panel-heading text-center"><strong class="heading">{{"Client Login"|translate}}</strong></div>
+        <div class="panel-heading"><h4 class="heading">{{"Client Login"|translate}}</h4></div>
         <div class="panel-body">
             <form novalidate role="form" name="editForm" ng-submit="search()">
                 <div class="row spacer-bottom">
@@ -43,12 +43,14 @@
         </div>
 
         <div class="panel-body row">
-            <div class="col-sm-12" ng-show="pageParams.totalItems>pageParams.itemsPerPage">
-                <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
-                    items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
-                    class="pagination-sm" boundary-links="true" ng-change="pageChanged()"
-                    first-text="<<" last-text=">>" next-text=">" previous-text="<">
-                </ul>
+            <div class="pagi-wrap">
+                <div class="col-sm-12" ng-show="pageParams.totalItems>pageParams.itemsPerPage">
+                    <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
+                        items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
+                        class="pagination-sm" boundary-links="true" ng-change="pageChanged()"
+                        first-text="<<" last-text=">>" next-text="NEXT >" previous-text="< PREV">
+                    </ul>
+                </div>
             </div>
 
             <div class="col-sm-12">
@@ -116,12 +118,14 @@
                 </table>
             </div>
 
-            <div class="col-sm-12" ng-show="pageParams.totalItems>pageParams.itemsPerPage">
-                <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
-                    items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
-                    class="pagination-sm" boundary-links="true" ng-change="pageChanged()"
-                    first-text="<<" last-text=">>" next-text=">" previous-text="<">
-                </ul>
+            <div class="pagi-wrap">
+                <div class="col-sm-12" ng-show="pageParams.totalItems>pageParams.itemsPerPage">
+                    <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
+                        items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
+                        class="pagination-sm" boundary-links="true" ng-change="pageChanged()"
+                        first-text="<<" last-text=">>" next-text="NEXT >" previous-text="< PREV">
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

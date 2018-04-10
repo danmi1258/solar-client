@@ -1,13 +1,13 @@
 <div ng-controller="ClientLoginAdminController">
     <div class="panel panel-info">
-        <div class="panel-heading text-center">
-            <strong class="heading" ng-if="user.id">{{user.label}}</strong>
-            <strong class="heading" ng-if="!user.id">{{"New Client Login"|translate}}</strong>
+        <div class="panel-heading">
+            <h4 class="heading" ng-if="user.id">{{user.label}}</h4>
+            <h4 class="heading" ng-if="!user.id">{{"New Client Login"|translate}}</h4>
         </div>
 
         <div class="panel-body">
             <form novalidate role="form" name="editForm" ng-submit="save()">
-                <uib-tabset>
+                <uib-tabset class="sml-tab">
                     <uib-tab heading='{{"Basic"|translate}}'>
                         <p class="spacer"></p>
                         <ng-include src="'app/user/admin/user-basic.html'"></ng-include>
