@@ -13,7 +13,7 @@
                                datepicker-options="dateOptions"/>
                         <span class="input-group-btn">
                             <button type="button" class="btn btn-default"
-                                    ng-click="startDate.opened=true"><i class="glyphicon glyphicon-calendar"></i>
+                                    ng-click="startDate.opened=true"><img src="../../../../images/icon-calender-sml.png" />
                             </button>
                         </span>
                     </p>
@@ -32,7 +32,7 @@
                                ng-model="searchParams.endDate" is-open="endDate.opened" required
                                datepicker-options="dateOptions"/>
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-default" ng-click="endDate.opened=true"><i class="glyphicon glyphicon-calendar"></i></button>
+                            <button type="button" class="btn btn-default" ng-click="endDate.opened=true"><img src="../../../../images/icon-calender-sml.png" /></button>
                         </span>
                     </p>
                 </div>
@@ -77,8 +77,11 @@
                     <label class="control-label" for="ticket">{{"Deal"|translate}}</label>
                 </div>
                 <div class="col-sm-12">
-                    <input id="ticket" name="ticket" class="form-control"
-                           ng-model="searchParams.ticket" type="number" only-digits ng-trim="true">
+                    <div class="number-input"><input id="ticket" name="ticket" class="form-control"
+                                                     ng-model="searchParams.ticket" type="number" only-digits ng-trim="true" min="0">
+                        <div onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="ni plus"></div>
+                        <div onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="ni minus" ></div>
+                    </div>
                 </div>
             </div>
         </div>
