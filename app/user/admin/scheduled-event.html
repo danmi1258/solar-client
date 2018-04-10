@@ -1,8 +1,8 @@
 <div ng-controller="ScheduledEventController">
     <div class="panel panel-info">
-        <div class="panel-heading text-center">
-            <strong class="heading" ng-if="entity.id">{{entity.name}}</strong>
-            <strong class="heading" ng-if="!entity.id">{{"New Scheduled Event"|translate}}</strong>
+        <div class="panel-heading">
+            <h4 class="heading" ng-if="entity.id">{{entity.name}}</h4>
+            <h4 class="heading" ng-if="!entity.id">{{"New Scheduled Event"|translate}}</h4>
         </div>
         <div class="panel-body">
             <form novalidate role="form" name="editForm" ng-submit="save()">
@@ -10,7 +10,7 @@
                     <div class="col-sm-2">
                         <label class="control-label" for="label">{{"Name"|translate}}*</label>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-10">
                         <input id="label" name="label" class="form-control" ng-model="entity.name" ng-trim="true" required/>
                     </div>
                 </div>
@@ -19,7 +19,7 @@
                     <div class="col-sm-2">
                         <label class="control-label" for="startDate">{{"Start Date"|translate}}*</label>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-10">
                         <input id="startDate" name="startDate" type="datetime-local" class="form-control"
                                ng-model="entity.startDate" ng-required="true" />
                     </div>
@@ -29,7 +29,7 @@
                     <div class="col-sm-2">
                         <label class="control-label" for="endDate">{{"End Date"|translate}}*</label>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-10">
                         <input id="endDate" name="endDate" type="datetime-local" class="form-control"
                                ng-model="entity.endDate" ng-required="true" />
                     </div>

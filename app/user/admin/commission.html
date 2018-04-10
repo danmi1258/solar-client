@@ -1,13 +1,13 @@
 <div ng-controller="CommissionAdminController">
     <form novalidate role="form" name="editForm" ng-submit="save()">
         <div class="panel panel-info">
-            <div class="panel-heading text-center">
-                <strong class="heading" ng-if="entity.id">{{entity.name}}</strong>
-                <strong class="heading" ng-if="!entity.id">{{"New Commission Definition"|translate}}</strong>
+            <div class="panel-heading">
+                <h4 class="heading" ng-if="entity.id">{{entity.name}}</h4>
+                <h4 class="heading" ng-if="!entity.id">{{"New Commission Definition"|translate}}</h4>
             </div>
             <div class="panel-body">
                 <div class="row form-group">
-                    <div class="col-sm-5">
+                    <div class="col-sm-12">
                         <div class="row">
                             <div class="col-sm-12">
                                 <label class="control-label" for="name">{{"Name"|translate}}*</label>
@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="row form-group">
-                    <div class="col-sm-5">
+                    <div class="col-sm-6">
                         <div class="row">
                             <div class="col-sm-12">
                                 <label class="control-label" for="mt4Groups">{{"MT4 Group"|translate}}*</label>
@@ -34,7 +34,7 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-5">
+                    <div class="col-sm-6">
                         <div class="row">
                             <div class="col-sm-12">
                                 <label class="control-label" for="levels">{{"Levels"|translate}}*</label>
@@ -50,7 +50,7 @@
                 </div>
 
                 <div class="row form-group">
-                    <div class="col-sm-5">
+                    <div class="col-sm-6">
                         <div class="row">
                             <div class="col-sm-12">
                                 <label class="control-label" for="workGroup">{{"Work Group"|translate}}</label>
@@ -64,7 +64,7 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-5">
+                    <div class="col-sm-6">
                         <div class="row">
                             <div class="col-sm-12">
                                 <label class="control-label" for="symbol">{{"Symbol"|translate}}</label>
@@ -76,8 +76,8 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-sm-5">
+                <div class="row form-group">
+                    <div class="col-sm-6">
                         <div class="row">
                             <div class="col-sm-12">
                                 <label class="control-label">{{"Total Portal Weight"|translate}}</label>
