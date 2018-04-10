@@ -1,6 +1,6 @@
 <div ng-controller="AgentsAdminController">
     <div class="panel panel-info">
-        <div class="panel-heading text-center"><strong class="heading">{{"IB Login"|translate}}</strong></div>
+        <div class="panel-heading"><h4 class="heading">{{"IB Login"|translate}}</h4></div>
         <div class="panel-body">
             <form novalidate role="form" name="editForm" ng-submit="search()">
                 <div class="row spacer-bottom">
@@ -9,7 +9,7 @@
                             <div class="col-sm-12">
                                 <label for="search">{{"Contains"|translate}}</label>
                             </div>
-                            <div class="col-sm-10">
+                            <div class="col-sm-12">
                                 <input id="search" name="search" ng-model="searchParams.contains" class="form-control"
                                        ng-trim="true">
                             </div>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row form-group">
                     <div class="col-sm-12">
                         <button class="btn btn-primary" type="submit" ng-disabled="editForm.$invalid">
                             <i class="fa fa-search" aria-hidden="true"></i> {{'Search'|translate}}
@@ -121,8 +121,7 @@
                     <tfoot>
                     <tr>
                         <td colspan="7">
-                            <button type="button" class="btn btn-success"
-                                    ng-click="create()">
+                            <button type="button" class="btn btn-success" ng-click="create()">
                                 <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
                             </button>
                         </td>
@@ -130,13 +129,14 @@
                     </tfoot>
                 </table>
             </div>
-
-            <div class="col-sm-12" ng-show="pageParams.totalItems>pageParams.itemsPerPage">
-                <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
-                    items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
-                    class="pagination-sm" boundary-links="true" ng-change="pageChanged()"
-                    first-text="<<" last-text=">>" next-text=">" previous-text="<">
-                </ul>
+            <div class="pagi-wrap">
+                <div class="col-sm-12" ng-show="pageParams.totalItems>pageParams.itemsPerPage">
+                    <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
+                        items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
+                        class="pagination-sm" boundary-links="true" ng-change="pageChanged()"
+                        first-text="<<" last-text=">>" next-text="NEXT >" previous-text="< PREV">
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

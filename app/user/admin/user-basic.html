@@ -2,7 +2,7 @@
     <div class="col-sm-2">
         <label class="control-label" for="email">{{"Email"|translate}}*</label>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-10">
         <input id="email" name="email" class="form-control" type="email" ng-model="user.email" ng-trim="true" required ng-blur="validateEmail(user.email)"/>
         <span class="text-warning" ng-if="emailView.taken">{{'Email already exists.'|translate}} <span ng-show="emailView.user">[{{emailView.user.label}}]</span></span>
     </div>
@@ -13,7 +13,7 @@
     <div class="col-sm-2">
         <label class="control-label" for="override">{{"Override"|translate}}*</label>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-10">
         <div name="override" id="override" class="btn-group">
             <button type="button" class="btn btn-primary" ng-model="user.$override"
                     uib-btn-radio="true">
@@ -32,7 +32,7 @@
     <div class="col-sm-2">
         <label class="control-label" for="password">{{"Password"|translate}}<span ng-if="!user.id">*</span></label>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-10">
         <input id="password" name="password" class="form-control" type="password" ng-required="!user.id"
                ng-model="user.newPassword" ng-minlength="8" ng-maxlength="20"/>
     </div>
@@ -43,7 +43,7 @@
     <div class="col-sm-2">
         <label class="control-label" for="firstName">{{"First Name"|translate}}*</label>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-10">
         <input id="firstName" name="firstName" class="form-control" ng-model="user.contact.firstName"
                required/>
     </div>
@@ -54,7 +54,7 @@
     <div class="col-sm-2">
         <label class="control-label" for="middleName">{{"Middle Name"|translate}}</label>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-10">
         <input id="middleName" name="middleName" class="form-control" ng-model="user.contact.middleName"/>
     </div>
 </div>
@@ -64,7 +64,7 @@
     <div class="col-sm-2">
         <label class="control-label" for="lastName">{{"Last Name"|translate}}*</label>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-10">
         <input id="lastName" name="lastName" class="form-control" ng-model="user.contact.lastName"
                required/>
     </div>
