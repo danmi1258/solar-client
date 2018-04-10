@@ -1,13 +1,13 @@
 <div ng-controller="RebateAdminController">
     <div class="panel panel-info">
         <div class="panel-heading text-center">
-            <strong class="heading">{{"Rebate Records"|translate}}</strong>
+            <h4 class="heading">{{"Rebate Records"|translate}}</h4>
         </div>
 
         <div class="panel-body">
             <ng-include src="'app/broker/management/include/query.html'"></ng-include>
         </div>
-
+        <div class="space30"></div>
         <div class="panel-body row">
             <div class="col-sm-12" ng-show="pageParams.totalItems>pageParams.itemsPerPage">
                 <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
