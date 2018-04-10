@@ -538,11 +538,12 @@ a.list-group-item, a.list-group-item:focus, a.list-group-item:hover, button.list
     background-color: #27A7C2;
     border: none;
 }
-
 .panel.menu-panel > .list-group .list-group-item .text-primary {
     color: #FFFFFF;
 }
-
+.panel.menu-panel > .list-group .list-group-item .text-primary strong{
+    font-weight: 500 !important;
+}
 .panel.menu-panel > .list-group .list-group-item .text-primary strong i {
     font-style: normal;
     font-family: 'ESC-SemiBold';
@@ -785,7 +786,7 @@ form .control-label{
     font-family: 'ESC-SemiBold';
     font-weight: normal;
 }
-form input[type="text"],form input[type="number"], form select.form-control, form input, form textarea{
+form input[type="text"],form input[type="number"], form select.form-control, form input, form textarea, #category{
     border: 1px solid #e0dfdf !important;
     font-size: 16px !important;
     line-height: 50px !important;
@@ -795,6 +796,7 @@ form input[type="text"],form input[type="number"], form select.form-control, for
     padding: 0 20px !important;
     box-shadow: none !important;
     font-family: 'ESC-Light' !important;
+    width: 100% !important;
 }
 form textarea{
     height: 175px !important;
@@ -805,7 +807,7 @@ form .input-group-btn button{
     opacity: 0.55;
 }
 
-form select.form-control {
+form select.form-control, #category {
     -moz-appearance: none; /* Firefox */
     -webkit-appearance: none; /* Safari and Chrome */
     appearance: none;
@@ -959,15 +961,27 @@ input[type=number]::-webkit-outer-spin-button {
     color: #FFFFFF;
     background-color: #149fbc;
 }
-.btn-primary:hover, .btn-primary:focus{
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary:active:focus, .btn-primary:active:hover{
     background-color: #26CC68;
     border-color: #26CC68;
+}
+.btn-warning, .btn-success{
+    padding: 15px 35px;
+    font-family: 'ESC-Bold';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18px;
+    border-radius: 2px;
+    text-transform: uppercase;
 }
 .space30{
     margin-bottom: 30px;
     display: inline-block;
     width: 100%;
     clear: both;
+}
+.tree-group .tg-inn:nth-child(2n+1) .tree-item {
+    background-color: #F5F5F5;
 }
 /*=====================================================*/
 @media only screen and (max-width: 1199px) {
