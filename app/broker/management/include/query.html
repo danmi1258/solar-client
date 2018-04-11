@@ -71,7 +71,7 @@
     </div>
 
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6" ng-if="enableDealParam">
             <div class="row form-group" ng-class="{'has-error': editForm.ticket.$invalid && editForm.ticket.$dirty}">
                 <div class="col-sm-12">
                     <label class="control-label" for="ticket">{{"Deal"|translate}}</label>
@@ -86,7 +86,7 @@
             </div>
         </div>
 
-        <div class="col-sm-6">
+        <div class="col-sm-6" ng-if="enableSymbolParam">
             <div class="row form-group" ng-class="{'has-error': editForm.symbol.$invalid && editForm.symbol.$dirty}">
                 <div class="col-sm-12">
                     <label class="control-label" for="symbol">{{"Symbol"|translate}}</label>

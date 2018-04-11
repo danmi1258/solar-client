@@ -19,14 +19,14 @@
                                 <table class="table table-striped table-hover table-responsive">
                                     <thead>
                                     <tr>
-                                        <th style="width: 10px"></th>
+                                        <th style="width: 50px"></th>
                                         <th>{{"Role"|translate}}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr ng-repeat="role in roles|orderBy:'role.label'">
-                                        <td><input type="checkbox" ng-model="role.selected"></td>
-                                        <td>{{role.role.label}}</td>
+                                        <td style="vertical-align: middle"><input type="checkbox" ng-model="role.selected"></td>
+                                        <td style="vertical-align: middle">{{role.role.label|translate}}</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -34,7 +34,7 @@
                         </div>
                     </uib-tab>
 
-                    <uib-tab heading='{{"Work Group Permission"|translate}}' ng-if="workGroups && workGroups.length">
+                    <uib-tab heading='{{"Work Groups"|translate}}' ng-if="workGroups && workGroups.length">
                         <p class="spacer"></p>
                         <ng-include src="'app/user/admin/user-work-group-permission.html'"></ng-include>
                     </uib-tab>

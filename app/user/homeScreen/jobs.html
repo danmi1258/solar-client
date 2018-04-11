@@ -10,8 +10,8 @@
                     <th>{{'Progress'|translate}}</th>
                     <th>{{'Start Date'|translate}}</th>
                     <th>{{'Due'|translate}}</th>
-                    <th class="hidden-xs">{{'Assignee'|translate}}</th>
-                    <th class="hidden-xs">{{'Created By'|translate}}</th>
+                    <th><span class="hidden-xs">{{'Assignee'|translate}}</span></th>
+                    <th><span class="hidden-xs">{{'Created By'|translate}}</span></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -27,8 +27,8 @@
                     </td>
                     <td>{{job.created|formattedDate}}</td>
                     <td>{{job.dueDate|formattedDate}}</td>
-                    <td class="hidden-xs"><strong>{{job.assignee.label}}</strong></td>
-                    <td class="hidden-xs">{{job.createdBy.label}}</td>
+                    <td><span class="hidden-xs"><strong>{{job.assignee.label}}</strong></span></td>
+                    <td><span class="hidden-xs">{{job.createdBy.label}}</span></td>
                 </tr>
                 <tr ng-repeat="job in clientJobsAssignedByUser | orderBy: ['dueDate', '-created']">
                     <td>{{job.name}}</td>
@@ -42,10 +42,17 @@
                     </td>
                     <td>{{job.created|formattedDate}}</td>
                     <td>{{job.dueDate|formattedDate}}</td>
-                    <td class="hidden-xs">{{job.assignee.label}}</td>
-                    <td class="hidden-xs"><strong>{{job.createdBy.label}}</strong></td>
+                    <td><span class="hidden-xs">{{job.assignee.label}}</span></td>
+                    <td><span class="hidden-xs"><strong>{{job.createdBy.label}}</strong></span></td>
                 </tr>
                 </tbody>
+                <tfoot ng-if="!clientJobsAssignedByUser.length && !clientJobsAssignedToUser.length">
+                <tr>
+                    <td colspan="7" class="text-muted">
+                        {{"You don't have any jobs."|translate}}
+                    </td>
+                </tr>
+                </tfoot>
             </table>
         </div>
     </div>

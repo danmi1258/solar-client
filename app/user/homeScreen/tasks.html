@@ -8,7 +8,7 @@
                     <th>{{"Task"|translate}}</th>
                     <th>{{"Due"|translate}}</th>
                     <th>{{"Job"|translate}}</th>
-                    <th class="hidden-xs">{{"Assignee"|translate}}</th>
+                    <th><span class="hidden-xs">{{"Assignee"|translate}}</span></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -18,9 +18,16 @@
                     <td>
                         <a ng-href="#!{{'/user/job/' + task.job.id}}">{{task.job.name}}</a>
                     </td>
-                    <td class="hidden-xs">{{task.job.assignee.label}}</td>
+                    <td><span class="hidden-xs">{{task.job.assignee.label}}</span></td>
                 </tr>
                 </tbody>
+                <tfoot ng-if="!tasks.length">
+                <tr>
+                    <td colspan="4" class="text-muted">
+                        {{"You don't have any tasks."|translate}}
+                    </td>
+                </tr>
+                </tfoot>
             </table>
         </div>
     </div>

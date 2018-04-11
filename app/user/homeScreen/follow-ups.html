@@ -6,28 +6,30 @@
                 <thead>
                 <tr>
                     <th>{{"Date"|translate}}</th>
-                    <th class="hidden-xs">{{"Assigned By"|translate}}</th>
+                    <th><span class="hidden-xs">{{"Assigned By"|translate}}</span></th>
                     <th>{{"Due"|translate}}</th>
                     <th>{{"Read"|translate}}</th>
-                    <th class="hidden-xs">{{"Client/Team"|translate}}</th>
+                    <th><span class="hidden-xs">{{"Client/Team"|translate}}</span></th>
                     <th>{{"View"|translate}}</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="entity in followUpsAssignedToUser | orderBy:['dueDate','-id']">
                     <td style="vertical-align: middle">{{entity.created|formattedTime}}</td>
-                    <td class="hidden-xs" style="vertical-align: middle">{{entity.createdBy.label}}</td>
+                    <td style="vertical-align: middle"><span class="hidden-xs">{{entity.createdBy.label}}</span></td>
                     <td style="vertical-align: middle">{{entity.dueDate|formattedDate}}</td>
                     <td style="vertical-align: middle">
                         <span class="text-success glyphicon glyphicon-ok" ng-if="entity.acknowledged"></span>
                         <span class="text-danger glyphicon glyphicon-remove" ng-if="!entity.acknowledged"></span>
                     </td>
-                    <td class="hidden-xs" style="vertical-align: middle">
-                        <span ng-if="entity.work.workLink.client">
-                            <a ng-href="#!{{'/user/client/' + entity.work.workLink.client.id + '/home'}}">{{entity.work.workLink.client.label}}</a>
-                        </span>
-                        <span ng-if="entity.work.workLink.team">
-                            <a ng-href="#!{{'/user/team/' + entity.work.workLink.team.id + '/home'}}">{{entity.work.workLink.team.name}}</a>
+                    <td style="vertical-align: middle">
+                        <span class="hidden-xs">
+                            <span ng-if="entity.work.workLink.client">
+                                <a ng-href="#!{{'/user/client/' + entity.work.workLink.client.id + '/home'}}">{{entity.work.workLink.client.label}}</a>
+                            </span>
+                            <span ng-if="entity.work.workLink.team">
+                                <a ng-href="#!{{'/user/team/' + entity.work.workLink.team.id + '/home'}}">{{entity.work.workLink.team.name}}</a>
+                            </span>
                         </span>
                     </td>
                     <td>
@@ -37,6 +39,13 @@
                     </td>
                 </tr>
                 </tbody>
+                <tfoot ng-if="!followUpsAssignedToUser.length">
+                <tr>
+                    <td colspan="6" class="text-muted">
+                        {{"You don't have any follow ups."|translate}}
+                    </td>
+                </tr>
+                </tfoot>
             </table>
         </div>
     </div>
@@ -48,28 +57,30 @@
                 <thead>
                 <tr>
                     <th>{{"Date"|translate}}</th>
-                    <th class="hidden-xs">{{"Assignee"|translate}}</th>
+                    <th><span class="hidden-xs">{{"Assignee"|translate}}</span></th>
                     <th>{{"Due"|translate}}</th>
                     <th>{{"Read"|translate}}</th>
-                    <th class="hidden-xs">{{"Client/Team"|translate}}</th>
+                    <th><span class="hidden-xs">{{"Client/Team"|translate}}</span></th>
                     <th>{{"View"|translate}}</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="entity in followUpsAssignedByUser | orderBy:['dueDate','-id']">
                     <td style="vertical-align: middle">{{entity.created|formattedTime}}</td>
-                    <td class="hidden-xs" style="vertical-align: middle">{{entity.assignee.label}}</td>
+                    <td style="vertical-align: middle"><span class="hidden-xs">{{entity.assignee.label}}</span></td>
                     <td style="vertical-align: middle">{{entity.dueDate|formattedDate}}</td>
                     <td style="vertical-align: middle">
                         <span class="text-success glyphicon glyphicon-ok" ng-if="entity.acknowledged"></span>
                         <span class="text-danger glyphicon glyphicon-remove" ng-if="!entity.acknowledged"></span>
                     </td>
-                    <td class="hidden-xs" style="vertical-align: middle">
-                        <span ng-if="entity.work.workLink.client">
-                            <a ng-href="#!{{'/user/client/' + entity.work.workLink.client.id + '/home'}}">{{entity.work.workLink.client.label}}</a>
-                        </span>
-                        <span ng-if="entity.work.workLink.team">
-                            <a ng-href="#!{{'/user/team/' + entity.work.workLink.team.id + '/home'}}">{{entity.work.workLink.team.name}}</a>
+                    <td style="vertical-align: middle">
+                        <span class="hidden-xs">
+                            <span ng-if="entity.work.workLink.client">
+                                <a ng-href="#!{{'/user/client/' + entity.work.workLink.client.id + '/home'}}">{{entity.work.workLink.client.label}}</a>
+                            </span>
+                            <span ng-if="entity.work.workLink.team">
+                                <a ng-href="#!{{'/user/team/' + entity.work.workLink.team.id + '/home'}}">{{entity.work.workLink.team.name}}</a>
+                            </span>
                         </span>
                     </td>
                     <td>

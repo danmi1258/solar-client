@@ -436,6 +436,9 @@
   "You can't remove this work group": "此工作组无法移除",
   "You can't remove this work type.": "此工作类别无法移除",
   "You can't transfer fund out of this account.": "无法转出此账户资金",
+  "You don't have any follow ups.": "你没有任何工单",
+  "You don't have any tasks.": "你没有任何任务",
+  "You don't have any jobs.": "你没有任何工作",
   "You have already submitted the request before.": "您已经提交过同样的申请了",
   "Your request can't be processed during the period. Please try it later.": "请求失败，请稍后重试",
 

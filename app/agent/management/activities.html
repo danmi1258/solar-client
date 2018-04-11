@@ -5,7 +5,7 @@
         <div class="panel-body">
             <ng-include src="'app/agent/management/include/query.html'"></ng-include>
         </div>
-
+        <div class="space30"></div>
         <div class="panel-body row">
             <div class="col-sm-12" ng-if="accounts.length && summaryList.length">
                 <table class="table table-bordered table-responsive">
@@ -31,11 +31,13 @@
             </div>
 
             <div class="col-sm-12" ng-show="pageParams.totalItems>pageParams.itemsPerPage">
-                <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
-                    items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
-                    class="pagination-sm" boundary-links="true" ng-change="pageChanged()"
-                    first-text="<<" last-text=">>" next-text=">" previous-text="<">
-                </ul>
+                <div class="pagi-wrap">
+                    <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
+                        items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
+                        class="pagination-sm" boundary-links="true" ng-change="pageChanged()"
+                        first-text="<<" last-text=">>" next-text=">" previous-text="<">
+                    </ul>
+                </div>
             </div>
 
             <div class="col-sm-12">
@@ -94,11 +96,13 @@
             </div>
 
             <div class="col-sm-12" ng-show="pageParams.totalItems>pageParams.itemsPerPage">
-                <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
-                    items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
-                    class="pagination-sm" boundary-links="true" ng-change="pageChanged()"
-                    first-text="<<" last-text=">>" next-text=">" previous-text="<">
-                </ul>
+                <div class="pagi-wrap">
+                    <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
+                        items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
+                        class="pagination-sm" boundary-links="true" ng-change="pageChanged()"
+                        first-text="<<" last-text=">>" next-text=">" previous-text="<">
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
