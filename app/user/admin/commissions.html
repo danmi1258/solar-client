@@ -57,16 +57,16 @@
                     <span ng-if="!definition.level">{{'Master IB'|translate}}</span>
                 </td>
                 <td>{{definition.workGroupCategory}}</td>
-                <td>{{definition.portalWeight}}%</td>
-                <td>{{definition.commissionWeight}}%</td>
+                <td>{{definition.portalWeight}}</td>
+                <td>{{definition.commissionWeight}}</td>
                 <td class="2"></td>
             </tr>
             <tr ng-if="entity.expand">
                 <th colspan="2"></th>
                 <th>{{'Total'|translate}}</th>
                 <th></th>
-                <th>{{entity.portalWeight}}</th>
-                <th>{{entity.commissionWeight}}</th>
+                <th>{{calculateTotalPortalWeight(entity)}}</th>
+                <th>{{calculateTotalCommissionWeight(entity)}}</th>
                 <th class="2"></th>
             </tr>
             <tr ng-repeat-end ng-if="false"></tr>

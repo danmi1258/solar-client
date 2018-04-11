@@ -84,8 +84,8 @@ function getPagedEntities(entities, itemsPerPage, currentPage) {
     if (startIndex >= entities.length) {
         startIndex = entities.length - 1;
     }
-    if (endIndex >= entities.length) {
-        endIndex = entities.length - 1;
+    if (endIndex > entities.length) {
+        endIndex = entities.length;
     }
 
     return entities.slice(startIndex, endIndex);

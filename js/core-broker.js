@@ -81,10 +81,6 @@ angular.module("solar.core-broker", [])
         function ($resource) {
             return $resource(REST_PREFIX + '/client/admin/commission/:id', {}, {});
         }])
-    .factory('RebateAdminResource', ['$resource',
-        function ($resource) {
-            return $resource(REST_PREFIX + '/client/admin/rebate/:id', {}, {});
-        }])
     .factory('ScheduledEventResource', ['$resource',
         function ($resource) {
             return $resource(REST_PREFIX + '/client/admin/scheduled-event/:id', {}, {});
@@ -185,56 +181,6 @@ angular.module("solar.core-broker", [])
             $location.url(url.substr(0, url.lastIndexOf("/")));
         };
     }])
-    .controller("RebateAdminController", ['$scope', 'RebateAdminResource', '$location', function ($scope, resource, $location) {
-        $scope.pageParams = {
-            totalItems: 0,
-            itemsPerPage: 25,
-            currentPage: 1,
-            maxSize: 10
-        };
-
-        var loaded = false;
-        $scope.searchParams = resource.get(function () {
-            var date = new Date();
-            $scope.searchParams.startDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1);
-            $scope.searchParams.endDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-            $scope.workGroups = $scope.searchParams.workGroups;
-            $scope.searchParams.workGroups = null;
-            $scope.search();
-        });
-
-        $scope.search = function (reload) {
-            if (reload) {
-                $scope.pageParams.currentPage = 1;
-            }
-
-            $scope.searchParams.itemsPerPage = $scope.pageParams.itemsPerPage;
-            $scope.searchParams.currentPage = $scope.pageParams.currentPage;
-
-            $scope.expandAll = false;
-            var view = resource.save($scope.searchParams, function () {
-                $scope.pageParams.totalItems = view.totalItems;
-                $scope.entities = view.entities;
-                loaded = true;
-            });
-        };
-
-        $scope.pageChanged = function () {
-            $scope.search();
-        };
-
-        $scope.reload = function () {
-            loaded && $scope.search();
-        };
-
-        $scope.$watch('expandAll', function (expand) {
-            if ($scope.entities) {
-                angular.forEach($scope.entities, function (entity) {
-                    entity.expand = expand;
-                });
-            }
-        });
-    }])
     .controller("CommissionAdminListController", ['$scope', 'CommissionAdminResource', '$location', function ($scope, resource, $location) {
         $scope.entities = resource.query();
 
@@ -245,6 +191,22 @@ angular.module("solar.core-broker", [])
                 });
             }
         });
+
+        $scope.calculateTotalPortalWeight = function (entity) {
+            var sum = 0;
+            angular.forEach(entity.commissionLevelDefinitions, function (item) {
+                sum += item.portalWeight;
+            });
+            return sum;
+        };
+
+        $scope.calculateTotalCommissionWeight = function (entity) {
+            var sum = 0;
+            angular.forEach(entity.commissionLevelDefinitions, function (item) {
+                sum += item.commissionWeight;
+            });
+            return sum;
+        };
 
         $scope.create = function () {
             $location.url($location.url() + "/new");
@@ -293,6 +255,7 @@ angular.module("solar.core-broker", [])
         $scope.view = resource.get({
             "id": $routeParams.id
         }, function () {
+            $scope.view.mt4Groups.sort();
             if ($routeParams.id == 'new') {
                 $scope.entity = new resource();
                 $scope.entity.commissionLevelDefinitions = [];

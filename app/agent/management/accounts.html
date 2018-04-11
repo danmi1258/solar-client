@@ -7,7 +7,7 @@
         <div class="panel-body">
             <form novalidate role="form" name="editForm" ng-submit="search(true)">
                 <div class="row">
-                    <div class="col-lg-5 col-md-4 col-sm-4 cpadd-1">
+                    <div class="col-sm-4 cpadd-1">
                         <select id="agent" name="agent" class="form-control" ng-model="searchParams.workGroup"
                                 ng-options="option.name for option in workGroups|orderBy: 'name'">
                             <option value="">{{'IB'|translate}}</option>
@@ -15,31 +15,22 @@
                         </select>
                     </div>
 
-                    <div class="col-lg-5 col-md-4 col-sm-4 cpadd-2">
-                        <input id="login" name="login" class="form-control" ng-model="searchParams.term" ng-trim="true" placeholder="Login, Email..." type="text">
+                    <div class="col-sm-4 cpadd-2">
+                        <input id="login" name="login" class="form-control" ng-model="searchParams.login" ng-trim="true" only-digits placeholder="{{'Login'|translate}}" type="text">
                     </div>
 
-                    <div class="col-lg-2 col-md-4 col-sm-4 cpadd-3">
+                    <div class="col-sm-4 cpadd-1">
+                        <input id="searchTerm" name="searchTerm" class="form-control" ng-model="searchParams.term" ng-trim="true" placeholder="{{'Name'|translate}}, {{'Email'|translate}}" type="text">
+                    </div>
+                </div>
+
+                <div class="row spacer-top">
+                    <div class="col-sm-4 cpadd-1">
                         <button class="cbtn-search  " type="submit" ng-disabled="editForm.$invalid">
                             <i class="fa fa-search" aria-hidden="true"></i> {{'Search'|translate}}
                         </button>
                     </div>
                 </div>
-                <!--
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="row form-group">
-                            <div class="col-sm-12">
-                                <label class="control-label" for="searchTerm">{{"Contains"|translate}}</label>
-                            </div>
-                            <div class="col-sm-12">
-                                <input id="searchTerm" name="searchTerm" class="form-control"
-                                       ng-model="searchParams.term" ng-trim="true">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                -->
             </form>
         </div>
 
