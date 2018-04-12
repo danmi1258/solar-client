@@ -2,7 +2,7 @@
     <div class="col-sm-4">
         <label class="control-label" for="bankName">{{"Bank Name"|translate}}*</label>
     </div>
-    <div class="col-sm-5">
+    <div class="col-sm-8">
         <input id="bankName" name="bankName" class="form-control" ng-model="entity.bankAccount.bankName" required>
     </div>
 </div>
@@ -11,7 +11,7 @@
     <div class="col-sm-4">
         <label class="control-label" for="bankName">{{"BSB"|translate}}*</label>
     </div>
-    <div class="col-sm-5">
+    <div class="col-sm-8">
         <input id="bsb" name="bsb" class="form-control" ng-model="entity.bankAccount.bsb" required  ng-minlength="6" ng-maxlength="6" only-digits>
     </div>
 </div>
@@ -20,7 +20,7 @@
     <div class="col-sm-4">
         <label class="control-label" for="accountNumber">{{"Account Number"|translate}}*</label>
     </div>
-    <div class="col-sm-5">
+    <div class="col-sm-8">
         <input id="accountNumber" name="accountNumber" class="form-control" ng-model="entity.bankAccount.accountNumber"
                required only-digits>
     </div>
@@ -30,7 +30,7 @@
     <div class="col-sm-4">
         <label class="control-label" for="accountHolder">{{"Account Holder"|translate}}*</label>
     </div>
-    <div class="col-sm-5">
+    <div class="col-sm-8">
         <input id="accountHolder" name="accountHolder" class="form-control" ng-model="entity.bankAccount.accountHolder" required>
     </div>
 </div>
