@@ -1,9 +1,9 @@
 <div ng-controller="JobDefinitionController">
     <div class="panel panel-info">
-        <div class="panel-heading text-center">
-            <strong class="heading">{{jobDefinition.team.name}} - </strong>
-            <strong class="heading" ng-if="jobDefinition.id">{{jobDefinition.name}}</strong>
-            <strong class="heading" ng-if="jobDefinition && !jobDefinition.id">{{"New Job Definition"|translate}}</strong>
+        <div class="panel-heading">
+            <h4 class="heading">{{jobDefinition.team.name}} - </h4>
+            <h4 class="heading" ng-if="jobDefinition.id">{{jobDefinition.name}}</h4>
+            <h4 class="heading" ng-if="jobDefinition && !jobDefinition.id">{{"New Job Definition"|translate}}</h4>
         </div>
     </div>
 
@@ -13,7 +13,7 @@
                 <div class="col-sm-2">
                     <label class="control-label" for="name">{{"Name"|translate}}*</label>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-10">
                     <input id="name" name="name" class="form-control" required ng-model="jobDefinition.name"/>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                     <label class="control-label"
                            for="supervisor">{{"Supervisor"|translate}}*</label>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-10">
                     <select name="supervisor" id="supervisor" class="form-control" required
                             ng-options="k.label for k in users"
                             ng-model="jobDefinitionVersion.supervisor">
@@ -36,7 +36,7 @@
                 <div class="col-sm-2">
                     <label class="control-label" for="jobType">{{"Job Type"|translate}}*</label>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-10">
                     <select name="jobType" id="jobType" class="form-control" required
                             ng-options="k.label as k.label for k in jobTypes"
                             ng-model="jobDefinition.jobType">
@@ -50,7 +50,7 @@
                     <label class="control-label"
                            for="description">{{"Job Description"|translate}}*</label>
                 </div>
-                <div class="col-sm-8">
+                <div class="col-sm-10">
                 <textarea id="description" name="description" rows="5" required class="form-control"
                           ng-model="jobDefinitionVersion.description"></textarea>
                 </div>
@@ -63,7 +63,7 @@
             </div>
 
             <div class="row">
-                <div class="col-sm-10">
+                <div class="col-sm-12">
                     <table class="table table-striped table-hover table-responsive">
                         <thead>
                         <tr>

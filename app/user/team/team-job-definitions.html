@@ -1,7 +1,7 @@
 <div ng-controller="JobDefinitionsController">
     <div class="panel panel-info">
-        <div class="panel-heading text-center">
-            <strong class="heading"><a ng-href="#!/user/team/{{team.id}}/home">{{team.name}}</a> - {{"Job Definitions"|translate}}</strong>
+        <div class="panel-heading">
+            <h4 class="heading"><a ng-href="#!/user/team/{{team.id}}/home">{{team.name}}</a> - {{"Job Definitions"|translate}}</h4>
         </div>
 
         <div class="panel-body">
@@ -15,6 +15,7 @@
         </div>
 
         <table class="table table-striped table-responsive">
+            <thead>
             <tr>
                 <th>{{"Name"|translate}}</th>
                 <th>{{"Job Type"|translate}}</th>
