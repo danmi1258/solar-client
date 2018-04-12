@@ -1,7 +1,7 @@
 <div ng-controller="ClientSummaryAdminController">
     <form novalidate role="form" name="editForm" ng-submit="save()">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <div class="row form-group" ng-class="{'has-error': editForm.clientType.$invalid && editForm.clientType.$dirty}">
                     <div class="col-sm-12">
                         <label class="control-label" for="clientType">{{"Client Type"|translate}}*</label>
@@ -13,7 +13,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <div class="row form-group" ng-class="{'has-error': editForm.clientStatus.$invalid && editForm.clientStatus.$dirty}">
                     <div class="col-sm-12">
                         <label class="control-label" for="clientStatus">{{"Client Status"|translate}}*</label>
@@ -68,7 +68,7 @@
             <div class="col-sm-12">
                 <label class="control-label" for="email">{{"Email"|translate}}*</label>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-12">
                 <input id="email" name="email" class="form-control" ng-model="entity.email" ng-trim="true"
                        required/>
             </div>
@@ -80,7 +80,7 @@
             <div class="col-sm-12">
                 <label class="control-label" for="address">{{"Address"|translate}}</label>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-12">
                 <input id="address" name="address" class="form-control" ng-model="entity.contact.address" ng-trim="true"/>
             </div>
         </div>
@@ -124,14 +124,14 @@
             <div class="col-sm-12">
                 <label class="control-label" for="postcode">{{"Postcode"|translate}}</label>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-12">
                 <input id="postcode" name="postcode" class="form-control" ng-model="entity.contact.postcode" ng-trim="true"
                        only-digits/>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <div class="row form-group" ng-class="{'has-error': editForm.phone.$invalid && editForm.phone.$dirty}">
                     <div class="col-sm-12">
                         <label class="control-label" for="phone">{{"Phone"|translate}}</label>
@@ -142,7 +142,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <div class="row form-group" ng-class="{'has-error': editForm.mobile.$invalid && editForm.mobile.$dirty}">
                     <div class="col-sm-12">
                         <label class="control-label" for="mobile">{{"Mobile"|translate}}</label>
@@ -159,7 +159,7 @@
             <div class="col-sm-12">
                 <label class="control-label" for="source">{{"Lead Source"|translate}}</label>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-12">
                 <input id="source" name="source" class="form-control" ng-model="entity.source" ng-trim="true"/>
             </div>
         </div>
@@ -168,7 +168,7 @@
             <div class="col-sm-12">
                 <label class="control-label" for="notes">{{"Notes"|translate}}</label>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-12">
                 <textarea id="notes" name="notes" class="form-control" rows="5"
                           ng-model="entity.notes" ng-trim="true"></textarea>
             </div>
