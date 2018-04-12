@@ -786,7 +786,7 @@ form .control-label{
     font-family: 'ESC-SemiBold';
     font-weight: normal;
 }
-form input[type="text"],form input[type="number"], form select.form-control, form input, form textarea, #category,#search{
+form input[type="text"],form input[type="number"], form select.form-control, form input, form textarea, #category,#search,#startDate,#endDate{
     border: 1px solid #e0dfdf !important;
     font-size: 16px !important;
     line-height: 50px !important;
@@ -801,7 +801,7 @@ form input[type="text"],form input[type="number"], form select.form-control, for
 form textarea{
     height: 175px !important;
 }
-form .input-group-btn button{
+form .input-group-btn button, .input-group-btn button{
     padding: 13px 12px;
     border-radius: 0;
     opacity: 0.55;
