@@ -1,7 +1,7 @@
 <div ng-controller="FundHistoryController">
     <div class="panel panel-info">
-        <div class="panel-heading text-center">
-            <strong class="heading">{{"Fund History"|translate}}</strong>
+        <div class="panel-heading">
+            <h4 class="heading">{{"Fund History"|translate}}</h4>
         </div>
         <div class="panel-body">
             <form novalidate role="form" name="editForm" ng-submit="search()">
@@ -45,7 +45,7 @@
                                     <input id="startDate" name="startDate" type="text" class="form-control" uib-datepicker-popup
                                            ng-model="entity.startDate" is-open="startDate.opened" datepicker-options="dateOptions" ng-required="true" />
                                     <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default" ng-click="startDate.opened=true"><i class="glyphicon glyphicon-calendar"></i></button>
+                                        <button type="button" class="btn btn-default" ng-click="startDate.opened=true"><img src="../../../images/icon-calender-sml.png"></button>
                                     </span>
                                 </p>
                             </div>
@@ -61,7 +61,7 @@
                                     <input id="endDate" name="endDate" type="text" class="form-control" uib-datepicker-popup
                                            ng-model="entity.endDate" is-open="endDate.opened" datepicker-options="dateOptions"/>
                                     <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default" ng-click="endDate.opened=true"><i class="glyphicon glyphicon-calendar"></i></button>
+                                        <button type="button" class="btn btn-default" ng-click="endDate.opened=true"><img src="../../../images/icon-calender-sml.png"></button>
                                     </span>
                                 </p>
                             </div>
@@ -71,8 +71,8 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <button class="btn btn-primary" type="submit" ng-disabled="editForm.$invalid">
-                            {{'Search'|translate}} <i class="fa fa-search" aria-hidden="true"></i>
+                        <button class="cbtn-search" type="submit" ng-disabled="editForm.$invalid">
+                            <i class="fa fa-search" aria-hidden="true"></i> {{'Search'|translate}}
                         </button>
                     </div>
                 </div>

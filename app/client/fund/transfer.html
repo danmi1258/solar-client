@@ -1,7 +1,7 @@
 <div ng-controller="ClientFundTransferController">
     <div class="panel panel-info">
-        <div class="panel-heading text-center">
-            <strong class="heading">{{"Fund Transfer"|translate}}</strong>
+        <div class="panel-heading">
+            <h4 class="heading">{{"Fund Transfer"|translate}}</h4>
         </div>
         <div class="panel-body">
             <form novalidate role="form" name="editForm" ng-submit="save()">
@@ -9,7 +9,7 @@
                     <div class="col-sm-3">
                         <label class="control-label" for="accountFrom">{{"From Account"|translate}}*</label>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-9">
                         <select id="accountFrom" name="accountFrom" class="form-control" ng-model="entity.accountFrom" required
                                 ng-options="option.account as option.label for option in view.accounts|orderBy: 'account'">
                         </select>
@@ -20,7 +20,7 @@
                     <div class="col-sm-3">
                         <label class="control-label" for="accountTo">{{"To Account"|translate}}*</label>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-9">
                         <select id="accountTo" name="accountTo" class="form-control" ng-model="entity.accountTo" required
                                 ng-options="option.account as option.label for option in view.accounts|orderBy: 'account'">
                         </select>
@@ -31,7 +31,7 @@
                     <div class="col-sm-3">
                         <label class="control-label" for="amount">{{"Amount"|translate}}*</label>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-9">
                         <input id="amount" name="amount" type="number" class="form-control" ng-model="entity.amount" maxlength="9" float>
                     </div>
                 </div>
