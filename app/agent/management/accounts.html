@@ -53,12 +53,14 @@
                 </div>
             </div>
 
-            <div ng-show="pageParams.totalItems>pageParams.itemsPerPage">
-                <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
-                    items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
-                    class="pagination-sm" boundary-links="true" ng-change="pageChanged()"
-                    first-text="<<" last-text=">>" next-text=">" previous-text="<">
-                </ul>
+            <div class="pagi-wrap">
+                <div ng-show="pageParams.totalItems>pageParams.itemsPerPage">
+                    <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
+                        items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
+                        class="pagination-sm" boundary-links="true" ng-change="pageChanged()"
+                        first-text="<<" last-text=">>" next-text="NEXT >" previous-text="< PREV">
+                    </ul>
+                </div>
             </div>
 
             <div class="tbl-wrap">
@@ -92,12 +94,14 @@
             </div>
 
 
-            <div ng-show="pageParams.totalItems>pageParams.itemsPerPage">
-                <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
-                    items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
-                    class="pagination-sm" boundary-links="true" ng-change="pageChanged()"
-                    first-text="<<" last-text=">>" next-text=">" previous-text="<">
-                </ul>
+            <div class="pagi-wrap">
+                <div ng-show="pageParams.totalItems>pageParams.itemsPerPage">
+                    <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
+                        items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
+                        class="pagination-sm" boundary-links="true" ng-change="pageChanged()"
+                        first-text="<<" last-text=">>" next-text="NEXT >" previous-text="< PREV">
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
