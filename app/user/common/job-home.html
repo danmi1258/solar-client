@@ -1,8 +1,8 @@
 <div ng-controller="JobHomeController">
     <div class="panel panel-info">
-        <div class="panel-heading text-center">
+        <div class="panel-heading">
             <div>
-                <strong class="heading">
+                <h4 class="heading">
                     <span class="text-center" ng-if="view.job.jobLink.team">
                         <a ng-href="#!/user/team/{{view.job.jobLink.team.id}}/home">{{view.job.jobLink.team.name}}</a>
                     </span>
@@ -11,7 +11,7 @@
                     </span>
                     <span class="text-center" ng-if="view.job.id"> - {{view.job.name}}</span>
                     <span class="text-center" ng-if="!view.job.id"> - {{"New Job"|translate}}</span>
-                </strong>
+                </h4>
             </div>
             <div>
                 <span class="text-center">

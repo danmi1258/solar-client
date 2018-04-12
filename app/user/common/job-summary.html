@@ -3,7 +3,7 @@
         <div class="col-sm-2">
             <label>{{"Job #"|translate}}</label>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-10">
             <span>{{view.job.id}}</span>
         </div>
     </div>
@@ -14,11 +14,8 @@
             <div class="col-sm-2">
                 <label for="team">{{"Team"|translate}}*</label>
             </div>
-            <div class="col-sm-4">
-                <select id="team" name="team" class="form-control"
-                        required ng-show="view.teams.length>1"
-                        ng-options="k.name for k in view.teams"
-                        ng-model="view.team">
+            <div class="col-sm-10">
+                <select id="team" name="team" class="form-control" required ng-show="view.teams.length>1" ng-options="k.name for k in view.teams" ng-model="view.team">
                 </select>
                 <span ng-if="view.teams.length==1">{{view.team.name}}</span>
             </div>
@@ -33,7 +30,7 @@
             <div class="col-sm-2">
                 <label for="jobDefinitionVersion">{{"Job Definition"|translate}}*</label>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-10">
                 <select id="jobDefinitionVersion" name="jobDefinitionVersion" class="form-control"
                         required ng-disabled="view.team.jobs.length==1"
                         ng-options="k.jobDefinition.name for k in view.team.jobs"
@@ -47,7 +44,7 @@
                 <div class="col-sm-2">
                     <label>{{"Assignee"|translate}}</label>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-10">
                     <span ng-if="!view.job.id">{{view.job.jobDefinitionVersion.supervisor.label}}</span>
                     <span ng-if="view.job.id">{{view.job.assignee.label}}</span>
                 </div>
@@ -57,7 +54,7 @@
                 <div class="col-sm-2">
                     <label>{{"Description"|translate}}</label>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-10">
                     <pre class="pre-text">{{view.job.jobDefinitionVersion.description}}</pre>
                 </div>
             </div>
@@ -70,7 +67,7 @@
                 <div class="col-sm-2">
                     <label for="name">{{"Job Name"|translate}}<span ng-show="!view.job.id">*</span></label>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-10">
                     <input id="name" name="name" class="form-control" ng-show="!view.job.id" ng-model="view.job.name" required ng-trim="true">
                     <span ng-show="view.job.id">{{view.job.name}}</span>
                 </div>
@@ -80,12 +77,12 @@
                 <div class="col-sm-2">
                     <label class="control-label" for="dueDate">{{"Due Date"|translate}}</label>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-10">
                     <p class="input-group">
                         <input id="dueDate" name="dueDate" type="text" class="form-control" uib-datepicker-popup
                                ng-model="view.job.dueDate" is-open="dueDateOpened" datepicker-options="dateOptions"/>
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-default" ng-click="dueDateOpened=true"><i class="glyphicon glyphicon-calendar"></i></button>
+                            <button type="button" class="btn btn-default" ng-click="dueDateOpened=true"><img src="../../../images/icon-calender-sml.png" /></button>
                         </span>
                     </p>
                 </div>
@@ -95,7 +92,7 @@
                 <div class="col-sm-2">
                     <label for="instructions">{{"Instructions"|translate}}</label>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-10">
                     <textarea id="instructions" class="form-control" rows="5"
                       ng-model="view.job.instructions" ng-trim="true"></textarea>
                 </div>

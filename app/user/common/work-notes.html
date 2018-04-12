@@ -6,12 +6,12 @@
                     <div class="col-sm-12">
                         <label class="control-label" for="startDate">{{"Start Date"|translate}}*</label>
                     </div>
-                    <div class="col-sm-10">
+                    <div class="col-sm-12">
                         <p class="input-group">
                             <input id="startDate" name="startDate" type="text" class="form-control" uib-datepicker-popup
                                    ng-model="search.startDate" is-open="startDate.opened" datepicker-options="dateOptions" ng-required="true" />
                             <span class="input-group-btn">
-                                <button type="button" class="btn btn-default" ng-click="startDate.opened=true"><i class="glyphicon glyphicon-calendar"></i></button>
+                                <button type="button" class="btn btn-default" ng-click="startDate.opened=true"><img src="../../../images/icon-calender-sml.png" /></button>
                             </span>
                         </p>
                     </div>
@@ -22,12 +22,12 @@
                     <div class="col-sm-12">
                         <label class="control-label" for="endDate">{{"End Date"|translate}}*</label>
                     </div>
-                    <div class="col-sm-10">
+                    <div class="col-sm-12">
                         <p class="input-group">
                             <input id="endDate" name="endDate" type="text" class="form-control" uib-datepicker-popup
                                    ng-model="search.endDate" is-open="endDate.opened" datepicker-options="dateOptions" ng-required="true" />
                             <span class="input-group-btn">
-                                <button type="button" class="btn btn-default" ng-click="endDate.opened=true"><i class="glyphicon glyphicon-calendar"></i></button>
+                                <button type="button" class="btn btn-default" ng-click="endDate.opened=true"><img src="../../../images/icon-calender-sml.png" /></button>
                             </span>
                         </p>
                     </div>
@@ -41,7 +41,7 @@
                     <div class="col-sm-12">
                         <label class="control-label" for="workType">{{"Work Type"|translate}}</label>
                     </div>
-                    <div class="col-sm-10">
+                    <div class="col-sm-12">
                         <select class="form-control" id="workType"
                                 ng-options="k.type for k in searchResult.workTypes"
                                 ng-model="search.workType">
@@ -55,7 +55,7 @@
                     <div class="col-sm-12">
                         <label class="control-label" for="user">{{"User"|translate}}</label>
                     </div>
-                    <div class="col-sm-10">
+                    <div class="col-sm-12">
                         <select class="form-control" id="user"
                                 ng-options="k.label for k in searchResult.users"
                                 ng-model="search.user">
@@ -67,12 +67,12 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                 <div class="row form-group">
                     <div class="col-sm-12">
                         <label class="control-label" for="searchTerm">{{"Keywords"|translate}}</label>
                     </div>
-                    <div class="col-sm-10">
+                    <div class="col-sm-12">
                         <input id="searchTerm" class="form-control" ng-model="search.term" ng-trim="true">
                     </div>
                 </div>
@@ -80,8 +80,8 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-3">
-                <button type="submit" class="btn btn-primary" ng-disabled="editForm.$invalid">
+            <div class="col-sm-12">
+                <button type="submit" class="cbtn-search" ng-disabled="editForm.$invalid">
                     {{"Search"|translate}} <span class="glyphicon glyphicon-search"></span>
                 </button>
             </div>
@@ -108,12 +108,14 @@
         </div>
 
         <div class="row" ng-show="searchResult.workList && searchResult.workList.length">
+            <div class="pagi-wrap">
             <div class="col-sm-12" ng-show="pageParams.totalItems>pageParams.itemsPerPage">
                 <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
                     items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
                     class="pagination-sm" boundary-links="true" ng-change="search()"
                     first-text="<<" last-text=">>" next-text=">" previous-text="<">
                 </ul>
+            </div>
             </div>
 
             <div class="col-sm-12">
@@ -181,12 +183,14 @@
                 </table>
             </div>
 
-            <div class="col-sm-12" ng-show="pageParams.totalItems>pageParams.itemsPerPage">
-                <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
-                    items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
-                    class="pagination-sm" boundary-links="true" ng-change="search()"
-                    first-text="<<" last-text=">>" next-text=">" previous-text="<">
-                </ul>
+            <div class="pagi-wrap">
+                <div class="col-sm-12" ng-show="pageParams.totalItems>pageParams.itemsPerPage">
+                    <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
+                        items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
+                        class="pagination-sm" boundary-links="true" ng-change="search()"
+                        first-text="<<" last-text=">>" next-text=">" previous-text="<">
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
