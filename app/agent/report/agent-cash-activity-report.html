@@ -76,15 +76,15 @@
                     </tbody>
                 </table>
             </div>
-
+            <div class="pagi-wrap">
             <div class="col-sm-12" ng-show="pageParams.totalItems>pageParams.itemsPerPage">
                 <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
                     items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
                     class="pagination-sm" boundary-links="true" ng-change="pageChanged()"
-                    first-text="<<" last-text=">>" next-text=">" previous-text="<">
+                    first-text="<<" last-text=">>" next-text="NEXT >" previous-text="< PREV">
                 </ul>
             </div>
-
+            </div>
             <div class="col-sm-12">
                 <table class="table table-striped table-hover table-responsive">
                     <thead>
@@ -115,12 +115,14 @@
                 </table>
             </div>
 
-            <div class="col-sm-12" ng-show="pageParams.totalItems>pageParams.itemsPerPage">
-                <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
-                    items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
-                    class="pagination-sm" boundary-links="true" ng-change="pageChanged()"
-                    first-text="<<" last-text=">>" next-text=">" previous-text="<">
-                </ul>
+            <div class="pagi-wrap">
+                <div class="col-sm-12" ng-show="pageParams.totalItems>pageParams.itemsPerPage">
+                    <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
+                        items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
+                        class="pagination-sm" boundary-links="true" ng-change="pageChanged()"
+                        first-text="<<" last-text=">>" next-text="NEXT >" previous-text="< PREV">
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
