@@ -1,10 +1,10 @@
 <div ng-controller="ClientHomeController">
     <div class="panel"
          ng-class="{'panel-success': client.clientRole!=='Client','panel-info': client.clientRole=='Client'}">
-        <div class="panel-heading text-center">
-            <strong class="heading">
+        <div class="panel-heading">
+            <h4 class="heading">
                 <a ng-href="#!{{'/user/client/' + client.id + '/home'}}">{{client.label}}</a>
-            </strong>
+            </h4>
         </div>
 
         <div class="panel-body">
