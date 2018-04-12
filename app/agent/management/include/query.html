@@ -13,7 +13,7 @@
                                datepicker-options="dateOptions"/>
                         <span class="input-group-btn">
                             <button type="button" class="btn btn-default"
-                                    ng-click="startDate.opened=true"><i class="glyphicon glyphicon-calendar"></i>
+                                    ng-click="startDate.opened=true"><img src="../../../../images/icon-calender-sml.png">
                             </button>
                         </span>
                     </p>
@@ -32,7 +32,7 @@
                                ng-model="searchParams.endDate" is-open="endDate.opened" required
                                datepicker-options="dateOptions"/>
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-default" ng-click="endDate.opened=true"><i class="glyphicon glyphicon-calendar"></i></button>
+                            <button type="button" class="btn btn-default" ng-click="endDate.opened=true"><img src="../../../../images/icon-calender-sml.png"></button>
                         </span>
                     </p>
                 </div>
@@ -100,7 +100,7 @@
 
     <div class="row">
         <div class="col-sm-12">
-            <button class="btn btn-primary" type="submit" ng-disabled="editForm.$invalid">
+            <button class="cbtn-search" type="submit" ng-disabled="editForm.$invalid">
                 <i class="fa fa-search" aria-hidden="true"></i> {{'Search'|translate}}
             </button>
         </div>
