@@ -990,6 +990,7 @@ input[type=number]::-webkit-outer-spin-button {
 .table > tbody > tr.success > td, .table > tbody > tr.success > th, .table > tbody > tr > td.success, .table > tbody > tr > th.success, .table > tfoot > tr.success > td, .table > tfoot > tr.success > th, .table > tfoot > tr > td.success, .table > tfoot > tr > th.success, .table > thead > tr.success > td, .table > thead > tr.success > th, .table > thead > tr > td.success, .table > thead > tr > th.success {
     background-color: #26CC68;
 }
+.tbl-wrap{overflow-x: scroll;}
 /*=====================================================*/
 @media only screen and (max-width: 1199px) {
     .main-part-rgt {padding: 40px 60px;}
@@ -1018,7 +1019,6 @@ input[type=number]::-webkit-outer-spin-button {
     .btn-blank, .usd-bx{margin-top: 30px}
 }
 @media only screen and (max-width: 640px) {
-    .tbl-wrap{overflow-x: auto}
     .usd-bx-wrap {padding: 0 15px;width: 100%;}
     .usd-bx-wrap:last-child {width: 100%;}
     .big-numbers input[type="text"] {font-size: 30px;}
