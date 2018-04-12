@@ -1,6 +1,6 @@
 <div ng-controller="RebateAdminController">
     <div class="panel panel-info">
-        <div class="panel-heading">
+        <div class="panel-heading text-center">
             <h4 class="heading">{{"Rebate Records"|translate}}</h4>
         </div>
 
@@ -14,12 +14,13 @@
                     <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
                         items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
                         class="pagination-sm" boundary-links="true" ng-change="pageChanged()"
-                        first-text="<<" last-text=">>" next-text="NEXT >" previous-text="< PREV">
+                        first-text="<<" last-text=">>" next-text=">" previous-text="<">
                     </ul>
                 </div>
             </div>
 
             <div class="col-sm-12">
+                <div class="tbl-wrap">
                 <table class="table table-striped table-hover table-responsive">
                     <thead>
                     <tr>
@@ -73,6 +74,7 @@
                     </tr>
                     </tfoot>
                 </table>
+                </div>
             </div>
 
             <div class="col-sm-12" ng-show="pageParams.totalItems>pageParams.itemsPerPage">
@@ -80,7 +82,7 @@
                     <ul uib-pagination total-items="pageParams.totalItems" ng-model="pageParams.currentPage"
                         items-per-page="pageParams.itemsPerPage" max-size="pageParams.maxSize"
                         class="pagination-sm" boundary-links="true" ng-change="pageChanged()"
-                        first-text="<<" last-text=">>" next-text="NEXT >" previous-text="< PREV">
+                        first-text="<<" last-text=">>" next-text=">" previous-text="<">
                     </ul>
                 </div>
             </div>
