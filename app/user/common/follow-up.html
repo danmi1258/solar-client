@@ -1,8 +1,8 @@
 <div ng-controller="FollowUpController">
     <div class="panel panel-info">
-        <div class="panel-heading text-center">
+        <div class="panel-heading">
             <div>
-                <strong class="heading">{{'Follow Up'|translate}}</strong>
+                <h4 class="heading">{{'Follow Up'|translate}}</h4>
             </div>
             <div>
                 <div class="text-center" ng-if="entity.completed || entity.cancelled">
@@ -32,51 +32,51 @@
 
             <div class="row">
                 <label class="col-sm-3">{{"ID"|translate}}</label>
-                <span class="col-sm-6">#{{entity.id}}</span>
+                <span class="col-sm-9">#{{entity.id}}</span>
             </div>
 
             <div class="row" ng-if="entity.work.workLink.client">
                 <label class="col-sm-3">{{"Client"|translate}}</label>
-                <span class="col-sm-6">
+                <span class="col-sm-9">
                     <a ng-href="#!{{'/user/client/' + entity.work.workLink.client.id + '/home'}}">{{entity.work.workLink.client.label}}</a>
                 </span>
             </div>
 
             <div class="row" ng-if="entity.work.workLink.team && !entity.work.workLink.client">
                 <label class="col-sm-3">{{"Team"|translate}}</label>
-                <span class="col-sm-6">
+                <span class="col-sm-9">
                     <a ng-href="#!{{'/user/team/' + entity.work.workLink.team.id + '/home'}}">{{entity.work.workLink.team.name}}</a>
                 </span>
             </div>
 
             <div class="row" ng-if="entity.work.workLink.job">
                 <label class="col-sm-3">{{"Job"|translate}}</label>
-                <span class="col-sm-6">{{entity.work.workLink.job.name}}</span>
+                <span class="col-sm-9">{{entity.work.workLink.job.name}}</span>
             </div>
 
             <div class="row">
                 <label class="col-sm-3">{{"Assignee"|translate}}</label>
-                <span class="col-sm-6">{{entity.assignee.label}}</span>
+                <span class="col-sm-9">{{entity.assignee.label}}</span>
             </div>
 
             <div class="row">
                 <label class="col-sm-3">{{"Assigned By"|translate}}</label>
-                <span class="col-sm-6">{{entity.createdBy.label}}</span>
+                <span class="col-sm-9">{{entity.createdBy.label}}</span>
             </div>
 
             <div class="row">
                 <label class="col-sm-3">{{"Created Time"|translate}}</label>
-                <span class="col-sm-6">{{entity.created|formattedTime}}</span>
+                <span class="col-sm-9">{{entity.created|formattedTime}}</span>
             </div>
 
             <div class="row">
                 <label class="col-sm-3">{{"Due Date"|translate}}</label>
-                <span class="col-sm-6">{{entity.dueDate|formattedDate}}</span>
+                <span class="col-sm-9">{{entity.dueDate|formattedDate}}</span>
             </div>
 
             <div class="row">
                 <label class="col-sm-3">{{"Notes"|translate}}</label>
-                <span class="col-sm-6">
+                <span class="col-sm-9">
             <pre class="pre-text">{{entity.work.notes}}</pre>
         </span>
             </div>
@@ -94,8 +94,4 @@
             </div>
         </div>
     </div>
-
-
-
-
 </div>
