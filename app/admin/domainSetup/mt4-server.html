@@ -5,7 +5,7 @@
         <div class="col-sm-3">
             <label class="control-label">{{"ActiveMQ Host"|translate}}</label>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-9">
             <input name="bridgeIp" class="form-control" ng-model="mt4Server.bridgeIp" ng-trim="true"/>
         </div>
     </div>
@@ -14,7 +14,7 @@
         <div class="col-sm-3">
             <label class="control-label">{{"ActiveMQ Port"|translate}}</label>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-9">
             <input name="bridgePort" type="number" class="form-control" ng-model="mt4Server.bridgePort" ng-trim="true"/>
         </div>
     </div>
@@ -23,7 +23,7 @@
         <div class="col-sm-3">
             <label class="control-label">{{"ActiveMQ Username"|translate}}</label>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-9">
             <input name="bridgeUsername" class="form-control" ng-model="mt4Server.bridgeUsername" ng-trim="true"/>
         </div>
     </div>
@@ -32,7 +32,7 @@
         <div class="col-sm-3">
             <label class="control-label">{{"ActiveMQ Password"|translate}}</label>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-9">
             <input name="bridgePassword" class="form-control" ng-model="mt4Server.bridgePassword" ng-trim="true"/>
         </div>
     </div>
@@ -41,7 +41,7 @@
         <div class="col-sm-3">
             <label class="control-label">{{"Timezone"|translate}}</label>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-9">
             <select name="timezone" class="form-control" ng-options="k for k in timezones"
                     ng-model="mt4Server.timezone"></select>
         </div>
@@ -51,7 +51,7 @@
         <div class="col-sm-3">
             <label class="control-label" for="active">{{"Active"|translate}}*</label>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-9">
             <div name="active" id="active" class="btn-group">
                 <button type="button" class="btn btn-primary" ng-model="mt4Server.active"
                         uib-btn-radio="true">

@@ -2,7 +2,7 @@
     <div class="col-sm-2">
         <label class="control-label" for="label">{{"Name"|translate}}*</label>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-10">
         <input id="label" name="label" class="form-control" ng-model="entity.label" ng-trim="true" required/>
     </div>
 </div>
@@ -11,7 +11,7 @@
     <div class="col-sm-2">
         <label class="control-label" for="domainName">{{"Host"|translate}}*</label>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-10">
         <input id="domainName" name="domainName" placeholder="portal.domain.com" required
                class="form-control" ng-model="entity.url" ng-trim="true"/>
     </div>
@@ -21,7 +21,7 @@
     <div class="col-sm-2">
         <label class="control-label" for="languageType">{{"Language"|translate}}*</label>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-10">
         <select id="languageType" name="languageType" class="form-control" ng-model="entity.languageType" required
                 ng-options="option.label as option.label for option in languageTypes">
         </select>
