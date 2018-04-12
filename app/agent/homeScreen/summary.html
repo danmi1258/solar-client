@@ -1,6 +1,6 @@
 <div ng-controller="AgentHomeScreenSummaryController">
     <div class="panel panel-primary summry-wrap">
-        <div class="panel-heading text-center">
+        <div class="panel-heading">
             <h4 class="panel-title">{{'Monthly Performance'|translate}}</h4>
         </div>
 
@@ -45,6 +45,7 @@
                 </div>
                 <div class="col-sm-12 data-blnk" ng-if="!view.summaryList.length">{{'Data is not available.'|translate}}</div>
                 <!--<div class="col-sm-12">
+                <div class="tbl-wrap">
                     <table class="table table-striped table-responsive">
                         <thead>
                         <tr>
@@ -108,11 +109,13 @@
                         </td>
                         </tfoot>
                     </table>
+                    </div>
                 </div>-->
             </div>
 
             <div class="row" ng-if="view.summaryList.length && view.summaryList.length>1">
                 <div class="col-sm-12">
+                    <div class="tbl-wrap">
                     <table class="table table-striped table-responsive">
                         <tbody>
                         <tr>
@@ -138,6 +141,7 @@
                         </tr>
                         </tfoot>
                     </table>
+                    </div>
                 </div>
             </div>
         </form>
