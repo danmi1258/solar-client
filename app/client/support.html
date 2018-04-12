@@ -1,7 +1,7 @@
 <div ng-controller="ClientSupportController">
     <div class="panel panel-info">
-        <div class="panel-heading text-center">
-            <strong class="heading">{{"Support"|translate}}</strong>
+        <div class="panel-heading">
+            <h4 class="heading">{{"Support"|translate}}</h4>
         </div>
 
         <div class="panel-body">
@@ -10,7 +10,7 @@
                     <div class="col-sm-2">
                         <label class="control-label" for="type">{{"Issue Type"|translate}}*</label>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-10">
                         <select id="type" name="type" class="form-control" ng-model="entity.clientCaseType" required
                                 ng-options="option.label as option.label|translate for option in caseTypes">
                         </select>
@@ -22,7 +22,7 @@
                     <div class="col-sm-2">
                         <label class="control-label" for="subject">{{"Subject"|translate}}*</label>
                     </div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-10">
                         <input id="subject" name="subject" class="form-control" ng-model="entity.subject" ng-trim="true"
                                ng-required="true" maxlength="100">
                     </div>
@@ -32,7 +32,7 @@
                     <div class="col-sm-2">
                         <label class="control-label" for="type">{{"Message"|translate}}*</label>
                     </div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-10">
                         <textarea id="notes" name="notes" class="form-control" ng-model="entity.message" ng-trim="true"
                                   ng-required="true" rows="10" maxlength="1000"></textarea>
                     </div>
