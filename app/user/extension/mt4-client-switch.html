@@ -4,7 +4,7 @@
             <div class="col-sm-2">
                 <label>{{"MT4 Server"|translate}}</label>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-10">
                 <span>{{view.mt4ClientSwitchProfile.mt4Server.mt4ServerType}}</span>
             </div>
         </div>
@@ -13,7 +13,7 @@
             <div class="col-sm-2">
                 <label class="control-label" for="login">{{"MT4 Login"|translate}}*</label>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-10">
                 <input id="login" name="login" class="form-control" ng-disabled="view.mt4ClientSwitchProfile.confirmed"
                        ng-model="view.mt4ClientSwitchProfile.login" only-digits ng-trim="true">
             </div>
@@ -23,7 +23,7 @@
             <div class="col-sm-2">
                 <label class="control-label" for="newClient">{{"New Client"|translate}}*</label>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-10">
                 <input id="newClient" name="newClient" type="text" ng-model="view.mt4ClientSwitchProfile.newClient"
                        ng-disabled="view.mt4ClientSwitchProfile.confirmed"
                        placeholder="{{'Search'|translate}}"
@@ -39,7 +39,7 @@
             <div class="col-sm-2">
                 <label>{{"Confirmed"|translate}}</label>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-10">
                 <span>{{view.mt4ClientSwitchProfile.confirmed|formattedTime}}</span>
             </div>
         </div>
@@ -48,7 +48,7 @@
             <div class="col-sm-2">
                 <label>{{"Processed"|translate}}</label>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-10">
                 <span>{{view.mt4ClientSwitchProfile.processed|formattedTime}}</span>
             </div>
         </div>
