@@ -1,20 +1,20 @@
 <div ng-controller="FundTradingAccountController">
     <div class="panel panel-info">
-        <div class="panel-heading text-center"><strong class="heading">{{'Fund Trading Account'|translate}}</strong></div>
+        <div class="panel-heading"><h4 class="heading">{{'Fund Trading Account'|translate}}</h4></div>
         <div class="panel-body">
             <form novalidate role="form" name="editForm" ng-submit="save()">
                 <div class="row form-group">
                     <div class="col-sm-2">
                         <label class="control-label">{{"Account"|translate}}</label>
                     </div>
-                    <div class="col-sm-4">{{entity.login}}</div>
+                    <div class="col-sm-10">{{entity.login}}</div>
                 </div>
 
                 <div class="row form-group">
                     <div class="col-sm-2">
                         <label class="control-label" for="method">{{"Method"|translate}}*</label>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-10">
                         <select id="method" name="method" class="form-control" ng-model="entity.method"
                                 ng-options="item.name for item in methods">
                         </select>
@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="row" ng-show="view.exchangeRates.length">
-                    <div class="col-sm-6">
+                    <div class="col-sm-12">
                         <table class="table table-bordered table-hover table-responsive">
                             <thead class="text-success">
                             <tr class="active">

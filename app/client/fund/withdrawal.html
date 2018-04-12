@@ -1,7 +1,7 @@
 <div ng-controller="ClientWithdrawalController">
     <div class="panel panel-info">
-        <div class="panel-heading text-center">
-            <strong class="heading">{{"Withdrawal"|translate}}</strong>
+        <div class="panel-heading">
+            <h4 class="heading">{{"Withdrawal"|translate}}</h4>
         </div>
 
         <div class="panel-body">
@@ -10,7 +10,7 @@
                     <div class="col-sm-4">
                         <label class="control-label">{{"Trading Account"|translate}}*</label>
                     </div>
-                    <div class="col-sm-5">{{entity.login}}</div>
+                    <div class="col-sm-8">{{entity.login}}</div>
                 </div>
 
                 <div class="row form-group"
@@ -18,7 +18,7 @@
                     <div class="col-sm-4">
                         <label class="control-label" for="bankAccountType">{{"Bank Type"|translate}}*</label>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-8">
                         <select id="bankAccountType" name="bankAccountType" class="form-control" ng-model="entity.bankAccountView" required
                                 ng-options="option.bankAccountType for option in view.bankAccountViewList">
                         </select>
@@ -30,7 +30,7 @@
                         <div class="col-sm-4">
                             <label for="newBankAccount">{{"Use Recent Account"|translate}}</label>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-8">
                             <div id="newBankAccount" name="newBankAccount" class="btn-group">
                                 <button type="button" class="btn btn-primary" ng-model="newBankAccount"
                                         uib-btn-radio="false">
@@ -49,7 +49,7 @@
                         <div class="col-sm-4">
                             <label class="control-label" for="bankAccount">{{"Bank Account"|translate}}*</label>
                         </div>
-                        <div class="col-sm-5">
+                        <div class="col-sm-8">
                             <select id="bankAccount" name="bankAccount" class="form-control"
                                     ng-model="entity.bankAccount"
                                     ng-options="option.label for option in entity.bankAccountView.bankAccounts">
@@ -66,7 +66,7 @@
                         <div class="col-sm-4">
                             <label class="control-label" for="amount">{{"Amount"|translate}}*</label>
                         </div>
-                        <div class="col-sm-5">
+                        <div class="col-sm-8">
                             <input id="amount" name="amount" type="number" class="form-control" ng-model="entity.amount" float
                                    required>
                         </div>
@@ -77,7 +77,7 @@
                         <div class="col-sm-4">
                             <label class="control-label" for="currency">{{"Currency"|translate}}*</label>
                         </div>
-                        <div class="col-sm-5">
+                        <div class="col-sm-8">
                             <select id="currency" name="currency" class="form-control" ng-model="entity.currencyType"
                                     required ng-options="option.label as option.label for option in view.currencyTypes">
                             </select>
