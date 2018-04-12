@@ -1,7 +1,7 @@
 <div ng-controller="SystemAdminConfigurationController">
     <div class="panel panel-info">
-        <div class="panel-heading text-center">
-            <strong class="heading">{{'Configuration'|translate}}</strong>
+        <div class="panel-heading">
+            <h4 class="heading">{{'Configuration'|translate}}</h4>
         </div>
         <div class="panel-body">
             <form novalidate role="form" name="editForm" ng-submit="save()">
@@ -9,7 +9,7 @@
                     <div class="col-sm-2">
                         <label class="control-label" for="value">{{"Key"|translate}}*</label>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-10">
                         <select id="key" name="key" class="form-control" ng-model="entity.key" required
                                 ng-options="option.name as option.name for option in entity.$keys">
                         </select>
@@ -20,7 +20,7 @@
                     <div class="col-sm-2">
                         <label class="control-label" for="value">{{"Value"|translate}}*</label>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-10">
                         <input id="value" name="value" class="form-control" ng-model="entity.value" ng-trim="true"
                                required/>
                     </div>

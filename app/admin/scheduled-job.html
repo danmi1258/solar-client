@@ -1,10 +1,10 @@
 <div ng-controller="ScheduleController">
     <div class="panel panel-info">
-        <div class="panel-heading text-center">
-            <strong class="heading">
+        <div class="panel-heading">
+            <h4 class="heading">
                 <span ng-if="entity.id">{{"Scheduled Job"|translate}}</span>
                 <span ng-if="!entity.id">{{"New Scheduled Job"|translate}}</span>
-            </strong>
+            </h4>
         </div>
 
         <div class="panel-body">
@@ -14,7 +14,7 @@
                     <div class="col-sm-2">
                         <label class="control-label" for="task">{{"Name"|translate}}*</label>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-10">
                         <select name="task" id="task" class="form-control" ng-model="entity.className"
                                 ng-disabled="entity.id"
                                 ng-required="true" ng-options="d.className as d.name for d in entity.$nameMappings">
@@ -26,7 +26,7 @@
                     <div class="col-sm-2">
                         <label class="control-label" for="hour">{{"Hour"|translate}}*</label>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-10">
                         <input id="hour" name="hour" class="form-control" ng-model="entity.hour" required/>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                     <div class="col-sm-2">
                         <label class="control-label" for="minute">{{"Minute"|translate}}*</label>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-10">
                         <input id="minute" name="minute" class="form-control" ng-model="entity.minute" required/>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                     <div class="col-sm-2">
                         <label for="enabled">{{"Active"|translate}}</label>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-10">
                         <div name="enabled" id="enabled" class="btn-group">
                             <button type="button" class="btn btn-primary" ng-model="entity.enabled"
                                     uib-btn-radio="true">
@@ -64,7 +64,7 @@
                         <label>{{"Day"|translate}}</label>
                     </div>
 
-                    <div class="col-sm-10">
+                    <div class="col-sm-12">
                         <div class="btn-group">
                             <button type="button" class="btn btn-primary" ng-model="entity.monday" uib-btn-checkbox>
                                 {{"Mon"|translate}}
@@ -95,7 +95,7 @@
                     <label class="col-sm-2">
                         {{"Run Task"|translate}}
                     </label>
-                    <div class="col-sm-2">
+                    <div class="col-sm-10">
                         <button type="button" class="btn btn-success" style="width: 100%" ng-click="runTask()">
                             {{"Run"|translate}} <span class="glyphicon glyphicon-arrow-right"></span>
                         </button>
