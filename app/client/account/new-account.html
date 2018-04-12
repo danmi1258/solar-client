@@ -1,8 +1,8 @@
 <div ng-controller="ClientNewAccountController">
     <div class="panel panel-info">
-        <div class="panel-heading text-center">
-            <strong class="heading" ng-if="entity.demoAccount">{{'New Demo Account'|translate}}</strong>
-            <strong class="heading" ng-if="!entity.demoAccount">{{'New Trading Account'|translate}}</strong>
+        <div class="panel-heading">
+            <h4 class="heading" ng-if="entity.demoAccount">{{'New Demo Account'|translate}}</h4>
+            <h4 class="heading" ng-if="!entity.demoAccount">{{'New Trading Account'|translate}}</h4>
         </div>
         <div class="panel-body">
             <form novalidate role="form" name="editForm" ng-submit="create()">
@@ -10,7 +10,7 @@
                     <div class="col-sm-3">
                         <label class="control-label" for="platform">{{"Platform"|translate}}*</label>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-9">
                         <select id="platform" name="platform" class="form-control" ng-model="entity.tradingPlatform" required
                                 ng-disabled="view.tradingPlatforms && view.tradingPlatforms.length==1"
                                 ng-options="option.label as option.label for option in view.tradingPlatforms">
@@ -22,7 +22,7 @@
                     <div class="col-sm-3">
                         <label class="control-label" for="leverage">{{"Leverage"|translate}}*</label>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-9">
                         <select id="leverage" name="leverage" class="form-control" ng-model="entity.leverage" required
                                 ng-options="option.label as option.label for option in view.leverages">
                         </select>
@@ -33,7 +33,7 @@
                     <div class="col-sm-3">
                         <label class="control-label" for="currency">{{"Currency"|translate}}*</label>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-9">
                         <select id="currency" name="currency" class="form-control" ng-model="entity.currencyType" required
                                 ng-options="option.label as option.label for option in view.currencyTypes">
                         </select>

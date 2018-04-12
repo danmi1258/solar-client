@@ -2,7 +2,7 @@
     <div class="col-sm-3">
         <label class="control-label" for="accountType">{{"Account Type"|translate}}*</label>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-9">
         <select id="accountType" name="accountType" class="form-control" ng-model="entity.demoAccountType" required
                 ng-options="option.label as option.label for option in view.demoAccountTypes">
         </select>
@@ -13,7 +13,7 @@
     <div class="col-sm-3">
         <label class="control-label" for="amount">{{"Deposit Amount"|translate}}*</label>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-9">
         <select id="amount" name="amount" class="form-control" ng-model="entity.demoDepositAmount" required
                 ng-options="option.label as option.label for option in view.demoDepositAmounts">
         </select>
