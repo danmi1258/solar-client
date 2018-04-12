@@ -34,7 +34,6 @@
                         <th>{{'Date'|translate}}</th>
                         <th>{{'Rebate'|translate}}</th>
                         <th>{{'Agent Login'|translate}}</th>
-                        <th>{{'Process Date'|translate}}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -49,26 +48,25 @@
                         <td>{{entity.commissionRebateGroup.closeTime|formattedTime}}</td>
                         <td>{{entity.commission|number:4}} <span ng-show="entity.directCommission">({{entity.directCommission|number:4}})</span></td>
                         <td>{{entity.workGroup.mt4Account}}</td>
-                        <td>{{entity.processDate|formattedTime}}</td>
                     </tr>
                     <tr ng-if="entity.expand">
                         <th></th>
                         <th>{{'Login'|translate}}</th>
                         <th>{{'MT4 Group'|translate}}</th>
                         <th>{{'Symbol'|translate}}</th>
-                        <th colspan="2"></th>
+                        <th colspan="1"></th>
                     </tr>
                     <tr ng-repeat-end ng-if="entity.expand">
                         <td></td>
                         <td>{{entity.commissionRebateGroup.login}}</td>
                         <td>{{entity.commissionRebateGroup.mt4GroupName}}</td>
                         <td>{{entity.commissionRebateGroup.symbol}}</td>
-                        <td colspan="2"></td>
+                        <td colspan="1"></td>
                     </tr>
                     </tbody>
                     <tfoot ng-if="!entities.length">
                     <tr>
-                        <td colspan="6" class="text-center text-muted">
+                        <td colspan="5" class="text-center text-muted">
                             {{'Data is not available.'|translate}}
                         </td>
                     </tr>
