@@ -2,6 +2,7 @@
     <div class="panel panel-primary">
         <div class="panel-heading"><h4 class="panel-title">{{'Client Jobs'|translate}}</h4></div>
         <div class="panel-body">
+            <div class="tbl-wrap">
             <table class="table table-striped table-hover table-responsive">
                 <thead>
                 <tr>
@@ -54,12 +55,14 @@
                 </tr>
                 </tfoot>
             </table>
+            </div>
         </div>
     </div>
 
     <div class="panel panel-primary" ng-show="teamJobsAssignedToUser.length || teamJobsAssignedByUser.length">
         <div class="panel-heading"><h4 class="panel-title">{{'Team Jobs'|translate}}</h4></div>
         <div class="panel-body">
+            <div class="tbl-wrap">
             <table class="table table-striped table-hover table-responsive">
                 <thead>
                 <tr>
@@ -109,6 +112,7 @@
                 </tr>
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 </div>
