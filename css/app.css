@@ -990,7 +990,7 @@ input[type=number]::-webkit-outer-spin-button {
 .table > tbody > tr.success > td, .table > tbody > tr.success > th, .table > tbody > tr > td.success, .table > tbody > tr > th.success, .table > tfoot > tr.success > td, .table > tfoot > tr.success > th, .table > tfoot > tr > td.success, .table > tfoot > tr > th.success, .table > thead > tr.success > td, .table > thead > tr.success > th, .table > thead > tr > td.success, .table > thead > tr > th.success {
     background-color: #26CC68;
 }
-.tbl-wrap{overflow-x: scroll;}
+
 /*=====================================================*/
 @media only screen and (max-width: 1199px) {
     .main-part-rgt {padding: 40px 60px;}
@@ -1017,12 +1017,22 @@ input[type=number]::-webkit-outer-spin-button {
     .usd-bx-wrap {padding: 0 15px;width: 40%;float: left;}
     .usd-bx-wrap:last-child {width: 20%;}
     .btn-blank, .usd-bx{margin-top: 30px}
+    form .col-sm-1, form .col-sm-2, form .col-sm-3, form .col-sm-4, form .col-sm-5, form .col-sm-6,
+    form .col-sm-7, form .col-sm-8, form .col-sm-9, form .col-sm-10, form .col-sm-11, form .col-sm-12{margin-bottom: 15px}
+    form .form-group{margin-bottom: 0}
 }
 @media only screen and (max-width: 640px) {
     .usd-bx-wrap {padding: 0 15px;width: 100%;}
     .usd-bx-wrap:last-child {width: 100%;}
     .big-numbers input[type="text"] {font-size: 30px;}
     .nav-tabs > li > a{padding: 15px 25px}
+    .pagination-sm .pagination-first, .pagination-sm .pagination-prev,
+    .pagination-sm .pagination-last, .pagination-sm .pagination-next  {position: relative;left: auto;top: auto;right: auto;}
+    .pagination > li.pagination-page a, .pagination > li.pagination-page a:hover, .pagination > li.pagination-page a:focus{border: 1px solid #E0DFDF;}
+    .pagination > li > a:focus, .pagination > li > a:hover,
+    .pagination > li > span:focus, .pagination > li > span:hover,
+    .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover,
+    .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover{background-color: #149fbc;color: #FFFFFF;border: 1px solid #149FBC;}
 }
 @media only screen and (max-width: 480px) {
     .cpadd-1, .cpadd-2, .cpadd-3 {width: 100%;float: none;margin-bottom: 10px;}
