@@ -1005,6 +1005,7 @@ input[type=number]::-webkit-outer-spin-button {
     .date-icon-bx img {width: 100%;padding-top: 10px;}
     .summry-wrap.panel-primary > .panel-heading, .caccounts > .panel-heading {margin-bottom: 15px;}
     .usd-bx-wrap{padding: 0 5px;}
+    .tbl-wrap{overflow-y: hidden; overflow-x: scroll;}
 }
 @media only screen and (max-width: 767px) {
     .main-part-rgt {padding: 15px;width: 100%;float: none;}
@@ -1020,6 +1021,7 @@ input[type=number]::-webkit-outer-spin-button {
     form .col-sm-1, form .col-sm-2, form .col-sm-3, form .col-sm-4, form .col-sm-5, form .col-sm-6,
     form .col-sm-7, form .col-sm-8, form .col-sm-9, form .col-sm-10, form .col-sm-11, form .col-sm-12{margin-bottom: 15px}
     form .form-group{margin-bottom: 0}
+
 }
 @media only screen and (max-width: 640px) {
     .usd-bx-wrap {padding: 0 15px;width: 100%;}
