@@ -4,7 +4,7 @@
             <h4 class="heading">{{"Positions"|translate}}</h4>
         </div>
 
-        <div class="panel-body">
+        <div class="panel-body" ng-init="enableDealParam=true;enableSymbolParam=true">
             <ng-include src="'app/agent/management/include/query.html'"></ng-include>
         </div>
         <div class="space30"></div>
