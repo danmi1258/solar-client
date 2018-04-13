@@ -22,7 +22,8 @@
                 </form>
 
                 <div class="row" ng-show="result!=null">
-                    <div class="col-sm-8">
+                    <div class="col-sm-12">
+                        <div class="tbl-wrap">
                         <table class="table table-striped table-bordered table-hover table-responsive">
                             <thead>
                             <tr>
@@ -63,11 +64,12 @@
                             </tr>
                             </tfoot>
                         </table>
+                        </div>
                     </div>
                 </div>
 
                 <div class="row form-group">
-                    <div class="col-sm-4">
+                    <div class="col-sm-12">
                         <button type="button" class="btn-primary " ng-click="expandAll(expand=!expand)">
                             <span ng-show="!expand">{{'Expand All'|translate}}</span>
                             <span ng-show="expand">{{'Collapse All'|translate}}</span>
